@@ -1,0 +1,79 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section">&nbsp;</div>
+      <div class="middle-section">
+        <div class="title-section" *ngIf="action == 'add'">{{ 'INSURANCE_REV.NEW_INVESTMENT_POLICY' | translate }}</div>
+        <div class="title-section" *ngIf="action != 'add'">{{ 'INSURANCE_REV.EDIT_INVESTMENT_POLICY' | translate }}</div>
+      </div>
+      <div class="right-section">
+        <ion-icon (click)="close()" slot="icon-only" src="assets/svg/Close.svg" class="close-icon">&nbsp;</ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="main-content">
+    <div class="fields-section">
+      <form novalidate [formGroup]="formGroup" class="liabilities-form">
+        <ion-item [ngClass]="{'invalid-input-error': ( formGroup.get('type').hasError('required') && actionBtnAttempt)}">
+          <ion-label position="stacked">{{ 'INSURANCE_REV.PRODUCT_TYPE' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+          <ion-select #typeSelect [(ngModel)]="type" formControlName="type" interface="action-sheet">
+            <ion-select-option value="life">{{ 'GENERIC.LIFE' | translate }}</ion-select-option>
+            <ion-select-option value="disability">{{ 'GENERIC.DISABILITY' | translate }}</ion-select-option>
+            <ion-select-option value="critical">{{ 'GENERIC.CRITICAL' | translate }}</ion-select-option>
+            <ion-select-option value="collective-life">{{ 'GENERIC.COLLECTIVE' | translate }} - {{ 'GENERIC.LIFE' | translate }}</ion-select-option>
+            <ion-select-option value="collective-critical">{{ 'GENERIC.COLLECTIVE' | translate }} - {{ 'GENERIC.CRITICAL' | translate }}</ion-select-option>
+            <ion-select-option value="collective-disability">{{ 'GENERIC.COLLECTIVE' | translate }} - {{ 'GENERIC.DISABILITY' | translate }}</ion-select-option>
+            <ion-select-option value="reee">{{ 'INSURANCE_REV.REEE' | translate }}</ion-select-option>
+            <ion-select-option value="reer">{{ 'INSURANCE_REV.RRSP' | translate }}</ion-select-option>
+            <ion-select-option value="celi">{{ 'INSURANCE_REV.TFSA' | translate }}</ion-select-option>
+            <ion-select-option value="investment">{{ 'INSURANCE_REV.INVESTMENT' | translate }}</ion-select-option>
+          </ion-select>
+          <!--<ion-icon (click)="openTypeSelect()" src="assets/svg/ArrowDown.svg" class="arrow-down-icon" slot="end">&nbsp;</ion-icon>-->
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="(formGroup.get('type').hasError('required')) && actionBtnAttempt">
+          {{ 'GENERIC.REQUIRED' | translate }}
+        </ion-item>
+        <ion-item [ngClass]="{'invalid-input-error': ( formGroup.get('company').hasError('required') && actionBtnAttempt)}">
+          <ion-label position="stacked">{{ 'INSURANCE_REV.COMPANY' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+          <ion-input type="text" [(ngModel)]="company" formControlName="company"></ion-input>
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="(formGroup.get('company').hasError('required')) && actionBtnAttempt">
+          {{ 'GENERIC.REQUIRED' | translate }}
+        </ion-item>
+        <ion-item [ngClass]="{'invalid-input-error': ( formGroup.get('capital').hasError('required') && actionBtnAttempt)}">
+          <ion-label position="stacked">{{ 'INSURANCE_REV.CAPITAL' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="capital" formControlName="capital"></ion-input>
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="(formGroup.get('capital').hasError('required')) && actionBtnAttempt">
+          {{ 'GENERIC.REQUIRED' | translate }}
+        </ion-item>
+      </form>
+      <ion-item>
+        <ion-label position="stacked">{{ 'INSURANCE_REV.MONTHLY_PAYMENT' | translate }}</ion-label>
+        <ion-input type="number" pattern="[0-9]*" [(ngModel)]="monthlyPayment"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{ 'INSURANCE_REV.YEAR_ISSUED' | translate }}</ion-label>
+        <ion-input type="number" pattern="[0-9]*" [(ngModel)]="duration"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{ 'INSURANCE_REV.POLICYHOLDERS' | translate }}</ion-label>
+        <ion-select [selectOptions]="{cssClass: 'select-dlg'}" [(ngModel)]="policyholder" interface="action-sheet" multiple="true">
+          <ion-select-option *ngFor="let contact of policyholders" value='{{contact?.id}}'>{{contact?.fullname}}</ion-select-option>
+        </ion-select>
+        <!--<ion-icon src="assets/svg/ArrowDown.svg" class="arrow-down-icon" slot="end">&nbsp;</ion-icon>-->
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="btn-area" text-center>
+      <ion-button class="action-btn" slot="end" round (click)="save()">
+        {{ 'INSURANCE_REV.SAVE_INFO' | translate }}
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

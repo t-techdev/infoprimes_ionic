@@ -1,0 +1,51 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section">&nbsp;</div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'INSURANCE_REV.EDIT_LIABILITY' | translate }}</div>
+      </div>
+      <div class="right-section">
+        <ion-icon (click)="close()" slot="icon-only" src="assets/svg/Close.svg" class="close-icon">&nbsp;</ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="main-content">
+    <div class="fields-section">
+      <form novalidate [formGroup]="formGroup" class="liabilities-form">
+        <div class="name-section">
+          {{title}}
+        </div>
+        <ion-item [ngClass]="{'invalid-input-error': ( formGroup.get('total').hasError('required') && actionBtnAttempt)}">
+          <ion-label position="stacked">{{ 'INSURANCE_REV.CURRENT_OWED' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="total" formControlName="total"></ion-input>
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="(formGroup.get('total').hasError('required')) && actionBtnAttempt">
+          {{ 'GENERIC.REQUIRED' | translate }}
+        </ion-item>
+        <ion-item [ngClass]="{'invalid-input-error': ( formGroup.get('monthly').hasError('required') && actionBtnAttempt)}">
+          <ion-label position="stacked">{{ 'POLICY_DETAIL.MONTHLY_PAYMENT' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="monthly" formControlName="monthly"></ion-input>
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="(formGroup.get('monthly').hasError('required')) && actionBtnAttempt">
+          {{ 'GENERIC.REQUIRED' | translate }}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">{{ 'INSURANCE_REV.REMAINING_TERM' | translate }}</ion-label>
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="duration" formControlName="duration"></ion-input>
+        </ion-item>
+      </form>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="btn-area" text-center>
+      <ion-button class="action-btn" slot="end" round (click)="saveClick()">
+        {{ 'INSURANCE_REV.SAVE_INFO' | translate }}
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

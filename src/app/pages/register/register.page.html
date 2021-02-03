@@ -1,0 +1,99 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section" (click)="goBack(fromAppStart)" *ngIf="!fromAppStart">
+        <ion-icon slot="icon-only" src="assets/svg/arrowColoredLeft.svg" class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="left-section" *ngIf="fromAppStart">&nbsp;</div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'REGISTER.SIGNUP' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="main-content">
+    <div class="register-section" *ngIf="!registered">
+      <div class="lets-register-txt">{{ 'REGISTER.LETS_GET_REGISTERED' | translate }}</div>
+      <div class="lets-register-desc">{{ 'REGISTER.COMPLETE_ACCOUNT_INFO' | translate }}</div>
+      <form novalidate [formGroup]="user" class="register-form">
+        <ion-item [ngClass]="{'invalid-input-error': ((user.get('email').hasError('required') || user.get('email').hasError('email')) && submitAttempt) || ((user.get('email').hasError('required') || user.get('email').hasError('email')) && user.get('email').touched) || registerError}">
+          <ion-label class="placeholder" position="stacked">{{ 'REGISTER.EMAIL_TITLE' | translate }}</ion-label>
+          <ion-input type="email" [(ngModel)]="email" formControlName="email" (input)="changeResStatus($event.target.value)"></ion-input>
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="((user.get('email').hasError('required') || user.get('email').hasError('email')) && submitAttempt) || ((user.get('email').hasError('required') || user.get('email').hasError('email')) && user.get('email').touched)">
+          {{ 'GENERIC.INPUT_VALID_EMAIL' | translate }}
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="registerError">
+          {{ registerErrorMsg }}
+        </ion-item>
+        <ion-item [ngClass]="{'invalid-input-error': ((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && submitAttempt) || ((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && user.get('password').touched)}">
+          <ion-label position="stacked">{{ 'LOGIN.PASSWORD' | translate }}</ion-label>
+          <div class="input-div">
+            <ion-input class="password-input" type="password" clearOnEdit="false" [(ngModel)]="password" formControlName="password" (input)="changeResStatus($event.target.value)"></ion-input>
+            <ion-icon name="ios-checkmark-circle-outline" class="normal-icon" *ngIf="!(((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && submitAttempt) || ((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && user.get('password').touched)) && ((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')))" item-right></ion-icon>
+            <ion-icon name="ios-close-circle-outline" class="error-icon" *ngIf="((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && submitAttempt) || ((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && user.get('password').touched)" item-right></ion-icon>
+            <ion-icon name="ios-checkmark-circle-outline" class="valid-icon" *ngIf="!((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')))" item-right></ion-icon>
+          </div>
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && submitAttempt) || ((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && user.get('password').touched)">
+          {{ 'REGISTER.PASSWORD_TIP' | translate }}
+        </ion-item>
+        <ion-item class="input-tip" no-lines *ngIf="!(((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && submitAttempt) || ((user.get('password').hasError('required') || user.get('password').hasError('minlength') || user.get('password').hasError('validPassword')) && user.get('password').touched))">
+          {{ 'REGISTER.PASSWORD_TIP' | translate }}
+        </ion-item>
+        <ion-item [ngClass]="{'invalid-input-error': (user.get('confirmPassword').touched && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value)) || (submitAttempt && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value))}">
+          <ion-label position="stacked">{{ 'REGISTER.CONFIRM_PASSWORD' | translate }}</ion-label>
+          <div class="input-div">
+            <ion-input class="password-input" type="password" clearOnEdit="false" [(ngModel)]="confirmPassword" formControlName="confirmPassword" (input)="changeResStatus($event.target.value)"></ion-input>
+            <ion-icon name="ios-checkmark-circle-outline" class="normal-icon" *ngIf="!((user.get('confirmPassword').touched && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value)) || (submitAttempt && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value))) && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value)"
+              item-right></ion-icon>
+            <ion-icon name="ios-close-circle-outline" class="error-icon" *ngIf="(user.get('confirmPassword').touched && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value)) || (submitAttempt && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value))" item-right></ion-icon>
+            <ion-icon name="ios-checkmark-circle-outline" class="valid-icon" *ngIf="!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value" item-right></ion-icon>
+          </div>
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="(user.get('confirmPassword').touched && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value)) || (submitAttempt && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value))">
+          {{ 'REGISTER.CONFIRM_PASSWORD_DOES_NOT_MATCH' | translate }}
+        </ion-item>
+        <ion-item class="input-tip" no-lines *ngIf="!((user.get('confirmPassword').touched && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value)) || (submitAttempt && !(!user.get('password').hasError('minlength') && !user.get('confirmPassword').hasError('minlength') && !user.get('password').hasError('validPassword') && user.get('password').value == user.get('confirmPassword').value)))">
+          {{ 'REGISTER.CONFIRM_PASSWORD_DOES_NOT_MATCH' | translate }}
+        </ion-item>
+        <div class="ion-text-center">
+          <ion-button (click)="register()" class="signup-btn" slot="end" round>
+          {{ 'REGISTER.SIGNUP' | translate }}
+        </ion-button>
+        </div>
+      </form>
+    </div>
+    <div class="confirm-section" *ngIf="registered">
+      <div class="email-sent-img-section" text-center>
+        <img src="assets/imgs/email_sent.png" class="email-sent-img">
+      </div>
+      <div class="confirm-email" text-center>
+        {{ 'REGISTER.CONFIRM_YOUR_EMAIL' | translate }}
+      </div>
+      <div class="sent-email-txt-area" text-center>
+        <div>{{ 'GENERIC.EMAIL_SENT_1' | translate }}</div>
+        <div class="sent-email" *ngIf="!fromAppStart">{{email}}</div>
+        <div class="sent-email" *ngIf="fromAppStart">{{sentEmail}}</div>
+        <div>{{ 'REGISTER.EMAIL_SENT_2' | translate }}</div>
+      </div>
+      <div class="click-link-txt-area" text-center>
+        <div>{{ 'REGISTER.CLICK_LINK' | translate }}</div>
+      </div>
+      <div class="divider-inner-line"></div>
+      <div class="find-email-txt">
+        <span *ngIf="!resentEmail">{{ 'REGISTER.CANNOT_FIND_EMAIL' | translate }}</span>
+        <span *ngIf="resentEmail">{{ 'REGISTER.EMAIL_RESENT' | translate }}</span>
+      </div>
+      <div class="resend-email-txt" (click)="resendEmail()" *ngIf="!resentEmail">{{ 'REGISTER.RESEND_EMAIL' | translate }}</div>
+    </div>
+    <div class="bottom-section">
+      <div [ngClass]="(keyboardVisible == true) ? 'have-account-section-key-open' : 'have-account-section-key-close'">
+        <span class="have-account">{{ 'GENERIC.HAVE_ACCOUNT' | translate }}</span>
+        <span class="signinlink" (click)="goBack(fromAppStart)">{{ 'GENERIC.SIGN_IN' | translate }}</span>
+      </div>
+    </div>
+  </div>
+</ion-content>

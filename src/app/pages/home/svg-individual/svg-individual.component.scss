@@ -1,0 +1,554 @@
+/**/
+
+
+/*core stuff, defaults/fallback */
+
+
+/**/
+#coverage-amount,
+#needs-amount {
+  transition: .25s ease;
+}
+
+.coverage-segment-0 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+}
+
+.animated .coverage-segment-0 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+}
+
+
+.coverage-segment-2 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+  stroke: #ff9256;
+}
+
+.animated .coverage-segment-2 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+}
+
+.coverage-segment-3 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+  stroke: #feb58c;
+}
+
+.animated .coverage-segment-3 {
+  stroke-dasharray: 45 55;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+}
+
+
+/**********************************************************************/
+
+
+/*PERCENT CIRCLE ANIMATIONS*/
+
+
+/**********************************************************************/
+
+.percentage-circle {
+  stroke: #feb58c;
+  fill: #fff;
+  opacity: 0;
+}
+
+.animated .percentage-circle {
+  animation: percentage-circle .25s forwards;
+  animation-delay: 1.4s;
+  opacity: 0;
+}
+
+@keyframes percentage-circle {
+  from {
+    r: .5;
+    opacity: 0;
+  }
+  to {
+    r: 1.8;
+    opacity: 1;
+  }
+}
+
+.percent-circle-text {
+  font-family: "Muli", arial;
+  font-size: 1px;
+  fill: #feb58c;
+  font-weight: bold;
+  opacity: 0;
+}
+
+.animated .percent-circle-text {
+  animation: percentage-circle-text .25s forwards;
+  animation-delay: 1.4s;
+  opacity: 0;
+}
+
+@keyframes percentage-circle-text {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/*percentage circle dynamic styling*/
+
+
+/*home-graphic*/
+
+.home-graphic.graphic-life .percentage-circle {
+  stroke: #feb58c;
+  fill: #fff;
+  opacity: 0;
+}
+
+.home-graphic.graphic-disability .percentage-circle {
+  stroke: #97c62d;
+  fill: #fff;
+  opacity: 0;
+}
+
+.home-graphic.graphic-longtermcare .percentage-circle {
+  stroke: #e74d63;
+  fill: #fff;
+  opacity: 0;
+}
+
+.home-graphic.graphic-critical .percentage-circle {
+  stroke: #21aab9;
+  fill: #fff;
+  opacity: 0;
+}
+
+.home-graphic.graphic-travel .percentage-circle {
+  stroke: #a15ec3;
+  fill: #fff;
+  opacity: 0;
+}
+
+
+/**********************************************************************/
+
+
+/*STYLES*/
+
+
+/**********************************************************************/
+
+
+/**/
+
+
+/*TEXT*/
+
+
+/**/
+
+
+/**/
+
+
+/*HOME GRAPHICS STYLES*/
+
+
+/**/
+
+
+/*styling for home graphic text - same for all graphics @ home*/
+
+.home-graphic .needs-text,
+.graphic-label-permanent,
+.graphic-label-temporary,
+.graphic-label-universal {
+  fill: rgba(0, 81, 137, .44);
+}
+
+.home-graphic .coverage-text {
+  fill: #2BA2DD;
+}
+
+.home-graphic .graphic-line {
+  stroke: rgba(218, 230, 239, .32);
+}
+
+
+/*styling for home graphics for different insurance types*/
+
+
+/*same for all*/
+
+.home-graphic .needs-ring {
+  stroke: #fff;
+}
+
+
+/*colored first-segments for different insuranc types for .home-graphic*/
+
+.home-graphic.graphic-life .coverage-segment-0 {
+  display: none;
+}
+
+.home-graphic.graphic-life .coverage-segment-1 {
+  stroke: #fe5d05;
+}
+
+.category-graphic.graphic-life .coverage-segment-1 {
+  stroke: #fff;
+}
+
+.home-graphic.graphic-disability .percentage-circle {
+  stroke: #97c62d;
+}
+
+
+.home-graphic.graphic-longtermcare .percentage-circle {
+  stroke: #e74d63;
+}
+
+
+.home-graphic.graphic-critical .percentage-circle {
+  stroke: #21aab9;
+}
+
+
+.home-graphic.graphic-travel .percentage-circle {
+  stroke: #a15ec3;
+}
+
+
+/*percent circle colors*/
+
+.home-graphic.graphic-life .percent-circle-text {
+  fill: #fe5d05;
+}
+
+.home-graphic.graphic-disability .percent-circle-text {
+  fill: #97c62d;
+}
+
+.home-graphic.graphic-longtermcare .percent-circle-text {
+  fill: #e74d63;
+}
+
+.home-graphic.graphic-critical .percent-circle-text {
+  fill: #21aab9;
+}
+
+.home-graphic.graphic-travel .percent-circle-text {
+  fill: #a15ec3;
+}
+
+
+/**/
+
+
+/*CATEGORY SCREEN STYLING*/
+
+
+/**/
+
+
+/*same for all*/
+
+.category-graphic .coverage-segment-0,
+.category-graphic .coverage-segment-1 {
+  stroke: none;
+}
+
+.category-graphic .needs-text {
+  fill: rgba(255, 255, 255, .43);
+}
+
+.category-graphic .coverage-text {
+  fill: #fff;
+}
+
+.category-graphic .graphic-line {
+  stroke: rgba(255, 255, 255, .27);
+}
+
+
+/*life label styling*/
+
+.category-graphic.graphic-life .graphic-label-permanent,
+.category-graphic.graphic-life .graphic-label-temporary,
+.category-graphic.graphic-life .graphic-label-universal {
+  fill: rgba(255, 255, 255, .54);
+}
+
+
+/*LIFE*/
+
+
+/*hides segment 0 when using multi-segments with life*/
+
+.category-graphic.graphic-life .coverage-segment-0 {
+  display: none;
+}
+
+.category-graphic.graphic-life .coverage-segment-2 {
+  stroke: #FFC9AC;
+}
+
+.category-graphic.graphic-life .coverage-segment-3 {
+  stroke: #FDA271;
+}
+
+.category-graphic.graphic-life .needs-ring {
+  stroke: #fe691a;
+  transition: .25s ease;
+}
+
+.category-graphic.graphic-life .graphic-knobs {
+  stroke: #fe6e1a;
+  transition: .25s ease;
+}
+
+
+/*DISABILITY*/
+
+.category-graphic.graphic-disability .needs-ring {
+  stroke: #7fbd30;
+  transition: .25s ease;
+}
+
+.category-graphic.graphic-disability .graphic-knobs {
+  stroke: #8fc030;
+  transition: .25s ease;
+}
+
+
+/*LONG-TERM CARE*/
+
+.category-graphic.graphic-longtermcare .needs-ring {
+  stroke: #e74d63;
+  transition: .25s ease;
+}
+
+.category-graphic.graphic-longtermcare .graphic-knobs {
+  stroke: #e25461;
+  transition: .25s ease;
+}
+
+
+/*CRITICAL ILLNESS*/
+
+.category-graphic.graphic-critical .needs-ring {
+  stroke: #21aab9;
+  transition: .25s ease;
+}
+
+.category-graphic.graphic-critical .graphic-knobs {
+  stroke: #34a9bc;
+  transition: .25s ease;
+}
+
+
+/*TRAVEL*/
+
+.category-graphic.graphic-travel .needs-ring {
+  stroke: #a15ec3;
+  transition: .25s ease;
+}
+
+.category-graphic.graphic-travel .graphic-knobs {
+  stroke: #9e62ca;
+  transition: .25s ease;
+}
+
+
+/*percentage circle styling for .category-graphic*/
+
+.category-graphic .percentage-circle {
+  stroke: #fff;
+}
+
+.category-graphic.graphic-life .percentage-circle {
+  stroke: #FDA271;
+}
+
+.category-graphic.graphic-disability .percentage-circle {
+  fill: #97c62d;
+}
+
+.category-graphic.graphic-longtermcare .percentage-circle {
+  fill: #e74d63;
+}
+
+.category-graphic.graphic-critical .percentage-circle {
+  fill: #21aab9;
+}
+
+.category-graphic.graphic-travel .percentage-circle {
+  fill: #a15ec3;
+}
+
+
+/*percent circle colors*/
+
+.category-graphic .percent-circle-text {
+  fill: #fff;
+}
+
+.category-graphic.graphic-life .percent-circle-text {
+  fill: #fe691a;
+}
+
+
+/*LABELS FOR INSURANCE TYPES*/
+
+.graphic-label-permanent {
+  opacity: 0;
+}
+
+.graphic-label-temporary {
+  opacity: 0;
+}
+
+.graphic-label-universal {
+  opacity: 0;
+}
+
+.animated .graphic-label-permanent {
+  animation: label-fade-in .5s ease forwards;
+  animation-delay: 1.45s;
+}
+
+.animated .graphic-label-temporary {
+  animation: label-fade-in .5s ease forwards;
+  animation-delay: 1.45s;
+}
+
+.animated .graphic-label-universal {
+  animation: label-fade-in .5s ease forwards;
+  animation-delay: 1.45s;
+}
+
+@keyframes label-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+
+/*remove for in-app*/
+
+
+/*
+svg {
+  background: linear-gradient(#ff914d, #ff6332);
+  background: rgb(240, 247, 252);
+}
+
+body {
+  background:linear-gradient(#ff914d, #ff6332);
+}*/
+
+
+.graphic-dollars {
+  font-family: "Muli", arial;
+  font-size: 3px;
+  font-weight: bold;
+  border: solid 1px red;
+}
+
+.graphic-titles {
+  font-family: "Muli", arial;
+  font-size: 1.6485px;
+}
+
+.graphic-label-permanent,
+.graphic-label-temporary,
+.graphic-label-universal {
+  font-family: "Muli", arial;
+  font-size: 1.1242px;
+}
+
+.needs-ring {
+  stroke-dasharray: 66.5 33.5;
+  stroke-dashoffset: 58.333;
+}
+
+.graphic-knobs {
+  stroke: #d8dfe2;
+}
+
+.coverage-segment-1 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+  stroke: #fe5d05;
+}
+
+.animated .coverage-segment-1 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+}
+
+.coverage-segment-2 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+  stroke: #ff9256;
+}
+
+.animated .coverage-segment-2 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+}
+
+.coverage-segment-3 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+  stroke: #feb58c;
+}
+
+.animated .coverage-segment-3 {
+  stroke-dasharray: 45 55;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+}
+
+.coverage-segment-0 {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: 58.33;
+  transition: 1.5s ease;
+}
+
+.home-graphic.graphic-disability .coverage-segment-0 {
+  stroke: #97c62d;
+}
+
+.home-graphic.graphic-longtermcare .coverage-segment-0 {
+  stroke: #e74d63;
+}
+
+.home-graphic.graphic-critical .coverage-segment-0 {
+  stroke: #21aab9;
+}
+
+.home-graphic.graphic-travel .coverage-segment-0 {
+  stroke: #a15ec3;
+}
+
+.category-graphic .coverage-segment-0,
+.category-graphic .coverage-segment-1 {
+  stroke: #fff;
+}

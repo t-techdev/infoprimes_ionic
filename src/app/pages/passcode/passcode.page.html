@@ -1,0 +1,68 @@
+<ion-content padding>
+  <div class="main-content">
+    <div class="desc-section" text-center>
+      {{ 'PASSCODE.ONE_MORE_STEP' | translate }}
+    </div>
+    <div class="passcode-intro-txt">
+      <div *ngIf="isPasscode">{{ 'PASSCODE.CHOOSE_PASSCODE' | translate }}</div>
+      <div *ngIf="!isPasscode && !selectedIndexArrBackup.length">{{ 'PASSCODE.SETUP_PASSCDE' | translate }}</div>
+      <div *ngIf="!isPasscode && selectedIndexArrBackup.length">{{ 'PASSCODE.CONFIRM_PASSCDE' | translate }}</div>
+    </div>
+    <div id="progress-area" class="touch-section">
+      <div class="progress-round" [ngClass]="{'progress-filled': selectedIndexArr.length > 0, 'progress-not-filled': selectedIndexArr.length <= 0}">&nbsp;</div>
+      <div class="progress-round" [ngClass]="{'progress-filled': selectedIndexArr.length > 1, 'progress-not-filled': selectedIndexArr.length <= 1}">&nbsp;</div>
+      <div class="progress-round" [ngClass]="{'progress-filled': selectedIndexArr.length > 2, 'progress-not-filled': selectedIndexArr.length <= 2}">&nbsp;</div>
+      <div class="progress-round" [ngClass]="{'progress-filled': selectedIndexArr.length > 3, 'progress-not-filled': selectedIndexArr.length <= 3}">&nbsp;</div>
+    </div>
+    <div class="touch-section">
+      <div class="touch-round-out" (touchstart)="roundTouchStart(1)" (touchend)="roundTouchEnd(1)">
+        <button class="touch-round" id="touch-round-1" round>1</button>
+      </div>
+      <div class="touch-round-out" (touchstart)="roundTouchStart(2)" (touchend)="roundTouchEnd(2)">
+        <button class="touch-round" id="touch-round-2" round>2</button>
+      </div>
+      <div class="touch-round-out" (touchstart)="roundTouchStart(3)" (touchend)="roundTouchEnd(3)">
+        <button class="touch-round" id="touch-round-3" round>3</button>
+      </div>
+    </div>
+    <div class="touch-section">
+      <div class="touch-round-out" (touchstart)="roundTouchStart(4)" (touchend)="roundTouchEnd(4)">
+        <button class="touch-round" id="touch-round-4" round>4</button>
+      </div>
+      <div class="touch-round-out" (touchstart)="roundTouchStart(5)" (touchend)="roundTouchEnd(5)">
+        <button class="touch-round" id="touch-round-5" round>5</button>
+      </div>
+      <div class="touch-round-out" (touchstart)="roundTouchStart(6)" (touchend)="roundTouchEnd(6)">
+        <button class="touch-round" id="touch-round-6" round>6</button>
+      </div>
+    </div>
+    <div class="touch-section">
+      <div class="touch-round-out" (touchstart)="roundTouchStart(7)" (touchend)="roundTouchEnd(7)">
+        <button class="touch-round" id="touch-round-7" round>7</button>
+      </div>
+      <div class="touch-round-out" (touchstart)="roundTouchStart(8)" (touchend)="roundTouchEnd(8)">
+        <button class="touch-round" id="touch-round-8" round>8</button>
+      </div>
+      <div class="touch-round-out" (touchstart)="roundTouchStart(9)" (touchend)="roundTouchEnd(9)">
+        <button class="touch-round" id="touch-round-9" round>9</button>
+      </div>
+    </div>
+    <div class="touch-section">
+      <div class="touch-round-out" *ngIf="touchIdAvailable" (touchstart)="roundTouchStart('gotouchpage')" (touchend)="roundTouchEnd('gotouchpage')" (click)="goToTouchIdPage()">
+        <div class="touch-round" id="touch-round-gotouchpage">
+          <img *ngIf="appGlobalService.sensorType == 'face'" src="assets/icon/faceid.png" class="touchid-img"/>
+          <img *ngIf="appGlobalService.sensorType != 'face'" src="assets/icon/touchid.png" class="touchid-img"/>
+        </div>
+      </div>
+      <div class="touch-round-out" *ngIf="!touchIdAvailable">&nbsp;</div>
+      <div class="touch-round-out" (touchstart)="roundTouchStart(0)" (touchend)="roundTouchEnd(0)">
+        <button class="touch-round" id="touch-round-0" round>0</button>
+      </div>
+      <div class="touch-round-out" (touchstart)="roundTouchStart('clear')" (touchend)="roundTouchEnd('clear')" (click)="delCharacter()">
+        <div class="touch-round" id="touch-round-clear">
+          <img src="assets/icon/arrowBlueLeft.png" class="arrow-img" />
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

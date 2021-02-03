@@ -1,0 +1,147 @@
+.logo-content {
+  padding-top: 82px;
+}
+
+.logo-img {
+  width: 192px;
+}
+
+.welcome-txt {
+  padding-top: 35px;
+  padding-left: 34px;
+  color: #2F9AE1;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.login-form .item {
+  --padding-start: 0px;
+  --padding-top: 7px;
+  --border-style: none;
+  border-bottom: 2px solid #F4F6F8;
+}
+
+.login-form .item-inner {
+  border-bottom: 1.5px solid #F4F6F8 !important;
+}
+
+.login-form ion-label {
+  color: #768CA1 !important;
+  font-size: 13px !important;
+}
+
+.login-form {
+  padding-top: 15px;
+  padding-left: 34px;
+  padding-right: 34px;
+}
+
+.login-form .password-input {
+  letter-spacing: 11px;
+}
+
+.login-form ion-input {
+  color: #364A5D;
+  font-weight: 700;
+}
+
+.signin-btn {
+  width: 223px;
+  margin-top: 27px;
+  --background: #19A4F6;
+  --background-hover: #3fb5f7;
+  --border-radius: 64px;
+  height: 50px;
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.signin-btn.activated {
+  --background-activated: #3fb5f7;
+}
+
+.flex-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.bottom-section {
+  text-align: center;
+  padding-top: 27px;
+}
+
+.getstarted-section {
+  padding-top: 8px;
+  padding-bottom: 10px;
+}
+
+.no-account {
+  color: #768CA1;
+  font-size: 14px;
+}
+
+.getstarted {
+  text-decoration: underline;
+  padding-left: 14px;
+  color: #2F9AE1;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: #2F9AE1;
+  text-decoration: underline;
+  padding-bottom: 16px;
+}
+
+.validation-error {
+  --color: #F93535;
+  --min-height: 0px !important;
+  padding: 0px !important;
+  border-bottom: none !important;
+  font-size: 11px !important;
+}
+
+.invalid-input-error {
+  border-bottom: solid 2px #F93535 !important;
+  .item-inner {
+    border-bottom: none !important;
+  }
+}
+
+.item.item[no-lines] .item-inner {
+  border: none !important;
+}
+
+.item-input {
+  --highlight-color-invalid: transparent;
+}
+
+.item-input.item-has-focus {
+  &.item-has-focus {
+    border-bottom: solid 2px #19A4F6 !important;
+    --border-color: transparent;
+    --border-style: none;
+    --highlight-color-focused: transparent;
+    --highlight-color-valid: transparent;
+  }
+}
+
+@media only screen and (max-height: 667px) {
+  .welcome-txt {
+    // padding-top: 30px;
+    // padding-left: 20px;
+  }
+  .bottom-section {
+    padding-top: 18px;
+  }
+}
+
+

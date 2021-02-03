@@ -1,0 +1,34 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section">
+        <ion-icon class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'OFFLINE.TITLE' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="main-content">
+    <div class="desc-section" text-center>
+      <img src="assets/icon/wifi_broken.png" class="wifi-broken-img" />
+      <div class="text-setion-1">
+        {{ 'OFFLINE.OFFLINE_DESC_TITLE' | translate }}
+      </div>
+      <div class="text-setion-2">
+        {{ 'OFFLINE.OFFLINE_DESC_TEXT' | translate }}
+      </div>
+      <div class="ion-text-center">
+        <ion-button (click)="tryAgain()" class="try-again-btn" slot="end" round>
+          {{ 'GENERIC.TRY_AGAIN' | translate }}
+        </ion-button>
+      </div>
+    </div>
+    <div class="bottom-setion" text-center>
+      
+    </div>
+  </div>
+</ion-content>

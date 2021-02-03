@@ -1,0 +1,202 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+ion-icon {
+  &[class*="infoprimes-"] {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  // custom icons
+  &[class*="infoprimes-arrow-back"] {
+    background-image: url('./assets/svg/arrowLeft-new.svg');
+  }
+  &[class*="infoprimes-arrow-colored-back"] {
+    background-image: url('./assets/svg/ArrowColoredLeft.svg');
+  }
+  &[class*="infoprimes-arrow-down"] {
+    background-image: url('./assets/svg/ArrowDown.svg');
+  }
+  &[class*="infoprimes-arrow-up"] {
+    background-image: url('./assets/svg/ArrowUp.svg');
+  }
+  &[class*="infoprimes-arrow-right"] {
+    background-image: url('./assets/svg/arrowRight.svg');
+  }
+  &[class*="infoprimes-phone"] {
+    background-image: url('./assets/svg/Phone.svg');
+  }
+  &[class*="infoprimes-messages"] {
+    background-image: url('./assets/svg/Messages.svg');
+  }
+  &[class*="infoprimes-email"] {
+    background-image: url('./assets/svg/Email.svg');
+  }
+  &[class*="infoprimes-gear"] {
+    background-image: url('./assets/svg/Gear.svg');
+  }
+  &[class*="infoprimes-edit"] {
+    background-image: url('./assets/svg/Edit.svg');
+  }
+  &[class*="infoprimes-add"] {
+    background-image: url('./assets/svg/Add.svg');
+  }
+  &[class*="infoprimes-delete"] {
+    background-image: url('./assets/svg/Delete.svg');
+  }
+  &[class*="infoprimes-close"] {
+    background-image: url('./assets/svg/Close.svg');
+  }
+  &[class*="infoprimes-check"] {
+    background-image: url('./assets/svg/check.svg');
+  }
+  &[class*="infoprimes-tab-policy-false"] {
+    background-image: url('./assets/svg/PoliciesFalse.svg');
+    width: 21px;
+    height: 24px;
+  }
+  &[class*="infoprimes-tab-policy-false"] {
+    background-image: url('./assets/svg/PoliciesFalse.svg');
+    width: 21px;
+    height: 24px;
+  }
+  &[class*="infoprimes-tab-mybroker-false"] {
+    background-image: url('./assets/svg/MyBrokerFalse.svg');
+    width: 21px;
+    height: 24px;
+  }
+  &[class*="infoprimes-tab-myprofile-false"] {
+    background-image: url('./assets/svg/MyProfileFalse.svg');
+    width: 21px;
+    height: 24px;
+  }
+  &[class*="infoprimes-tab-reclamation-false"] {
+    background-image: url('./assets/svg/ReclamationFalse.svg');
+    width: 21px;
+    height: 24px;
+  }
+  &[class*="infoprimes-check"] {
+    background-image: url('./assets/svg/check.svg');
+    background-size: contain
+  }
+  &[class*="infoprimes-doc"] {
+    background-image: url('./assets/svg/document.svg');
+  }
+}
+
+.tab-button[aria-selected=true] {
+  color: #3498DB !important;
+}
+
+.tab-button[aria-selected=false] {
+  color: #AAC2D2;
+}
+
+.tab-button-text {
+  font-family: 'Muli';
+  font-size: 10px !important;
+}
+
+#tab-t0-0[aria-selected=true] {
+  ion-icon {
+    background-image: url('./assets/svg/PoliciesTrue.svg');
+  }
+}
+
+#tab-t0-1[aria-selected=true] {
+  ion-icon {
+    background-image: url('./assets/svg/MyBrokerTrue.svg');
+  }
+}
+
+#tab-t0-2[aria-selected=true] {
+  ion-icon {
+    background-image: url('./assets/svg/MyProfileTrue.svg');
+  }
+}
+
+#tab-t0-3[aria-selected=true] {
+  ion-icon {
+    background-image: url('./assets/svg/ReclamationTrue.svg');
+  }
+}
+
+.custom-toast-message {
+  --background: #FA5050;
+  text-align: center;
+}
+.custom-loader {
+  .loading-wrapper {
+    border-radius: 50%;
+    padding: 14px 16px;
+  }
+}
+.max-z-index {
+  z-index: 999999999 !important;
+}
+/* muli font - latin */
+
+@font-face {
+  font-family: 'Muli';
+  font-style: light;
+  font-weight: 300;
+  src: url('./assets/appfonts/Muli/Muli-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/appfonts/Muli/Muli-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-style: semi-bold;
+  font-weight: 600;
+  src: url('./assets/appfonts/Muli/Muli-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-style: bold;
+  font-weight: 700;
+  src: url('./assets/appfonts/Muli/Muli-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-style: extra-bold;
+  font-weight: 800;
+  src: url('./assets/appfonts/Muli/Muli-ExtraBold.ttf');
+}
+
+.select-dlg {
+  .alert-wrapper {
+    .alert-title {
+      color: #2D99E2;
+    }
+  }
+}
+
+html {
+  touch-action: manipulation;
+  font-family: 'Muli';
+}
+
+:root {
+  --ion-font-family: 'Muli' !important;
+}
+
+ion-input {
+  caret-color: #19A4F6;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>icDelete</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-121.000000, -568.000000)" fill="#90A9C1" fill-rule="nonzero">
+            <path d="M127,587 C127,588.1 127.9,589 129,589 L137,589 C138.1,589 139,588.1 139,587 L139,575 L127,575 L127,587 Z M140,572 L136.5,572 L135.5,571 L130.5,571 L129.5,572 L126,572 L126,574 L140,574 L140,572 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

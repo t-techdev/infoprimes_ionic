@@ -1,0 +1,68 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section" (click)="goBack()">
+        <ion-icon slot="icon-only" src="assets/svg/arrowLeft-new.svg" class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'POLICY_STATUS.TITLE' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="info-section">
+    <div class="img-section" text-center>
+      <img class="circle-img" src="assets/imgs/company_logos/{{policy?.company}}.png" />
+      <img class="border-img" src="assets/icon/imageBorder.png" />
+    </div>
+    <div class="policy-info">
+      <div class="first-line">
+        <div class="title">{{policy?.company_name}}</div>
+      </div>
+      <div class="status" *ngIf="appGlobal.getPolicyStatus(policy) == 'in force'">
+        <span class="policy-status-img">
+          <img class="secure-img" src="assets/icon/in_force_logo_white.png" />
+        </span>
+        <span class="policy-status">{{ 'POLICY_STATUS.IN_FORCE' | translate }}</span>
+      </div>
+      <div class="status" *ngIf="appGlobal.getPolicyStatus(policy) == 'pending'">
+        <span class="policy-status-img">
+          <img class="secure-img" src="assets/icon/pending_logo_white.png" />
+        </span>
+        <span class="policy-status">{{ 'POLICY_STATUS.PENDING' | translate }}</span>
+      </div>
+      <div class="status" *ngIf="appGlobal.getPolicyStatus(policy) == 'canceled'">
+        <span class="policy-status-img">
+          <img class="secure-img" src="assets/icon/cancelled_logo_white.png" />
+        </span>
+        <span class="policy-status">{{ 'POLICY_STATUS.CANCELLED' | translate }}</span>
+      </div>
+      <div class="status" *ngIf="appGlobal.getPolicyStatus(policy) == 'refused'">
+        <span class="policy-status-img">
+          <img class="secure-img" src="assets/icon/refused_logo_white.png" />
+        </span>
+        <span class="policy-status">{{ 'POLICY_STATUS.REFUSED' | translate }}</span>
+      </div>
+      <div class="second-line" *ngIf="policy?.type == 'life' && policy?.category == 'term'">{{ 'GENERIC.TERM_LIFE_INSURANCE' | translate }}</div>
+      <div class="second-line" *ngIf="policy?.type == 'life' && policy?.category == 'wholelife'">{{ 'GENERIC.PERMANENT_LIFE_INSURANCE' | translate }}</div>
+      <div class="second-line" *ngIf="policy?.type == 'life' && policy?.category == 'universal'">{{ 'GENERIC.UNIVERSAL_LIFE_INSURANCE' | translate }}</div>
+      <div class="second-line" *ngIf="policy?.type == 'disability'">{{ 'GENERIC.DISABILITY_INSURANCE' | translate }}</div>
+      <div class="second-line" *ngIf="policy?.type == 'longtermcare'">{{ 'GENERIC.LONG_TERM_CARE_INSURANCE' | translate }}</div>
+      <div class="second-line" *ngIf="policy?.type == 'critical'">{{ 'GENERIC.CRITICAL_ILLNESS_INSURANCE' | translate }}</div>
+      <div class="second-line" *ngIf="policy?.type == 'travel'">{{ 'GENERIC.TRAVEL_INSURANCE' | translate }}</div>
+    </div>
+  </div>
+  <div class="content">
+    <div *ngFor="let status of statuses; let i = index">
+      <div class="timeline-section">
+        <div class="date">
+          <div class="date-area">{{appGlobal.dateFormatting(status?.date, 'DD MMM YYYY')}}</div>
+          <div *ngIf="i != statuses?.length - 1" class="vertical-line">&nbsp;</div>
+        </div>
+        <div class="desc">{{status?.desc}}</div>
+      </div>
+    </div>
+  </div>
+</ion-content>

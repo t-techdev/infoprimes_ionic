@@ -1,0 +1,319 @@
+<ion-app id="page-insurance">
+  <ion-header>
+    <div class="header-section {{type}}-header">
+      <div class="header-item">
+        <div class="left-section" (click)="goBack()">
+          <!--<ion-icon name="infoprimes-arrow-back" class="arrow-back-icon">&nbsp;</ion-icon>-->
+          <ion-icon slot="icon-only" src="assets/svg/arrowLeft-new.svg" class="arrow-back-icon">&nbsp;</ion-icon>
+        </div>
+        <div class="middle-section">
+          <img src="assets/icon/{{type}}-insurance-white.png" class="insurance-img" />
+          <div class="title-section" *ngIf="type == 'life'">{{ 'GENERIC.LIFE_INSURANCE' | translate }}</div>
+          <div class="title-section" *ngIf="type == 'disability'">{{ 'GENERIC.DISABILITY_INSURANCE' | translate }}</div>
+          <div class="title-section" *ngIf="type == 'longtermcare'">{{ 'GENERIC.LONG_TERM_CARE_INSURANCE' | translate }}</div>
+          <div class="title-section" *ngIf="type == 'critical'">{{ 'GENERIC.CRITICAL_ILLNESS_INSURANCE' | translate }}</div>
+          <div class="title-section" *ngIf="type == 'travel'">{{ 'GENERIC.TRAVEL_INSURANCE' | translate }}</div>
+        </div>
+        <div class="right-section">&nbsp;</div>
+      </div>
+      <div class="ion-text-center">
+        <ion-item [hidden]="true">
+          <ion-label position="stacked">Contact</ion-label>
+          <ion-select #contactListSelect [(ngModel)]="contact" interface="action-sheet" (ionChange)="changeContact()">
+            <ion-select-option *ngIf="userService?.lang == 'en'">{{mainContact?.lastname}} {{ 'HOME.HOUSEHOLD' | translate }}</ion-select-option>
+            <ion-select-option *ngIf="userService?.lang == 'fr'"> {{ 'HOME.HOUSEHOLD' | translate }} {{mainContact?.lastname}}</ion-select-option>
+            <ion-select-option *ngFor="let contact of contacts" [value]="contact">{{contact?.firstname}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button class="household-btn" [ngClass]="getHouseholdBtnClass()" (click)="openContactList()" style="--border-radius: 30px; --background: rgba(255, 255, 255, 0.76)">
+          <p *ngIf="!isLead">{{contact?.firstname}}</p>
+          <p *ngIf="isLead && userService?.lang == 'en'">{{mainContact?.lastname}} {{ 'HOME.HOUSEHOLD' | translate }}</p>
+          <p *ngIf="isLead && userService?.lang == 'fr'">{{ 'HOME.HOUSEHOLD' | translate }} {{mainContact?.lastname}}</p>
+          <ion-icon name="arrow-down" slot="end"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </ion-header>
+  <ion-content>
+    <div class="diagram-section {{type}}-diagram" text-center>
+      <!--charts start-->
+      <div class="svg-content">
+        <div *ngIf="type == 'life'" id="svg-life">
+          <svg-household *ngIf="isLead" type="life" [graphicData]="svgHouseHoldLifeData"></svg-household>
+          <div *ngFor="let item of contacts">
+            <svg-individual *ngIf="!isLead && item.id == contact.id" type="life" [graphicData]="svgIndividualLifeData"></svg-individual>
+          </div>
+        </div>
+        <div *ngIf="type == 'disability'" id="svg-disability">
+          <svg-household *ngIf="isLead" type="disability" [graphicData]="svgHouseHoldDisabilityData"></svg-household>
+          <div *ngFor="let item of contacts">
+            <svg-individual *ngIf="!isLead && item.id == contact.id" type="disability" [graphicData]="svgIndividualDisabilityData"></svg-individual>
+          </div>
+        </div>
+        <div *ngIf="type == 'longtermcare'" id="svg-longtermcare">
+          <svg-household *ngIf="isLead" type="longtermcare" [graphicData]="svgHouseHoldLongtermcareData"></svg-household>
+          <div *ngFor="let item of contacts">
+            <svg-individual *ngIf="!isLead && item.id == contact.id" type="longtermcare" [graphicData]="svgIndividualLongtermcareData"></svg-individual>
+          </div>
+        </div>
+        <div *ngIf="type == 'travel'" id="svg-travel">
+          <svg-household *ngIf="isLead" type="travel" [graphicData]="svgHouseHoldTravelData"></svg-household>
+          <div *ngFor="let item of contacts">
+            <svg-individual *ngIf="!isLead && item.id == contact.id" type="travel" [graphicData]="svgIndividualTravelData"></svg-individual>
+          </div>
+        </div>
+        <div *ngIf="type == 'critical'" id="svg-critical">
+          <svg-household *ngIf="isLead" type="critical" [graphicData]="svgHouseHoldCriticalData"></svg-household>
+          <div *ngFor="let item of contacts">
+            <svg-individual *ngIf="!isLead && item.id == contact.id" type="critical" [graphicData]="svgIndividualCriticalData"></svg-individual>
+          </div>
+        </div>
+      </div>
+      <!--charts end-->
+    </div>
+    <div class="bottom-blank-section">
+      <div class="card-area">
+        <ion-card class="card" *ngIf="permanentLifeInsurances?.length && type == 'life'">
+          <ion-card-content class="card-content">
+            <div class="card-header">
+              {{ 'INSURANCE_CATEGORY.PERMANENT_LIFE_POLICIES' | translate }}
+            </div>
+            <ion-item class="card-item" *ngFor="let policy of permanentLifeInsurances" (click)="goPolicy(policy)">
+              <ion-avatar class="card-avatar" item-start>
+                <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+              </ion-avatar>
+              <div class="policy-info-area">
+                <div class="name-txt">{{policy?.company_name}}</div>
+                <div *ngIf="isLead" class="coverage-txt">{{appGlobal.getContactNameByContactID(contacts, policy.contact_id, 'firstname')}}</div>
+                <div *ngIf="!isLead" class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</div>
+                <div class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</div>
+              </div>
+              <div class="dollar-month-line" slot="end">
+                <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+                <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+              </div>
+              <ion-button class="arrow-btn" fill="clear" icon-only slot="end">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item class="card-bottom-item" [ngClass]="getItemBottomClass()">
+              <div class="dollar-month-line" slot="end">
+                <div class="total small-padding small-opacity">{{ 'INSURANCE_CATEGORY.TOTAL_COVERAGE' | translate }}</div>
+                <div text-right>
+                  <p class="coverage-amount">{{getTotalValues('coverage', 'wholelife')}}</p>
+                </div>
+              </div>
+              <div class="slash" slot="end">/</div>
+              <div class="payment-month-line" slot="end">
+                <div class="total">{{ 'INSURANCE_CATEGORY.TOTAL_PAYMENT' | translate }}</div>
+                <div class="flex-center-item">
+                  <p class="monthly-money">{{getTotalValues('payment', 'wholelife')}}&nbsp;</p>
+                  <p class="payment-per-month-txt">&nbsp;{{ 'GENERIC.PER_MONTH' | translate }}</p>
+                </div>
+              </div>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="card" *ngIf="tempLifeInsurances?.length && type == 'life'">
+          <ion-card-content class="card-content">
+            <div class="card-header">
+              {{ 'INSURANCE_CATEGORY.TERM_LIFE_POLICIES' | translate }}
+            </div>
+            <ion-item class="card-item" *ngFor="let policy of tempLifeInsurances" (click)="goPolicy(policy)">
+              <ion-avatar class="card-avatar" item-start>
+                <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+              </ion-avatar>
+              <div class="policy-info-area">
+                <div class="name-txt">{{policy?.company_name}}</div>
+                <div *ngIf="isLead" class="coverage-txt">{{appGlobal.getContactNameByContactID(contacts, policy.contact_id, 'firstname')}}</div>
+                <div *ngIf="!isLead" class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</div>
+                <div class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</div>
+              </div>
+              <div class="dollar-month-line" slot="end">
+                <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+                <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+              </div>
+              <ion-button class="arrow-btn" fill="clear" icon-only slot="end">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item class="card-bottom-item" [ngClass]="getItemBottomClass()">
+              <div class="dollar-month-line" slot="end">
+                <div class="total small-padding small-opacity">{{ 'INSURANCE_CATEGORY.TOTAL_COVERAGE' | translate }}</div>
+                <div align-right>
+                  <p class="coverage-amount">{{getTotalValues('coverage', 'term')}}</p>
+                </div>
+              </div>
+              <div class="slash" slot="end">/</div>
+              <div class="payment-month-line" slot="end">
+                <div class="total">{{ 'INSURANCE_CATEGORY.TOTAL_PAYMENT' | translate }}</div>
+                <div class="flex-center-item">
+                  <p class="monthly-money">{{getTotalValues('payment', 'term')}}&nbsp;</p>
+                  <p class="payment-per-month-txt">&nbsp;{{ 'GENERIC.PER_MONTH' | translate }}</p>
+                </div>
+              </div>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="card" *ngIf="universalLifeInsurances?.length && type == 'life'">
+          <ion-card-content class="card-content">
+            <div class="card-header">
+              Universal life polices
+            </div>
+            <ion-item class="card-item" *ngFor="let policy of universalLifeInsurances" (click)="goPolicy(policy)">
+              <ion-avatar class="card-avatar" item-start>
+                <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+              </ion-avatar>
+              <div class="policy-info-area">
+                <div class="name-txt">{{policy?.company_name}}</div>
+                <div *ngIf="isLead" class="coverage-txt">{{appGlobal.getContactNameByContactID(contacts, policy.contact_id, 'firstname')}}</div>
+                <div *ngIf="!isLead" class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</div>
+                <div class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</div>
+              </div>
+              <div class="dollar-month-line" slot="end">
+                <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+                <div class="month">/month</div>
+              </div>
+              <ion-button class="arrow-btn" fill="clear" icon-only slot="end">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item class="card-bottom-item" [ngClass]="getItemBottomClass()">
+              <div class="dollar-month-line" slot="end">
+                <div class="total small-padding small-opacity">Total coverage</div>
+                <div align-right>
+                  <p class="coverage-amount">{{getTotalValues('coverage', 'universal')}}</p>
+                </div>
+              </div>
+              <div class="slash" slot="end">/</div>
+              <div class="payment-month-line" slot="end">
+                <div class="total">Total payment</div>
+                <div class="flex-center-item">
+                  <p class="monthly-money">{{getTotalValues('payment', 'universal')}}&nbsp;</p>
+                  <p class="payment-per-month-txt">&nbsp;/month</p>
+                </div>
+              </div>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="card empty-card" *ngIf="type == 'life' && !permanentLifeInsurances?.length && !tempLifeInsurances?.length && !universalLifeInsurances?.length">
+          <ion-card-content class="card-content">
+            <div class="nodata-div">
+              <img src="assets/icon/ic_uncovered.png" class="nodata-img" />
+            </div>
+            <div class="nodata-title-div">
+              {{ 'INSURANCE_CATEGORY.NODATA_TITLE_LIFE' | translate }}
+            </div>
+            <div class="nodata-desc-div">
+              {{ 'INSURANCE_CATEGORY.NODATA_DESC_1_LIFE' | translate }}
+            </div>
+            <div class="nodata-desc-div">
+              {{ 'INSURANCE_CATEGORY.NODATA_DESC_2_LIFE' | translate }}
+            </div>
+            <div class="broker-area-div">
+              <ion-button class="broker-btn" slot="end" round (click)="goBrokerPage()">
+                {{ 'CONCLUSION.CTA_2' | translate }}
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="card" *ngIf="type != 'life' && insurances?.length">
+          <ion-card-content class="card-content">
+            <ion-item class="card-item" *ngFor="let policy of insurances" (click)="goPolicy(policy)">
+              <ion-avatar class="card-avatar" item-start>
+                <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+              </ion-avatar>
+              <div class="policy-info-area">
+                <div class="name-txt">{{policy?.company_name}}</div>
+                <div *ngIf="isLead" class="coverage-txt">{{appGlobal.getContactNameByContactID(contacts, policy.contact_id, 'firstname')}}</div>
+                <div *ngIf="!isLead" class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</div>
+                <div class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</div>
+              </div>
+              <div class="dollar-month-line" slot="end">
+                <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+                <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+              </div>
+              <ion-button class="arrow-btn" fill="clear" icon-only slot="end">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item class="card-bottom-item" [ngClass]="getItemBottomClass()">
+              <div class="dollar-month-line" slot="end">
+                <div class="total small-padding small-opacity">{{ 'INSURANCE_CATEGORY.TOTAL_COVERAGE' | translate }}</div>
+                <div align-right>
+                  <p class="coverage-amount">{{getTotalValues('coverage')}}</p>
+                </div>
+              </div>
+              <div class="slash" slot="end">/</div>
+              <div class="payment-month-line" slot="end">
+                <div class="total">{{ 'INSURANCE_CATEGORY.TOTAL_PAYMENT' | translate }}</div>
+                <div class="flex-center-item">
+                  <p class="monthly-money">{{getTotalValues('payment')}}</p>
+                  <p class="payment-per-month-txt">&nbsp;{{ 'GENERIC.PER_MONTH' | translate }}</p>
+                </div>
+              </div>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="card empty-card" *ngIf="type != 'life' && !insurances?.length">
+          <ion-card-content class="card-content">
+            <div class="nodata-div">
+              <img src="assets/icon/ic_uncovered.png" class="nodata-img" />
+            </div>
+            <div *ngIf="type == 'disability'">
+              <div class="nodata-title-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_TITLE_DISABILITY' | translate }}
+              </div>
+              <div class="nodata-desc-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_DESC_1_DISABILITY' | translate }}
+              </div>
+              <div class="nodata-desc-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_DESC_2_DISABILITY' | translate }}
+              </div>
+            </div>
+            <div *ngIf="type == 'critical'">
+              <div class="nodata-title-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_TITLE_CRITICAL' | translate }}
+              </div>
+              <div class="nodata-desc-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_DESC_1_CRITICAL' | translate }}
+              </div>
+              <div class="nodata-desc-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_DESC_2_CRITICAL' | translate }}
+              </div>
+            </div>
+            <div *ngIf="type == 'longtermcare'">
+              <div class="nodata-title-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_TITLE_LONGTERMCARE' | translate }}
+              </div>
+              <div class="nodata-desc-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_DESC_1_LONGTERMCARE' | translate }}
+              </div>
+              <div class="nodata-desc-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_DESC_2_LONGTERMCARE' | translate }}
+              </div>
+            </div>
+            <div *ngIf="type == 'travel'">
+              <div class="nodata-title-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_TITLE_TRAVEL' | translate }}
+              </div>
+              <div class="nodata-desc-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_DESC_1_TRAVEL' | translate }}
+              </div>
+              <div class="nodata-desc-div">
+                {{ 'INSURANCE_CATEGORY.NODATA_DESC_2_TRAVEL' | translate }}
+              </div>
+            </div>
+            <div class="broker-area-div">
+              <ion-button class="broker-btn" slot="end" round (click)="goBrokerPage()">
+                {{ 'CONCLUSION.CTA_2' | translate }}
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </ion-content>
+</ion-app>

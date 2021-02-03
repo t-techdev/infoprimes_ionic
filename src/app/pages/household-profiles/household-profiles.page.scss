@@ -1,0 +1,215 @@
+.header-section {
+  background: linear-gradient(#2B9AE6, #239CEC);
+  top: 0px;
+  position: fixed;
+  height: 68px;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 10000;
+}
+
+.header-item {
+  background: none;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 31px;
+  display: flex;
+  justify-content: baseline;
+}
+
+.left-section {
+  display: flex;
+  flex-basis: 10%;
+  margin-top: 1px;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.right-section {
+  flex-basis: 10%;
+}
+
+.arrow-back-icon {
+  min-width: 1px !important;
+  background-color: transparent;
+  width: 13px;
+  font-size: 22px !important;
+}
+
+.title-section {
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.main-content {
+  top: 67px;
+}
+
+.profile-name {
+  font-size: 16px;
+  color: #364A5D;
+  font-weight: 700;
+}
+
+.avatar-img {
+  width: 50px !important;
+  height: 50px !important;
+  max-width: none;
+}
+
+.profile-item {
+  --padding-bottom: 15px;
+  --padding-start: 20px;
+  --border-style: none;
+  --inner-padding-top: 20px;
+  border-bottom: solid 1.5px #F1F6F9;
+}
+
+.profile-item .item-inner {
+  border-bottom: 0px !important;
+}
+
+.policies-count {
+  font-size: 14px;
+  color: #90A9C1;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.list-header {
+  color: #91A9C0;
+  font-size: 14px;
+  font-weight: 700;
+  background: #F1F6F9;
+  margin-bottom: 0px;
+  height: 38px !important;
+  min-height: 10px !important;
+  border: 0px !important;
+  text-transform: capitalize;
+  border-top: solid 0.1em #E7F0F6 !important;
+}
+
+.arrow-icon {
+  color: #CBD9E6;
+  font-size: 25px;
+}
+
+.review-btn-area {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  background: #F1F6F9;
+}
+
+.review-btn {
+  margin-top: 7px;
+  height: 34px;
+  font-weight: 700;
+  text-transform: initial;
+  font-size: 17px;
+  --background: #8ACA17;
+  --background-hover: #b7ec56;
+  --border-radius: 64px;
+  --padding-top: 1px;
+  --padding-bottom: 2px;
+}
+
+.review-btn.activated {
+  --background-activated: #b7ec56;
+}
+
+.add-remove-txt {
+  color: #90A9C1;
+  font-size: 14px;
+  padding-bottom: 3px;
+  font-weight: 400;
+  padding: 0px 90px 0px 90px;
+}
+
+.info-area {
+  padding-left: 14px;
+}
+
+@media only screen and (max-height: 667px) {
+  .title-section {
+    font-size: 15px;
+  }
+}
+
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        top: calc(42px + env(safe-area-inset-top));
+      }
+}

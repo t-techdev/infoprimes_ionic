@@ -1,0 +1,7 @@
+{
+  "name": "Infoprimes",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

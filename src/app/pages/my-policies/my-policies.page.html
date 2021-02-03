@@ -1,0 +1,293 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section" (click)="goBack()">
+        <ion-icon slot="icon-only" src="assets/svg/arrowLeft-new.svg" class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'ALL_POLICIES.TITLE' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="top-btn-section" text-center>
+    <ion-item [hidden]="true">
+      <ion-label position="stacked">Contact</ion-label>
+      <ion-select #contactListSelect [(ngModel)]="contact" interface="action-sheet" (ionChange)="changeContact()">
+        <ion-select-option *ngFor="let contact of contacts" [value]="contact">{{contact?.firstname}}</ion-select-option>
+        <ion-select-option *ngIf="userService?.lang == 'en'">{{mainContact?.lastname}} {{ 'HOME.HOUSEHOLD' | translate }}</ion-select-option>
+        <ion-select-option *ngIf="userService?.lang == 'fr'"> {{ 'HOME.HOUSEHOLD' | translate }} {{mainContact?.lastname}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button class="household-btn" slot="end" (click)="openContactList()">
+      <p *ngIf="!isLead">{{contact?.firstname}}</p>
+      <p *ngIf="isLead && userService?.lang == 'en'">{{mainContact?.lastname}} {{ 'HOME.HOUSEHOLD' | translate }}</p>
+      <p *ngIf="isLead && userService?.lang == 'fr'">{{ 'HOME.HOUSEHOLD' | translate }} {{mainContact?.lastname}}</p>
+      <ion-icon name="arrow-down" slot="end"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="bottom-blank-section">
+    <div class="card-area">
+      <ion-card class="card" *ngIf="permanentLifePolicies?.length || temporaryLifePolicies?.length || univeralLifePolicies?.length">
+        <ion-card-content class="card-content">
+          <ion-item class="life-insurance-header">
+            <ion-avatar>
+              <img class="life-insurance-img" src="assets/icon/icLifeInsuranceLine.png">
+            </ion-avatar>
+            <p class="life-insurance-txt">{{ 'GENERIC.LIFE_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <div class="card-header first-header" *ngIf="permanentLifePolicies?.length">
+            {{ 'GENERIC.PERMANENT_LIFE_INSURANCE' | translate }}
+          </div>
+          <ion-item class="card-item" (click)="goPolicy(policy)" *ngFor="let policy of permanentLifePolicies">
+            <ion-avatar class="card-avatar">
+              <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+            </ion-avatar>
+            <div class="info-area">
+              <p class="name-txt">{{policy?.company_name}}</p>
+              <p class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</p>
+              <p class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</p>
+            </div>
+            <div class="dollar-month-line" slot="end">
+              <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+              <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+            </div>
+            <ion-button class="arrow-btn" fill="clear" slot="end">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <div class="card-header" *ngIf="temporaryLifePolicies?.length">
+            {{ 'GENERIC.TERM_LIFE_INSURANCE' | translate }}
+          </div>
+          <ion-item class="card-item" (click)="goPolicy(policy)" *ngFor="let policy of temporaryLifePolicies">
+            <ion-avatar class="card-avatar">
+              <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+            </ion-avatar>
+            <div class="info-area">
+              <p class="name-txt">{{policy?.company_name}}</p>
+              <p class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</p>
+              <p class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</p>
+            </div>
+            <div class="dollar-month-line" slot="end">
+              <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+              <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+            </div>
+            <ion-button class="arrow-btn" fill="clear" slot="end">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <div class="card-header" *ngIf="univeralLifePolicies?.length">
+            {{ 'GENERIC.UNIVERSAL_LIFE_INSURANCE' | translate }}
+          </div>
+          <ion-item class="card-item" (click)="goPolicy(policy)" *ngFor="let policy of univeralLifePolicies">
+            <ion-avatar class="card-avatar">
+              <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+            </ion-avatar>
+            <div class="info-area">
+              <p class="name-txt">{{policy?.company_name}}</p>
+              <p class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</p>
+              <p class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</p>
+            </div>
+            <p class="dollar-month-line" slot="end">
+              <font class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</font><br/>
+              <font class="month">{{ 'GENERIC.PER_MONTH' | translate }}</font>
+            </p>
+            <ion-button class="arrow-btn" fill="clear" slot="end">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item class="life-insuarnce-card-bottom-item" slot="end">
+            <div class="dollar-month-line" slot="end">
+              <div class="total small-padding small-opacity">{{ 'ALL_POLICIES.TOTAL_COVERAGE' | translate }}</div>
+              <div>
+                <p class="coverage-amount">{{getTotalValues('coverage', 'life')}}</p>
+              </div>
+            </div>
+            <div class="slash" slot="end">/</div>
+            <div class="payment-month-line" slot="end">
+              <div class="total">{{ 'ALL_POLICIES.TOTAL_PAYMENT' | translate }}</div>
+              <div class="flex-center-item">
+                <p class="monthly-money">{{getTotalValues('payment', 'life')}}</p>
+                <p class="payment-per-month-txt">&nbsp; {{ 'GENERIC.PER_MONTH' | translate }}</p>
+              </div>
+            </div>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="card" *ngIf="disabilityPolices?.length">
+        <ion-card-content class="card-content">
+          <ion-item class="life-insurance-header">
+            <ion-avatar>
+              <img class="life-insurance-img" src="assets/icon/icDisabilityInsuranceLine.png">
+            </ion-avatar>
+            <p class="disability-insurance-txt">{{ 'GENERIC.DISABILITY_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <ion-item class="card-item" (click)="goPolicy(policy)" *ngFor="let policy of disabilityPolices">
+            <ion-avatar class="card-avatar">
+              <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+            </ion-avatar>
+            <div class="info-area">
+              <p class="name-txt">{{policy?.company_name}}</p>
+              <p class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</p>
+              <p class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</p>
+            </div>
+            <div class="dollar-month-line" slot="end">
+              <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+              <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+            </div>
+            <ion-button class="arrow-btn" fill="clear" slot="end">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item class="disability-insuarnce-card-bottom-item">
+            <div class="dollar-month-line" slot="end">
+              <div class="total small-padding small-opacity">{{ 'ALL_POLICIES.TOTAL_COVERAGE' | translate }}</div>
+              <div>
+                <p class="coverage-amount">{{getTotalValues('coverage', 'disability')}}</p>
+              </div>
+            </div>
+            <div class="slash" slot="end">/</div>
+            <div class="payment-month-line" slot="end">
+              <div class="total">{{ 'ALL_POLICIES.TOTAL_PAYMENT' | translate }}</div>
+              <div class="flex-center-item">
+                <p class="monthly-money">{{getTotalValues('payment', 'disability')}}</p>
+                <p class="payment-per-month-txt">&nbsp;{{ 'GENERIC.PER_MONTH' | translate }}</p>
+              </div>
+            </div>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="card" *ngIf="longtermPolices?.length">
+        <ion-card-content class="card-content">
+          <ion-item class="life-insurance-header">
+            <ion-avatar>
+              <img class="life-insurance-img" src="assets/icon/icLong_termCareInsuranceLine.png">
+            </ion-avatar>
+            <p class="longterm-insurance-txt">{{ 'GENERIC.LONG_TERM_CARE_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <ion-item class="card-item" (click)="goPolicy(policy)" *ngFor="let policy of longtermPolices">
+            <ion-avatar class="card-avatar">
+              <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+            </ion-avatar>
+            <div class="info-area">
+              <p class="name-txt">{{policy?.company_name}}</p>
+              <p class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</p>
+              <p class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</p>
+            </div>
+            <div class="dollar-month-line" slot="end">
+              <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+              <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+            </div>
+            <ion-button class="arrow-btn" fill="clear" slot="end">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item class="longterm-insuarnce-card-bottom-item">
+            <div class="dollar-month-line" slot="end">
+              <div class="total small-padding small-opacity">{{ 'ALL_POLICIES.TOTAL_COVERAGE' | translate }}</div>
+              <div>
+                <p class="coverage-amount">{{getTotalValues('coverage', 'longtermcare')}}</p>
+              </div>
+            </div>
+            <div class="slash" slot="end">/</div>
+            <div class="payment-month-line" slot="end">
+              <div class="total">{{ 'ALL_POLICIES.TOTAL_PAYMENT' | translate }}</div>
+              <div class="flex-center-item">
+                <p class="monthly-money">{{getTotalValues('payment', 'longtermcare')}}</p>
+                <p class="payment-per-month-txt">&nbsp;/month</p>
+              </div>
+            </div>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="card" *ngIf="criticalPolices?.length">
+        <ion-card-content class="card-content">
+          <ion-item class="life-insurance-header">
+            <ion-avatar>
+              <img class="life-insurance-img" src="assets/icon/icCriticalIllnessInsuranceLine.png">
+            </ion-avatar>
+            <p class="critical-insurance-txt">{{ 'GENERIC.CRITICAL_ILLNESS_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <ion-item class="card-item" (click)="goPolicy(policy)" *ngFor="let policy of criticalPolices">
+            <ion-avatar class="card-avatar">
+              <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+            </ion-avatar>
+            <div class="info-area">
+              <p class="name-txt">{{policy?.company_name}}</p>
+              <p class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</p>
+              <p class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</p>
+            </div>
+            <div class="dollar-month-line" slot="end">
+              <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+              <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+            </div>
+            <ion-button class="arrow-btn" fill="clear" slot="end">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item class="critical-insuarnce-card-bottom-item">
+            <div class="dollar-month-line" slot="end">
+              <div class="total small-padding small-opacity">{{ 'ALL_POLICIES.TOTAL_COVERAGE' | translate }}</div>
+              <div>
+                <p class="coverage-amount">{{getTotalValues('coverage', 'critical')}}</p>
+              </div>
+            </div>
+            <div class="slash" slot="end">/</div>
+            <div class="payment-month-line" slot="end">
+              <div class="total">{{ 'ALL_POLICIES.TOTAL_PAYMENT' | translate }}</div>
+              <div class="flex-center-item">
+                <p class="monthly-money">{{getTotalValues('payment', 'critical')}}</p>
+                <p class="payment-per-month-txt">&nbsp;/month</p>
+              </div>
+            </div>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="card" *ngIf="travelPolices?.length">
+        <ion-card-content class="card-content">
+          <ion-item class="life-insurance-header">
+            <ion-avatar>
+              <img class="life-insurance-img" src="assets/icon/icTravelInsuranceLine.png">
+            </ion-avatar>
+            <p class="travel-insurance-txt">{{ 'GENERIC.TRAVEL_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <ion-item class="card-item" (click)="goPolicy(policy)" *ngFor="let policy of travelPolices">
+            <ion-avatar class="card-avatar">
+              <img class="card-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+            </ion-avatar>
+            <div class="info-area">
+              <p class="name-txt">{{policy?.company_name}}</p>
+              <p class="coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</p>
+              <p class="money-txt">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</p>
+            </div>
+            <div class="dollar-month-line" slot="end">
+              <div class="dollar">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}</div>
+              <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+            </div>
+            <ion-button class="arrow-btn" fill="clear" slot="end">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item class="travel-insuarnce-card-bottom-item">
+            <div class="dollar-month-line" slot="end">
+              <div class="total small-padding small-opacity">{{ 'ALL_POLICIES.TOTAL_COVERAGE' | translate }}</div>
+              <div>
+                <p class="coverage-amount">{{getTotalValues('coverage', 'travel')}}</p>
+              </div>
+            </div>
+            <div class="slash" slot="end">/</div>
+            <div class="payment-month-line" slot="end">
+              <div class="total">{{ 'ALL_POLICIES.TOTAL_PAYMENT' | translate }}</div>
+              <div class="flex-center-item">
+                <p class="monthly-money">{{getTotalValues('payment', 'travel')}}</p>
+                <p class="payment-per-month-txt">&nbsp;{{ 'GENERIC.PER_MONTH' | translate }}</p>
+              </div>
+            </div>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

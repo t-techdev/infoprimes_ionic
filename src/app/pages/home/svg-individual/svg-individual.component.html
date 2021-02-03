@@ -1,0 +1,49 @@
+<svg id="{{'chart-' + type}}" width="304" height="179" viewBox="125.8 105.0 52.02048 30.63048" class="">
+
+    <defs>
+      <!--this is the mask for rounded linecaps-->
+      <clipPath id="{{clipPathId}}">
+        <rect x="125.8" y="104.04" width="45" height="28.61" fill="rgb(255,0,0,.5)"></rect>
+      </clipPath>
+    </defs>
+
+    <rect x="0" y="0" width="304" height="179" style="fill:transparent;stroke-width:.5;stroke:#000"></rect>
+
+    <circle class="needs-ring" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="#fff" stroke-width="1.5"></circle>
+
+    <circle class="coverage-segment-3" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="transparent" stroke-width="1.75" [attr.clip-path]="clipPathIdCircle" [ngStyle]="{'-webkit-clip-path': clipPathIdCircle}"></circle>
+
+    <circle class="coverage-segment-2" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="#fff" stroke-width="1.75" [attr.clip-path]="clipPathIdCircle" [ngStyle]="{'-webkit-clip-path': clipPathIdCircle}"></circle>
+
+    <circle class="coverage-segment-1" stroke-dasharray="0, 100" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="#fff" stroke-width="1.75" [attr.clip-path]="clipPathIdCircle" [ngStyle]="{'-webkit-clip-path': clipPathIdCircle}"></circle>
+
+    <circle class="coverage-segment-0" stroke-dasharray="0, 100" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="#fff" stroke-width="1.75" [attr.clip-path]="clipPathIdCircle" [ngStyle]="{'-webkit-clip-path': clipPathIdCircle}"></circle>
+
+    <text *ngIf="mockData.role != 'other'" class="graphic-titles needs-text" text-anchor="middle" x="151.8" y="116.193" fill="transparent">{{ 'HOME.NEEDS' | translate }}</text>
+
+    <text *ngIf="mockData.role != 'other'" class="graphic-dollars home-graphic needs-text" text-anchor="middle" x="152" y="119.34" id="{{'needs-amount-' + type}}" fill="transparent">
+      0 $
+    </text>
+
+    <line class="graphic-line" x1="142.45" y1="121.5" x2="161.1" y2="121.5" stroke="transparent" stroke-width="0.15399" />
+
+    <text class="graphic-titles coverage-text" text-anchor="middle" x="152" y="124.94" fill="transparent">
+        {{ 'GENERIC.COVERAGE' | translate }}
+    </text>
+    <text class="graphic-dollars coverage-text" text-anchor="middle" x="152" y="128.06" id="{{'coverage-amount-' + type}}" fill="#fff">
+      0 $
+    </text>
+
+    <circle class="graphic-knobs" cx="138.5" cy="133.12" r="0.92604166" fill="transparent" stroke="transparent" stroke-width="0.89px"></circle>
+
+    <circle class="graphic-knobs" cx="165.5" cy="133.12" r="0.92604166" fill="transparent" stroke="transparent" stroke-width="0.89px"></circle>
+
+    <circle [ngClass]="{'insurance-type-life': insuranceType == 'life', 'percentage-circle': true}" id="{{'percentage-circle-' + type}}" cx="152" cy="132" r="1.8" fill="white" stroke="rgb(254, 93, 5, 0)" stroke-width=".6"></circle>
+
+    <!--you've got to add a bit to the y so that it centers in the circle (about .4)-->
+    <text [ngClass]="{'insurance-type-life': insuranceType == 'life', 'percent-circle-text': true}" id="{{'percent-circle-text-' + type}}" text-anchor="middle" x="167.04" y="119.89" fill="transparent">98%</text>
+
+    <text class="graphic-label-permanent" text-anchor="center" x="136.4369" y="133.3199" fill="red">{{ 'GENERIC.PERMANENT' | translate }}</text>
+    <text class="graphic-label-temporary" text-anchor="end" x="134.9668" y="129.9348" fill="red">{{ 'GENERIC.TERM' | translate }}</text>
+    <text class="graphic-label-universal" text-anchor="end" x="134.2222" y="126.2715" fill="red">{{ 'GENERIC.UNIVERSAL' | translate }}</text>
+  </svg>

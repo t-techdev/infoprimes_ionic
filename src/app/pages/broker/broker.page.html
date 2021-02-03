@@ -1,0 +1,52 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section"></div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'BROKER.TITLE' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="info-section">
+    <div class="img-section" text-center>
+      <img class="circle-img" [src]="appGlobal.getImgUri(myBroker?.image, 'broker')" />
+      <img class="border-img" src="../assets/icon/imageBorder.png" />
+    </div>
+    <div class="name">{{myBroker?.firstname}} {{myBroker?.lastname}}</div>
+    <div class="licence-num-txt">{{ 'BROKER.LICENSE_NUMBER' | translate }}</div>
+    <div class="ion-text-center">
+      <span class="licence-num">#{{myBroker?.permit_number}}</span>
+    </div>
+    <div class="contact-me-section">{{ 'BROKER.FRIENDLY_MESSAGE_1' | translate }}<br>{{ 'BROKER.FRIENDLY_MESSAGE_2' | translate }}</div>
+  </div>
+  <ion-item class="contact-item">
+    <div class="title-item">
+      <div>{{ 'BROKER.PHONE' | translate }}</div>
+      <div class="val-item">{{myBroker?.phone}}&nbsp;</div>
+    </div>
+    <ion-button slot="end" fill="clear" class="broker-icon-btn" (click)="callPhone(myBroker?.phone)">
+      <ion-icon slot="icon-only" src="assets/svg/Phone.svg" class="phone-icon">&nbsp;</ion-icon>
+    </ion-button>
+    <ion-button slot="end" fill="clear" class="broker-icon-btn" (click)="smsPhone(myBroker?.phone)">
+      <ion-icon slot="icon-only" src="assets/svg/Messages.svg" class="message-icon">&nbsp;</ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-item class="contact-item">
+    <div class="title-item">
+      <div>{{ 'BROKER.FAX' | translate }}</div>
+      <div class="val-item">{{myBroker?.fax}}&nbsp;</div>
+    </div>
+  </ion-item>
+  <ion-item class="contact-item">
+    <div class="title-item">
+      <div>{{ 'BROKER.EMAIL' | translate }}</div>
+      <div class="val-item">{{myBroker?.email}}&nbsp;</div>
+    </div>
+    <ion-button slot="end" fill="clear" class="broker-icon-btn" (click)="sendEmail(myBroker?.email)">
+      <ion-icon slot="icon-only" src="assets/svg/Email.svg">&nbsp;</ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-content>

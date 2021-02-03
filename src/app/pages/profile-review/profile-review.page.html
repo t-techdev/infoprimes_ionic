@@ -1,0 +1,980 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section" (click)="goBack()">
+        <ion-icon slot="icon-only" src="assets/svg/arrowLeft-new.svg" class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'INSURANCE_REV.MAIN_TITLE' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="main-content">
+    <div class="slides-num-area" text-center>
+      <div class="slide-num-1" [ngClass]="!isInSlideIndexArr(1) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-2" [ngClass]="!isInSlideIndexArr(2) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-3" [ngClass]="!isInSlideIndexArr(3) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-4" [ngClass]="!isInSlideIndexArr(4) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-5" [ngClass]="!isInSlideIndexArr(5) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-6" [ngClass]="!isInSlideIndexArr(6) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-middle">{{slideNum + 1}}</div>
+      <div class="slide-num-6" [ngClass]="!isInSlideIndexArr(7) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-5" [ngClass]="!isInSlideIndexArr(8) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-4" [ngClass]="!isInSlideIndexArr(9) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-3" [ngClass]="!isInSlideIndexArr(10) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-2" [ngClass]="!isInSlideIndexArr(11) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+      <div class="slide-num-1" [ngClass]="!isInSlideIndexArr(12) ? 'slideIndexHide' : 'slideIndexShow'">&nbsp;</div>
+    </div>
+    <ion-slides [options]="sliderConfig" (ionSlideDidChange)="slideChanged()">
+      <ion-slide>
+        <!-- Gerneral Information -->
+        <ion-card class="profile-card general-info-card">
+          <ion-card-content class="profile-card-content">
+            <div class="card-title-txt" text-center>{{ 'INSURANCE_REV.GENERAL_INFORMATION_SECTION_TITLE' | translate }}</div>
+            <div class="desc-txt">{{ 'INSURANCE_REV.EXPLANATION' | translate }}</div>
+            <div class="profile-img-section">
+              <img class="profile-img" [src]="appGlobal.getImgUri(mainData?.image, 'user')" />
+            </div>
+            <ion-item class="info-item">
+              <span class="info-item-title">{{ 'INSURANCE_REV.FIRST_NAME' | translate }}</span>
+              <span class="info-item-val">{{mainData?.firstname}}</span>
+            </ion-item>
+            <ion-item class="info-item">
+              <span class="info-item-title">{{ 'INSURANCE_REV.LAST_NAME' | translate }}</span>
+              <span class="info-item-val">{{mainData?.lastname}}</span>
+            </ion-item>
+            <ion-item class="info-item">
+              <span class="info-item-title">{{ 'INSURANCE_REV.ADDRESS' | translate }}</span>
+              <span class="info-item-val">{{mainData?.address}}</span>
+            </ion-item>
+            <ion-item class="info-item">
+              <span class="info-item-title">{{ 'INSURANCE_REV.EMAIL' | translate }}</span>
+              <span class="info-item-val">{{mainData?.email}}</span>
+            </ion-item>
+            <ion-item class="info-item">
+              <span class="info-item-title">{{ 'INSURANCE_REV.PHONE' | translate }}</span>
+              <span class="info-item-val">{{mainData?.mainphone}}</span>
+            </ion-item>
+            <ion-item class="info-item">
+              <span class="info-item-title">{{ 'INSURANCE_REV.SMOKER' | translate }}</span>
+              <span class="info-item-val" *ngIf="mainData?.smoker == true">{{ 'GENERIC.YES' | translate }}</span>
+              <span class="info-item-val" *ngIf="mainData?.smoker == false">{{ 'GENERIC.NO' | translate }}</span>
+            </ion-item>
+            <div text-center class="btn-area">
+              <ion-button fill="clear" class="edit-btn" (click)="goProfileEdit('general', 'edit', mainData)">
+                <ion-icon src="assets/svg/Edit.svg" slot="start" class="edit-icon">&nbsp;</ion-icon>
+                {{ 'GENERIC.EDIT_INFO' | translate }}
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <!-- Household -->
+        <ion-card class="profile-card household-card">
+          <ion-card-content class="profile-card-content">
+            <div class="card-title-txt" text-center>
+              {{ 'INSURANCE_REV.HOUSEHOLD_SECTION_TITLE' | translate }}
+              <!--
+              <ion-button class="action-btn" (click)="goProfileEdit('household', 'new', {})">
+                <ion-icon class="add-plus-icon" name="add-circle-outline"></ion-icon>
+              </ion-button>
+              -->
+            </div>
+            <!--
+            <div class="desc-txt">{{ 'INSURANCE_REV.EXPLANATION' | translate }}</div>
+            -->
+            <div *ngIf="userService?.coapplicantData?.id">
+              <ion-list-header class="card-list-header" text-left>{{ 'INSURANCE_REV.SPOUSE' | translate }}</ion-list-header>
+              <ion-item class="profile-item" (click)="householdItemClick(userService.coapplicantData)">
+                <ion-avatar item-start>
+                  <img class="avatar-img" [src]="appGlobal.getImgUri(userService?.coapplicantData?.image, 'user')" />
+                </ion-avatar>
+                <div class="name-policy-div">
+                  <div class="name-txt">{{userService?.coapplicantData?.firstname}} {{userService?.coapplicantData?.lastname}}</div>
+                  <div class="item-dec-txt" *ngIf="appGlobal.getPoliciesByContactID(userService?.coapplicantData?.id) > 1 || appGlobal.getPoliciesByContactID(userService?.coapplicantData?.id) == 0">{{appGlobal.getPoliciesByContactID(userService?.coapplicantData?.id)}} {{ 'ALL_HOUSEHOLD_PROFILES.POLICIES' | translate }}</div>
+                  <div class="item-dec-txt" *ngIf="appGlobal.getPoliciesByContactID(userService?.coapplicantData?.id) == 1">{{appGlobal.getPoliciesByContactID(userService?.coapplicantData?.id)}} {{ 'POLICY_STATUS.POLICY' | translate }}</div>
+                </div>
+                <ion-icon *ngIf="curHouseholdItem?.id == userService?.coapplicantData?.id" class="close-icon" src="./assets/svg/Close.svg" slot="end">&nbsp;&nbsp;&nbsp;</ion-icon>
+                <ion-icon *ngIf="curHouseholdItem?.id != userService?.coapplicantData?.id" class="arrow-icon" src="./assets/svg/ArrowDown.svg" slot="end"></ion-icon>
+              </ion-item>
+              <div [ngClass]="{'collepsed': curHouseholdItem?.id != userService?.coapplicantData?.id, 'content-section': true}">
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.DOB' | translate }}</div>
+                  <div class="val">{{appGlobal.dateFormatting(userService?.coapplicantData?.dob, 'DD MMM YYYY')}}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.RELATIONSHIP_HEAD' | translate }}</div>
+                  <div class="val" *ngIf="userService?.coapplicantData?.sex == 'male'">{{ 'INSURANCE_REV.HUSBAND' | translate }}</div>
+                  <div class="val" *ngIf="userService?.coapplicantData?.sex != 'male'">{{ 'INSURANCE_REV.WIFE' | translate }}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item btn-area-item">
+                  <div class="action-btn-area">
+                    <ion-button fill="clear" class="action-btn" (click)="deleteHouseholdBtnClick(userService?.coapplicantData)">
+                      <ion-icon src="./assets/svg/Delete.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'INSURANCE_REV.DELETE' | translate }}
+                    </ion-button>
+                    <ion-button fill="clear" class="action-btn" (click)="goProfileEdit('household', 'edit', userService?.coapplicantData)">
+                      <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                    </ion-button>
+                  </div>
+                </ion-item>
+              </div>
+            </div>
+            <div *ngIf="otherData?.length">
+              <ion-list-header class="card-list-header" text-left>{{ 'INSURANCE_REV.CHILDREN' | translate }}</ion-list-header>
+              <div *ngFor="let data of otherData">
+                <ion-item class="profile-item" (click)="householdItemClick(data)">
+                  <ion-avatar item-start>
+                    <img class="avatar-img" [src]="appGlobal.getImgUri(data?.image, 'user')" />
+                  </ion-avatar>
+                  <div class="name-policy-div">
+                    <div class="name-txt">{{data?.firstname}} {{data?.lastname}}</div>
+                    <div class="item-dec-txt" *ngIf="appGlobal.getPoliciesByContactID(data?.id) > 1 || appGlobal.getPoliciesByContactID(data?.id) == 0">{{appGlobal.getPoliciesByContactID(data?.id)}} {{ 'ALL_HOUSEHOLD_PROFILES.POLICIES' | translate }}</div>
+                    <div class="item-dec-txt" *ngIf="appGlobal.getPoliciesByContactID(data?.id) == 1">{{appGlobal.getPoliciesByContactID(data?.id)}} {{ 'POLICY_STATUS.POLICY' | translate }}</div>
+                  </div>
+                  <ion-icon *ngIf="curHouseholdItem?.id == data?.id" class="close-icon" src="./assets/svg/Close.svg" slot="end"></ion-icon>
+                  <ion-icon *ngIf="curHouseholdItem?.id != data?.id" class="arrow-icon" src="./assets/svg/ArrowDown.svg" slot="end"></ion-icon>
+                </ion-item>
+                <div [ngClass]="{'collepsed': curHouseholdItem?.id != data?.id, 'content-section': true}">
+                  <ion-item class="profile-detail-item">
+                    <div class="name">{{ 'INSURANCE_REV.DOB' | translate }}</div>
+                    <div class="val">{{appGlobal.dateFormatting(data?.dob, 'DD MMM YYYY')}}</div>
+                  </ion-item>
+                  <ion-item class="profile-detail-item">
+                    <div class="name">{{ 'INSURANCE_REV.RELATIONSHIP_HEAD' | translate }}</div>
+                    <div class="val" *ngIf="data?.sex == 'male'">{{ 'INSURANCE_REV.SON' | translate }}</div>
+                    <div class="val" *ngIf="data?.sex != 'male'">{{ 'INSURANCE_REV.DAUGHTER' | translate }}</div>
+                  </ion-item>
+                  <ion-item class="profile-detail-item btn-area-item">
+                    <div class="action-btn-area">
+                      <ion-button fill="clear" class="action-btn" (click)="deleteHouseholdBtnClick(data)">
+                        <ion-icon src="./assets/svg/Delete.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'INSURANCE_REV.DELETE' | translate }}
+                      </ion-button>
+                      <ion-button fill="clear" class="action-btn" (click)="goProfileEdit('household', 'edit', data)">
+                        <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                      </ion-button>
+                    </div>
+                  </ion-item>
+                </div>
+              </div>
+            </div>
+            <div class="add-btn-area" (click)="goProfileEdit('household', 'new', {})">
+              <ion-button class="add-btn" round>
+                {{ 'INSURANCE_REV.ADD_PERSON' | translate }}
+                <ion-icon class="add-icon" src="./assets/svg/Add.svg">&nbsp;</ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <!-- Professoin -->
+        <ion-card class="profile-card profession-card">
+          <ion-card-content class="profile-card-content">
+            <div class="card-title-txt" text-center>{{ 'INSURANCE_REV.PROFESSION_SECTION_TITLE' | translate }}</div>
+            <!--
+            <div class="desc-txt">{{ 'INSURANCE_REV.EXPLANATION' | translate }}</div>
+            -->
+            <ion-item (click)="professionItemClick('main')">
+              <div>
+                <p class="name-txt">{{mainData?.firstname}} {{mainData?.lastname}}</p>
+                <p class="item-dec-txt">{{mainData?.details?.data?.profession}} {{ 'INSURANCE_REV.AT' | translate }} {{mainData?.details?.data?.employer}}</p>
+              </div>
+              <div class="dollar-month-line" slot="end">
+              </div>
+              <ion-button class="arrow-btn" fill="clear" icon-only slot="end">
+                <ion-icon *ngIf="!isClickedMainPro" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                <ion-icon *ngIf="isClickedMainPro" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <div [ngClass]="{'collepsed': !isClickedMainPro, 'content-section': true}">
+              <!-- <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.EMPLOYMENT_STATUS' | translate }}</div>
+                <div class="val">Employé</div>
+              </ion-item> -->
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.COMPANY' | translate }}</div>
+                <div class="val">{{mainData?.details?.data?.employer}}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.JOB_TITLE' | translate }}</div>
+                <div class="val">{{mainData?.details?.data?.profession}}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.ANNUAL_SALARY' | translate }}</div>
+                <div class="val">{{appGlobal.priceFormatRound(mainData?.details?.data?.salary)}}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.OTHER_REVENUE' | translate }}</div>
+                <div class="val">{{appGlobal.priceFormatRound(mainData?.details?.data?.other_gross_income)}}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item btn-area-item">
+                <div class="action-btn-area">
+                  <ion-button fill="clear" class="action-btn" (click)="goProfessionEdit(mainData)">
+                    <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                  </ion-button>
+                </div>
+              </ion-item>
+            </div>
+            <ion-item *ngIf="userService?.coapplicantData?.id" (click)="professionItemClick('coapplicant')">
+              <div>
+                <p class="name-txt">{{userService?.coapplicantData?.firstname}} {{userService?.coapplicantData?.lastname}}</p>
+                <p class="item-dec-txt">{{userService?.coapplicantData?.details?.data?.profession}} {{ 'INSURANCE_REV.AT' | translate }} {{userService?.coapplicantData?.details?.data?.employer}}</p>
+              </div>
+              <div class="dollar-month-line" item-end>
+              </div>
+              <ion-button class="arrow-btn" fill="clear" icon-only slot="end">
+                <ion-icon *ngIf="!isClickedCoapplicantPro" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                <ion-icon *ngIf="isClickedCoapplicantPro" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <div *ngIf="userService?.coapplicantData?.id" [ngClass]="{'collepsed': !isClickedCoapplicantPro, 'content-section': true}">
+              <!-- <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.EMPLOYMENT_STATUS' | translate }}</div>
+                <div class="val">Employé</div>
+              </ion-item> -->
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.COMPANY' | translate }}</div>
+                <div class="val">{{userService?.coapplicantData?.details?.data?.employer}}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.JOB_TITLE' | translate }}</div>
+                <div class="val">{{userService?.coapplicantData?.details?.data?.profession}}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.ANNUAL_SALARY' | translate }}</div>
+                <div class="val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.details?.data?.salary)}}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.OTHER_REVENUE' | translate }}</div>
+                <div class="val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.details?.data?.other_gross_income)}}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item btn-area-item">
+                <div class="action-btn-area">
+                  <ion-button fill="clear" class="action-btn" (click)="goProfessionEdit(userService?.coapplicantData)">
+                    <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                  </ion-button>
+                </div>
+              </ion-item>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <!-- Mortgages loan -->
+        <ion-card class="profile-card mortgage-loan-card">
+          <ion-card-content class="profile-card-content">
+            <div class="card-title-txt" text-center>
+              {{ 'INSURANCE_REV.LOANS_SECTION_TITLE' | translate }}
+              <!--
+              <ion-button fill="clear" class="action-btn" (click)="goMortgageLoanEdit('add', {})">
+                <ion-icon class="add-plus-icon" name="add-circle-outline"></ion-icon>
+              </ion-button>
+              -->
+            </div>
+            <!--
+            <div class="desc-txt">{{ 'INSURANCE_REV.EXPLANATION' | translate }}</div>
+            -->
+            <div *ngFor="let data of mortgageData">
+              <ion-item (click)="mortgageLoanItemClick(data)" class="cate-item">
+                <div>
+                  <p class="name-txt" *ngIf="data?.type == 'personnal'">{{ 'INSURANCE_REV.HOME_LOAN' | translate }}</p>
+                  <p class="name-txt" *ngIf="data?.type != 'personnal'">{{ 'INSURANCE_REV.BUSINESS_LOAN' | translate }}</p>
+                  <p class="item-dec-txt">{{data?.institution}}</p>
+                </div>
+                <div class="dollar-month-line" slot="end">
+                  <div class="dollar">{{appGlobal.priceFormatRound(data?.monthly)}}</div>
+                  <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+                </div>
+                <div class="icon-area" slot="end">
+                  <ion-icon *ngIf="curMortgagesItem?.id == data?.id" class="close-icon" src="./assets/svg/Close.svg" slot="end"></ion-icon>
+                  <ion-icon *ngIf="curMortgagesItem?.id != data?.id" class="arrow-icon" src="./assets/svg/ArrowDown.svg" slot="end"></ion-icon>
+                </div>
+              </ion-item>
+              <div [ngClass]="{'collepsed': curMortgagesItem?.id != data?.id, 'content-section': true}">
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.PERCENTAGE_INSURED' | translate }}</div>
+                  <div class="val">{{data?.insurance}}%</div>
+                </ion-item>
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.AMOUNT_OWED' | translate }}</div>
+                  <div class="val">{{appGlobal.priceFormat(data?.amount)}}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.YEARS_TO_PAYOFF' | translate }}</div>
+                  <div class="val">{{data?.duration}} {{ 'GENERIC.YEARS' | translate }}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.RENEWAL_DATE' | translate }}</div>
+                  <div class="val">{{appGlobal.dateFormatting(data?.renewal_date, 'DD MMM YYYY')}}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.BORROWERS' | translate }}</div>
+                  <div class="val">{{getBorrowwers(data)}}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item btn-area-item">
+                  <div class="action-btn-area">
+                    <ion-button fill="clear" class="action-btn" (click)="deleteMortgagesBtnClick(data)">
+                      <ion-icon src="./assets/svg/Delete.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'INSURANCE_REV.DELETE' | translate }}
+                    </ion-button>
+                    <ion-button fill="clear" class="action-btn" (click)="goMortgageLoanEdit('edit', data)">
+                      <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                    </ion-button>
+                  </div>
+                </ion-item>
+              </div>
+            </div>
+            <div class="add-btn-area">
+              <ion-button class="add-btn" round (click)="goMortgageLoanEdit('add', {})">
+                {{ 'INSURANCE_REV.ADD_MORTGAGE_LOAN' | translate }}&nbsp;
+                <ion-icon class="add-icon" src="./assets/svg/Add.svg">&nbsp;</ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <!-- External -->
+        <ion-card class="profile-card external-card">
+          <ion-card-content class="profile-card-content">
+            <div class="card-title-txt" text-center>
+              {{ 'INSURANCE_REV.EXTERNAL_INSURANCE_SECTION_TITLE' | translate }}
+              <!--
+              <ion-button fill="clear" class="action-btn" (click)="goInsuranceInvestEdit('add', {})">
+                <ion-icon class="add-plus-icon" name="add-circle-outline"></ion-icon>
+              </ion-button>
+              -->
+            </div>
+            <!--
+            <div class="desc-txt">{{ 'INSURANCE_REV.EXPLANATION' | translate }}</div>
+            -->
+            <div *ngFor="let data of externalData">
+              <ion-item (click)="externalItemClick(data)">
+                <div>
+                  <p class="name-txt">{{getExternalInsuranceTypes(data?.type)}}</p>
+                  <p class="item-dec-txt">{{data?.company}}</p>
+                </div>
+                <div class="dollar-month-line" slot="end">
+                  <div class="dollar" text-right>{{appGlobal.priceFormatRound(data?.capital)}}</div>
+                  <div *ngIf="data?.type == 'disability'" class="month" text-right>{{ 'GENERIC.PER_MONTH' | translate }}</div>
+                </div>
+                <div class="icon-area" slot="end">
+                  <ion-icon *ngIf="curExternalItem?.id == data?.id" class="close-icon" src="./assets/svg/Close.svg" slot="end"></ion-icon>
+                  <ion-icon *ngIf="curExternalItem?.id != data?.id" class="arrow-icon" src="./assets/svg/ArrowDown.svg" slot="end"></ion-icon>
+                </div>
+              </ion-item>
+              <div [ngClass]="{'collepsed': curExternalItem?.id !== data?.id, 'content-section': true}">
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.PRODUCT_TYPE' | translate }}</div>
+                  <div class="val">{{getExternalInsuranceTypes(data?.type)}}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.COMPANY' | translate }}</div>
+                  <div class="val">{{data?.company}}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.CAPITAL' | translate }}</div>
+                  <div class="val">{{appGlobal.priceFormatRound(data?.capital)}}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item" *ngIf="data?.duration">
+                  <div class="name">{{ 'INSURANCE_REV.TERM' | translate }}</div>
+                  <div class="val">{{data?.duration}} {{ 'GENERIC.YEARS' | translate }}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.MONTHLY_PAYMENT' | translate }}</div>
+                  <div class="val">{{data?.premium ? appGlobal.priceFormatRound(data?.premium) : appGlobal.priceFormatRound(0)}}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.POLICYHOLDERS' | translate }}</div>
+                  <div class="val">{{getInsuredLength(data?.insured)}} {{ 'INSURANCE_REV.PERSONS' | translate }}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item btn-area-item">
+                  <div class="action-btn-area">
+                    <ion-button fill="clear" class="action-btn" (click)="deleteInvestBtnClick(data)">
+                      <ion-icon src="./assets/svg/Delete.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'INSURANCE_REV.DELETE' | translate }}
+                    </ion-button>
+                    <ion-button fill="clear" class="action-btn" (click)="goInsuranceInvestEdit('edit', data)">
+                      <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                    </ion-button>
+                  </div>
+                </ion-item>
+              </div>
+            </div>
+            <div class="add-btn-area">
+              <ion-button class="add-btn" round (click)="goInsuranceInvestEdit('add', {})">
+                {{ 'INSURANCE_REV.ADD_INVESTMENT_POLICY' | translate }}
+                <ion-icon class="add-icon" src="./assets/svg/Add.svg">&nbsp;</ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <!-- assets -->
+        <ion-card class="profile-card assets-card">
+          <ion-card-content class="profile-card-content">
+            <div class="card-title-txt" text-center>{{ 'INSURANCE_REV.ASSETS_SECTION_TITLE' | translate }}</div>
+            <!--
+            <div class="desc-txt">{{ 'INSURANCE_REV.EXPLANATION' | translate }}</div>
+            -->
+            <ion-item class="main-item" (click)="assetsItemClick('main')">
+              <ion-avatar item-start>
+                <div [ngClass]="{'num-section kind-1': true, 'kind-2': !isClickedMainAssets}">1</div>
+              </ion-avatar>
+              <div>
+                <p class="name-txt">{{mainData?.firstname}} {{mainData?.lastname}}</p>
+                <p class="item-dec-txt">{{ 'INSURANCE_REV.TOTAL' | translate }} <b>{{appGlobal.priceFormatRound(mainAssetsTotal)}}</b></p>
+              </div>
+              <ion-button class="arrow-btn" fill="clear" icon-only slot="end">
+                <ion-icon *ngIf="!isClickedMainAssets" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                <ion-icon *ngIf="isClickedMainAssets" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <div [ngClass]="{'collepsed': !isClickedMainAssets, 'content-section-assets': true}">
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.MONEY_IN_DA_BANK' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.base)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.FIXED_TERM_DEPOSIT' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.term_deposit)}}</div>
+              </div>
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.NON_REGISTERED_INVESTMENTS' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.unregistered)}}</div>
+              </div>
+              -->
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.TFSA' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.celi)}}</div>
+              </div>
+              -->
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.RRSP' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.reer)}}</div>
+              </div>
+              -->
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.RRSP_LIRA' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.reer_cri)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.RRIF_LIF' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.ferr)}}</div>
+              </div>
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.RESP' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.reee)}}</div>
+              </div>
+              -->
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.PENSION_FUND' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.pension)}}</div>
+              </div>
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.OUTSIDE_INDIVIDUAL_LIFE' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.individual_life_other)}}</div>
+              </div>
+              -->
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.OUTSIDE_GROUP_LIFE' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.collective_life_other)}}</div>
+              </div>
+              -->
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.SECOND_VEHICLE' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.vehicle)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.TOOLS_COLLECTIONS' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.tools)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.LAND' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.land)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.CABINS' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.cottage)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.BUILDINGS' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.real_state)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.OTHER' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(mainData?.asset?.data?.others)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="action-btn-area">
+                  <ion-button fill="clear" class="action-btn" (click)="goAssetsEdit('edit', mainData)">
+                    <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT' | translate }}
+                  </ion-button>
+                  <ion-button class="action-btn done-btn" (click)="toggleToCoAssets()">
+                    {{ 'INSURANCE_REV.DONE' | translate }}<ion-icon src="./assets/svg/WhiteCheck.svg" class="done-icon" slot="end">&nbsp;</ion-icon>
+                  </ion-button>
+                </div>
+              </div>
+            </div>
+            <ion-item *ngIf="userService?.coapplicantData?.id" class="main-item" (click)="assetsItemClick('coapplicant')">
+              <ion-avatar item-start>
+                <div [ngClass]="{'num-section kind-1': true, 'kind-2': !isClickedCoapplicantAssets}">2</div>
+              </ion-avatar>
+              <div>
+                <p class="name-txt">{{userService?.coapplicantData?.firstname}} {{userService?.coapplicantData?.lastname}}</p>
+                <p class="item-dec-txt">{{ 'INSURANCE_REV.TOTAL' | translate }} <b>{{appGlobal.priceFormatRound(coapplicantAssetsTotal)}}</b></p>
+              </div>
+              <ion-button class="arrow-btn" fill="clear" icon-only slot="end">
+                <ion-icon *ngIf="!isClickedCoapplicantAssets" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                <ion-icon *ngIf="isClickedCoapplicantAssets" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <div *ngIf="userService?.coapplicantData?.id" [ngClass]="{'collepsed': !isClickedCoapplicantAssets, 'content-section-assets': true}">
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.MONEY_IN_DA_BANK' | translate }}</div>
+                <div class="detail-val ddd">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.base)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.FIXED_TERM_DEPOSIT' | translate }}</div>
+                <div class="detail-val ddd">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.term_deposit)}}</div>
+              </div>
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.NON_REGISTERED_INVESTMENTS' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.unregistered)}}</div>
+              </div>
+              -->
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.TFSA' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.celi)}}</div>
+              </div>
+              -->
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.RRSP' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.reer)}}</div>
+              </div>
+              -->
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.RRSP_LIRA' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.reer_cri)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.RRIF_LIF' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.ferr)}}</div>
+              </div>
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.RESP' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.reee)}}</div>
+              </div>
+              -->
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.PENSION_FUND' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.pension)}}</div>
+              </div>
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.OUTSIDE_INDIVIDUAL_LIFE' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.individual_life_other)}}</div>
+              </div>
+              -->
+              <!--
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.OUTSIDE_GROUP_LIFE' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.collective_life_other)}}</div>
+              </div>
+              -->
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.SECOND_VEHICLE' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.vehicle)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.TOOLS_COLLECTIONS' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.tools)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.LAND' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.land)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.CABINS' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.cottage)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.BUILDINGS' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.real_state)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="detail-name">{{ 'INSURANCE_REV.OTHER' | translate }}</div>
+                <div class="detail-val">{{appGlobal.priceFormatRound(userService?.coapplicantData?.asset?.data?.others)}}</div>
+              </div>
+              <div class="assets-item">
+                <div class="vertical-line"></div>
+                <div class="action-btn-area">
+                  <ion-button fill="clear" class="action-btn" (click)="goAssetsEdit('edit', userService?.coapplicantData)">
+                    <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT' | translate }}
+                  </ion-button>
+                  <ion-button round class="action-btn done-btn" (click)="next()">
+                    {{ 'INSURANCE_REV.DONE' | translate }}<ion-icon src="./assets/svg/WhiteCheck.svg" class="done-icon" slot="end">&nbsp;</ion-icon>
+                  </ion-button>
+                </div>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <!-- Liabilities -->
+        <ion-card class="profile-card liabilities-card">
+          <ion-card-content class="profile-card-content">
+            <div class="card-title-txt" text-center>{{ 'INSURANCE_REV.LIABILITIES_SECTION_TITLE' | translate }}</div>
+            <!--
+            <div class="desc-txt">{{ 'INSURANCE_REV.EXPLANATION' | translate }}</div>
+            -->
+            <ion-list-header text-left>{{mainData?.firstname}} {{mainData?.lastname}}</ion-list-header>
+            <ion-item (click)="liabilitiesItemClick('main_loan')">
+              <div>
+                <p class="name-txt">{{ 'INSURANCE_REV.PERSONAL_LOANS' | translate }}</p>
+                <p class="item-dec-txt">{{appGlobal.priceFormatRound(mainData?.liability?.data?.loan_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+              </div>
+              <div class="dollar-month-line" slot="end">
+                <div class="dollar" text-right>{{appGlobal.priceFormatRound(mainData?.liability?.data?.loan)}}</div>
+                <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+              </div>
+              <div class="icon-area" slot="end">
+                <ion-icon *ngIf="!liabilitiesClickedItems.main_loan" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                <ion-icon *ngIf="liabilitiesClickedItems.main_loan" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+              </div>
+            </ion-item>
+            <div [ngClass]="{'collepsed': !liabilitiesClickedItems.main_loan, 'content-section': true}">
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                <div class="val">{{mainData?.liability?.data?.loan_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item btn-area-item">
+                <div class="action-btn-area">
+                  <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(mainData, 'main-loan', 1)">
+                    <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                  </ion-button>
+                </div>
+              </ion-item>
+            </div>
+            <ion-item (click)="liabilitiesItemClick('main_commercial')">
+              <div>
+                <p class="name-txt">{{ 'INSURANCE_REV.BUSINESS_LOANS' | translate }}</p>
+                <p class="item-dec-txt">{{appGlobal.priceFormatRound(mainData?.liability?.data?.commercial_loan_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+              </div>
+              <div class="dollar-month-line" slot="end">
+                <div class="dollar" text-right>{{appGlobal.priceFormatRound(mainData?.liability?.data?.commercial_loan)}}</div>
+                <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+              </div>
+              <div class="icon-area" slot="end">
+                <ion-icon *ngIf="!liabilitiesClickedItems.main_commercial" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                <ion-icon *ngIf="liabilitiesClickedItems.main_commercial" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+              </div>
+            </ion-item>
+            <div [ngClass]="{'collepsed': !liabilitiesClickedItems.main_commercial, 'content-section': true}">
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                <div class="val">{{mainData?.liability?.data?.commercial_loan_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item btn-area-item">
+                <div class="action-btn-area">
+                  <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(mainData, 'main-commercial_loan', 2)">
+                    <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                  </ion-button>
+                </div>
+              </ion-item>
+            </div>
+            <ion-item (click)="liabilitiesItemClick('main_lease')">
+              <div>
+                <p class="name-txt">{{ 'INSURANCE_REV.VEHICLE_LOANS' | translate }}</p>
+                <p class="item-dec-txt">{{appGlobal.priceFormatRound(mainData?.liability?.data?.lease_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+              </div>
+              <div class="dollar-month-line" slot="end">
+                <div class="dollar" text-right>{{appGlobal.priceFormatRound(mainData?.liability?.data?.lease)}}</div>
+                <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+              </div>
+              <div class="icon-area" slot="end">
+                <ion-icon *ngIf="!liabilitiesClickedItems.main_lease" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                <ion-icon *ngIf="liabilitiesClickedItems.main_lease" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+              </div>
+            </ion-item>
+            <div [ngClass]="{'collepsed': !liabilitiesClickedItems.main_lease, 'content-section': true}">
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                <div class="val">{{mainData?.liability?.data?.lease_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item btn-area-item">
+                <div class="action-btn-area">
+                  <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(mainData, 'main-lease', 3)">
+                    <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                  </ion-button>
+                </div>
+              </ion-item>
+            </div>
+            <ion-item (click)="liabilitiesItemClick('main_creditcard')">
+              <div>
+                <p class="name-txt">{{ 'INSURANCE_REV.CREDIT_CARDS' | translate }}</p>
+                <p class="item-dec-txt">{{appGlobal.priceFormatRound(mainData?.liability?.data?.credit_card_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+              </div>
+              <div class="dollar-month-line" slot="end">
+                <div class="dollar" text-right>{{appGlobal.priceFormatRound(mainData?.liability?.data?.credit_card)}}</div>
+                <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+              </div>
+              <div class="icon-area" slot="end">
+                <ion-icon *ngIf="!liabilitiesClickedItems.main_creditcard" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                <ion-icon *ngIf="liabilitiesClickedItems.main_creditcard" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+              </div>
+            </ion-item>
+            <div [ngClass]="{'collepsed': !liabilitiesClickedItems.main_creditcard, 'content-section': true}">
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                <div class="val">{{mainData?.liability?.data?.credit_card_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item btn-area-item">
+                <div class="action-btn-area">
+                  <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(mainData, 'main-credit_card', 4)">
+                    <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                  </ion-button>
+                </div>
+              </ion-item>
+            </div>
+            <ion-item (click)="liabilitiesItemClick('main_other')">
+              <div>
+                <p class="name-txt">{{ 'INSURANCE_REV.OTHER_DEBTS' | translate }}</p>
+                <p class="item-dec-txt">{{appGlobal.priceFormatRound(mainData?.liability?.data?.other_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+              </div>
+              <div class="dollar-month-line" slot="end">
+                <div class="dollar" text-right>{{appGlobal.priceFormatRound(mainData?.liability?.data?.other)}}</div>
+                <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+              </div>
+              <div class="icon-area" slot="end">
+                <ion-icon *ngIf="!liabilitiesClickedItems.main_other" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                <ion-icon *ngIf="liabilitiesClickedItems.main_other" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+              </div>
+            </ion-item>
+            <div [ngClass]="{'collepsed': !liabilitiesClickedItems.main_other, 'content-section': true}">
+              <ion-item class="profile-detail-item">
+                <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                <div class="val">{{mainData?.liability?.data?.other_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+              </ion-item>
+              <ion-item class="profile-detail-item btn-area-item">
+                <div class="action-btn-area">
+                  <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(mainData, 'main-other', 5)">
+                    <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                  </ion-button>
+                </div>
+              </ion-item>
+            </div>
+            <div *ngIf="userService?.coapplicantData?.id">
+              <ion-list-header text-left>{{userService?.coapplicantData?.firstname}} {{userService?.coapplicantData?.lastname}}</ion-list-header>
+              <ion-item (click)="liabilitiesItemClick('other_loan')">
+                <div>
+                  <p class="name-txt">{{ 'INSURANCE_REV.PERSONAL_LOANS' | translate }}</p>
+                  <p class="item-dec-txt">{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.loan_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+                </div>
+                <div class="dollar-month-line" slot="end">
+                  <div class="dollar" text-right>{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.loan)}}</div>
+                  <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+                </div>
+                <div class="icon-area" slot="end">
+                  <ion-icon *ngIf="!liabilitiesClickedItems.other_loan" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                  <ion-icon *ngIf="liabilitiesClickedItems.other_loan" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+                </div>
+              </ion-item>
+              <div [ngClass]="{'collepsed': !liabilitiesClickedItems.other_loan, 'content-section': true}">
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                  <div class="val">{{userService?.coapplicantData?.liability?.data?.loan_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item btn-area-item">
+                  <div class="action-btn-area">
+                    <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(userService?.coapplicantData, 'other-loan', 1)">
+                      <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                    </ion-button>
+                  </div>
+                </ion-item>
+              </div>
+              <ion-item (click)="liabilitiesItemClick('other_commercial')">
+                <div>
+                  <p class="name-txt">{{ 'INSURANCE_REV.BUSINESS_LOANS' | translate }}</p>
+                  <p class="item-dec-txt">{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.commercial_loan_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+                </div>
+                <div class="dollar-month-line" slot="end">
+                  <div class="dollar" text-right>{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.commercial_loan)}}</div>
+                  <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+                </div>
+                <div class="icon-area" slot="end">
+                  <ion-icon *ngIf="!liabilitiesClickedItems.other_commercial" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                  <ion-icon *ngIf="liabilitiesClickedItems.other_commercial" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+                </div>
+              </ion-item>
+              <div [ngClass]="{'collepsed': !liabilitiesClickedItems.other_commercial, 'content-section': true}">
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                  <div class="val">{{userService?.coapplicantData?.liability?.data?.commercial_loan_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item btn-area-item">
+                  <div class="action-btn-area">
+                    <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(userService?.coapplicantData, 'other-commercial_loan', 2)">
+                      <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                    </ion-button>
+                  </div>
+                </ion-item>
+              </div>
+              <ion-item (click)="liabilitiesItemClick('other_lease')">
+                <div>
+                  <p class="name-txt">{{ 'INSURANCE_REV.VEHICLE_LOANS' | translate }}</p>
+                  <p class="item-dec-txt">{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.lease_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+                </div>
+                <div class="dollar-month-line" slot="end">
+                  <div class="dollar" text-right>{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.lease)}}</div>
+                  <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+                </div>
+                <div class="icon-area" slot="end">
+                  <ion-icon *ngIf="!liabilitiesClickedItems.other_lease" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                  <ion-icon *ngIf="liabilitiesClickedItems.other_lease" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+                </div>
+              </ion-item>
+              <div [ngClass]="{'collepsed': !liabilitiesClickedItems.other_lease, 'content-section': true}">
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                  <div class="val">{{userService?.coapplicantData?.liability?.data?.lease_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item btn-area-item">
+                  <div class="action-btn-area">
+                    <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(userService?.coapplicantData, 'other-lease', 3)">
+                      <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                    </ion-button>
+                  </div>
+                </ion-item>
+              </div>
+              <ion-item (click)="liabilitiesItemClick('other_creditcard')">
+                <div>
+                  <p class="name-txt">{{ 'INSURANCE_REV.CREDIT_CARDS' | translate }}</p>
+                  <p class="item-dec-txt">{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.credit_card_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+                </div>
+                <div class="dollar-month-line" slot="end">
+                  <div class="dollar" text-right>{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.credit_card)}}</div>
+                  <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+                </div>
+                <div class="icon-area" slot="end">
+                  <ion-icon *ngIf="!liabilitiesClickedItems.other_creditcard" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                  <ion-icon *ngIf="liabilitiesClickedItems.other_creditcard" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+                </div>
+              </ion-item>
+              <div [ngClass]="{'collepsed': !liabilitiesClickedItems.other_creditcard, 'content-section': true}">
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                  <div class="val">{{userService?.coapplicantData?.liability?.data?.credit_card_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item btn-area-item">
+                  <div class="action-btn-area">
+                    <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(userService?.coapplicantData, 'other-credit_card', 4)">
+                      <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                    </ion-button>
+                  </div>
+                </ion-item>
+              </div>
+              <ion-item (click)="liabilitiesItemClick('other_other')">
+                <div>
+                  <p class="name-txt">{{ 'INSURANCE_REV.OTHER_DEBTS' | translate }}</p>
+                  <p class="item-dec-txt">{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.other_monthly)}} {{ 'GENERIC.PER_MONTH' | translate }}</p>
+                </div>
+                <div class="dollar-month-line" slot="end">
+                  <div class="dollar" text-right>{{appGlobal.priceFormatRound(userService?.coapplicantData?.liability?.data?.other)}}</div>
+                  <div class="month" text-right>{{ 'GENERIC.TOTAL_OWED' | translate }}</div>
+                </div>
+                <div class="icon-area" slot="end">
+                  <ion-icon *ngIf="!liabilitiesClickedItems.other_other" class="arrow-icon" src="./assets/svg/ArrowDown.svg"></ion-icon>
+                  <ion-icon *ngIf="liabilitiesClickedItems.other_other" class="close-icon" src="./assets/svg/Close.svg"></ion-icon>
+                </div>
+              </ion-item>
+              <div [ngClass]="{'collepsed': !liabilitiesClickedItems.other_other, 'content-section': true}">
+                <ion-item class="profile-detail-item">
+                  <div class="name">{{ 'INSURANCE_REV.REMAINING_TERM_MATURITY' | translate }}</div>
+                  <div class="val">{{userService?.coapplicantData?.liability?.data?.other_duration}} {{ 'INSURANCE_REV.MONTHS' | translate }}</div>
+                </ion-item>
+                <ion-item class="profile-detail-item btn-area-item">
+                  <div class="action-btn-area">
+                    <ion-button fill="clear" class="action-btn" (click)="openLiabilitiesEdit(userService?.coapplicantData, 'other-other', 5)">
+                      <ion-icon src="./assets/svg/Edit.svg" class="action-icon">&nbsp;</ion-icon>&nbsp;{{ 'GENERIC.EDIT_INFO' | translate }}
+                    </ion-button>
+                  </div>
+                </ion-item>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-area" text-center>
+      <div class="flex" text-left>
+        <ion-button class="prev-btn" *ngIf="slideNum" round fill="clear" (click)="previous()">
+          <ion-icon name="arrow-back"></ion-icon>
+          &nbsp;&nbsp;&nbsp;{{ 'INSURANCE_REV.BACK' | translate }}
+        </ion-button>
+      </div>
+      <div class="flex" text-right>
+        <ion-button class="next-btn" *ngIf="slideNum < 6" round (click)="next()">
+          {{ 'INSURANCE_REV.FORWARD' | translate }}&nbsp;&nbsp;&nbsp;
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-button>
+        <ion-button class="next-btn" *ngIf="slideNum >= 6" round (click)="next()">
+          {{ 'INSURANCE_REV.FINISH' | translate }}
+        </ion-button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

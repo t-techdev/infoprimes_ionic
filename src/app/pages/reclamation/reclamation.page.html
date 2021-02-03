@@ -1,0 +1,258 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="middle-section">
+        <div class="title-section"> {{ 'CLAIMS.TITLE' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content class="content">
+  <div class="desc-section" text-center>
+    {{ 'CLAIMS.EXPLANATION' | translate }}
+  </div>
+  <div class="bottom-blank-section">
+    <div class="card-area">
+      <ion-card class="card">
+        <ion-card-content class="card-content">
+          <ion-item class="card-item" (click)="itemClick('life')">
+            <ion-avatar class="card-avatar" item-start>
+              <img class="card-img" src="assets/icon/icLifeInsuranceSolid.png">
+            </ion-avatar>
+            <p class="name-txt">{{ 'GENERIC.LIFE_INSURANCE' | translate }}</p>
+            <ion-button fill="clear" class="arrow-down-btn" slot="end">
+              <ion-icon *ngIf="!lifeItemClicked" src="assets/svg/ArrowDown.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+              <ion-icon *ngIf="lifeItemClicked" src="assets/svg/ArrowUp.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+            </ion-button>
+          </ion-item>
+          <div [ngClass]="{'collepsed': !lifeItemClicked}" class="content-section">
+            <ion-item class="item-title-section title-common">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/Phone.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.CALL_BROKER' | translate }}
+            </ion-item>
+            <ion-item class="content-item">
+              <div class="content-desc">
+                {{ 'CLAIMS.LIFE_CALL_DETAILS' | translate }}
+              </div>
+            </ion-item>
+            <ion-item class="item-title-section title-common">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/document.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.DOCUMENTS_NEEDED' | translate }}
+            </ion-item>
+            <div>
+              <ion-item class="content-item dot-content">
+                <li item-start class="dot-item">&nbsp;</li>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.LIFE_DOCUMENT_1' | translate }}
+                </div>
+              </ion-item>
+              <ion-item class="content-item dot-content">
+                <li item-start class="dot-item">&nbsp;</li>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.LIFE_DOCUMENT_2' | translate }}
+                </div>
+              </ion-item>
+              <ion-item class="content-item dot-content last-dec">
+                <li item-start class="dot-item">&nbsp;</li>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.LIFE_DOCUMENT_3' | translate }}
+                </div>
+              </ion-item>
+            </div>
+          </div>
+          <ion-item class="card-item" (click)="itemClick('disability')">
+            <ion-avatar class="card-avatar" item-start>
+              <img class="card-img" src="assets/icon/icDisabilityInsuranceSolid.png">
+            </ion-avatar>
+            <p class="name-txt">{{ 'GENERIC.DISABILITY_INSURANCE' | translate }}</p>
+            <ion-button class="arrow-down-btn" fill="clear" slot="end">
+              <ion-icon *ngIf="!disabilityItemClicked" src="assets/svg/ArrowDown.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+              <ion-icon *ngIf="disabilityItemClicked" src="assets/svg/ArrowUp.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+            </ion-button>
+          </ion-item>
+          <div [ngClass]="{'collepsed': !disabilityItemClicked}" class="content-section">
+            <ion-item class="item-title-section title-common">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/Phone.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.CALL_BROKER' | translate }}
+            </ion-item>
+            <ion-item class="content-item">
+              <div class="content-desc">
+                {{ 'CLAIMS.DISABILITY_CALL_DETAILS' | translate }}
+              </div>
+            </ion-item>
+            <ion-item class="item-title-section title-common">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/document.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.DOCUMENTS_NEEDED' | translate }}
+            </ion-item>
+            <ion-item class="content-item dot-content">
+              <div class="out-item">
+                <div class="out-li-item">
+                  <li item-start class="dot-item">&nbsp;</li>
+                </div>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.DISABILITY_DOCUMENT_1' | translate }}
+                </div>
+              </div>
+            </ion-item>
+            <ion-item class="content-item dot-content">
+              <div class="out-item">
+                <div class="out-li-item">
+                  <li item-start class="dot-item">&nbsp;</li>
+                </div>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.DISABILITY_DOCUMENT_2' | translate }}
+                </div>
+              </div>
+            </ion-item>
+            <ion-item class="content-item dot-content last-dec">
+              <div class="out-item">
+                <div class="out-li-item">
+                  <li item-start class="dot-item">&nbsp;</li>
+                </div>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.DISABILITY_DOCUMENT_3' | translate }}
+                </div>
+              </div>
+            </ion-item>
+          </div>
+          <ion-item class="card-item" (click)="itemClick('longtermcare')">
+            <ion-avatar class="card-avatar" item-start>
+              <img class="card-img" src="assets/icon/icLong_termCareInsuranceSolid.png">
+            </ion-avatar>
+            <p class="name-txt">{{ 'GENERIC.LONG_TERM_CARE_INSURANCE' | translate }}</p>
+            <ion-button class="arrow-down-btn" fill="clear" slot="end">
+              <ion-icon *ngIf="!longTemrCareItemClicked" src="assets/svg/ArrowDown.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+              <ion-icon *ngIf="longTemrCareItemClicked" src="assets/svg/ArrowUp.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+            </ion-button>
+          </ion-item>
+          <div [ngClass]="{'collepsed': !longTemrCareItemClicked}" class="content-section">
+            <ion-item class="item-title-section title-common">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/Phone.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.CALL_BROKER' | translate }}
+            </ion-item>
+            <ion-item class="content-item">
+              <div class="content-desc">
+                {{ 'CLAIMS.SOINS_LONGUE_DUREE_CALL_DETAILS' | translate }}
+              </div>
+            </ion-item>
+            <ion-item class="item-title-section title-common">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/document.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.DOCUMENTS_NEEDED' | translate }}
+            </ion-item>
+            <ion-item class="content-item dot-content">
+              <div class="out-item">
+                <div class="out-li-item">
+                  <li item-start class="dot-item">&nbsp;</li>
+                </div>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.SOINS_LONGUE_DUREE_DOCUMENT_1' | translate }}
+                </div>
+              </div>
+            </ion-item>
+            <ion-item class="content-item dot-content last-dec">
+              <div class="out-item">
+                <div class="out-li-item">
+                  <li item-start class="dot-item">&nbsp;</li>
+                </div>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.SOINS_LONGUE_DUREE_DOCUMENT_2' | translate }}
+                </div>
+              </div>
+            </ion-item>
+          </div>
+          <ion-item class="card-item" (click)="itemClick('critical')">
+            <ion-avatar class="card-avatar" item-start>
+              <img class="card-img" src="assets/icon/icCriticalIllnessInsuranceSolid.png">
+            </ion-avatar>
+            <p class="name-txt">{{ 'GENERIC.CRITICAL_ILLNESS_INSURANCE' | translate }}</p>
+            <ion-button class="arrow-down-btn" fill="clear" slot="end">
+              <ion-icon *ngIf="!criticalItemClicked" src="assets/svg/ArrowDown.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+              <ion-icon *ngIf="criticalItemClicked" src="assets/svg/ArrowUp.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+            </ion-button>
+          </ion-item>
+          <div [ngClass]="{'collepsed': !criticalItemClicked}" class="content-section">
+            <ion-item class="item-title-section title-common">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/Phone.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.CALL_BROKER' | translate }}
+            </ion-item>
+            <ion-item class="content-item">
+              <div class="content-desc">
+                {{ 'CLAIMS.CRITICAL_ILLNESS_CALL_DETAILS' | translate }}
+              </div>
+            </ion-item>
+            <ion-item class="item-title-section title-common">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/document.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.DOCUMENTS_NEEDED' | translate }}
+            </ion-item>
+            <ion-item class="content-item dot-content">
+              <div class="out-item">
+                <div class="out-li-item">
+                  <li item-start class="dot-item">&nbsp;</li>
+                </div>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.CRITICAL_ILLNESS_DOCUMENT_1' | translate }}
+                </div>
+              </div>
+            </ion-item>
+            <ion-item class="content-item dot-content last-dec">
+              <div class="out-item">
+                <div class="out-li-item">
+                  <li item-start class="dot-item">&nbsp;</li>
+                </div>
+                <div class="content-desc dot-desc">
+                  {{ 'CLAIMS.CRITICAL_ILLNESS_DOCUMENT_2' | translate }}
+                </div>
+              </div>
+            </ion-item>
+          </div>
+          <ion-item class="card-item" (click)="itemClick('travel')">
+            <ion-avatar class="card-avatar" item-start>
+              <img class="card-img" src="assets/icon/icTravelInsuranceSolid.png">
+            </ion-avatar>
+            <p class="name-txt">{{ 'GENERIC.TRAVEL_INSURANCE' | translate }}</p>
+            <ion-button class="arrow-down-btn" fill="clear" slot="end">
+              <ion-icon *ngIf="!travelItemClicked" src="assets/svg/ArrowDown.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+              <ion-icon *ngIf="travelItemClicked" src="assets/svg/ArrowUp.svg" class="arrow-down-icon">&nbsp;</ion-icon>
+            </ion-button>
+          </ion-item>
+          <div [ngClass]="{'collepsed': !travelItemClicked}" class="content-section">
+            <ion-item class="item-title-section title-travel">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/Phone.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.TRAVEL_CALL_URGENT' | translate }}
+            </ion-item>
+            <ion-item class="content-item travel-content">
+              <div class="content-desc travel-desc">
+                {{ 'CLAIMS.TRAVEL_CALL_MESSAGE_1' | translate }}
+              </div>
+            </ion-item>
+            <ion-item class="content-desc align-item-top travel-desc last-dec travel-check-item">
+              <div class="item-icon-area" slot="start">
+                <ion-icon src="assets/svg/check.svg" class="desc-item-icon">&nbsp;</ion-icon>
+              </div>
+              {{ 'CLAIMS.TRAVEL_CALL_MESSAGE_2' | translate }}
+            </ion-item>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

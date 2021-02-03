@@ -1,0 +1,29 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section" (click)="goBack()">
+        <ion-icon slot="icon-only" src="assets/svg/arrowLeft-new.svg" class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section"></div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content class="main-content" text-center>
+  <div class="thx-txt-section">
+    {{ 'CONCLUSION.ENCOURAGEMENT_1' | translate }}
+  </div>
+  <div class="great-txt-section">
+    {{ 'CONCLUSION.ENCOURAGEMENT_2' | translate }}
+  </div>
+  <img src="assets/icon/icPositiveFeedbackCircle.png">
+  <div class="desc-txt-section">
+    {{ 'CONCLUSION.FOLLOWUP' | translate }}
+  </div>
+  <div class="see-btn-section">
+    <ion-button class="see-btn" round (click)="goHome()">« {{ 'CONCLUSION.CTA_3' | translate }}</ion-button>
+  </div>
+  <ion-button class="contact-btn" round (click)="goBroker()">{{ 'CONCLUSION.CTA_2' | translate }}</ion-button>
+</ion-content>

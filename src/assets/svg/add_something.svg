@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg6734"
+   version="1.1"
+   viewBox="0 0 7.2382435 7.2382439"
+   height="27.357141"
+   width="27.357141">
+  <defs
+     id="defs6728" />
+  <metadata
+     id="metadata6731">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(373.27983,19.583414)"
+     id="layer1">
+    <g
+       id="g4534-03"
+       transform="translate(331.37176,-155.41908)">
+      <circle
+         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#c8d7e3;stroke-width:0.56219369;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="path4516-8"
+         cx="-701.03247"
+         cy="139.45479"
+         r="3.3380251" />
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot4521-5"
+         style="font-style:normal;font-weight:normal;font-size:24px;line-height:1;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#c8d7e3;fill-opacity:1;stroke:none"
+         transform="matrix(0.26458333,0,0,0.26458333,-680.50362,86.892474)"><flowRegion
+           id="flowRegion4523-2"
+           style="font-size:24px;fill:#c8d7e3;fill-opacity:1"><rect
+             id="rect4525-2"
+             width="29.285709"
+             height="25.714285"
+             x="-85"
+             y="186.42857"
+             style="font-size:24px;fill:#c8d7e3;fill-opacity:1" /></flowRegion><flowPara
+           id="flowPara4527-6"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:muli;-inkscape-font-specification:'muli Bold';fill:#c8d7e3;fill-opacity:1">+</flowPara></flowRoot>    </g>
+  </g>
+</svg>

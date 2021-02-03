@@ -1,0 +1,213 @@
+.header-section {
+  background: linear-gradient(#2B9AE6, #239CEC);
+  top: 0px;
+  position: fixed;
+  height: 68px;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 10000;
+}
+
+.header-item {
+  background: none;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 31px;
+  display: flex;
+  justify-content: baseline;
+}
+
+.left-section {
+  display: flex;
+  flex-basis: 10%;
+  margin-top: 1px;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.right-section {
+  flex-basis: 10%;
+}
+
+.arrow-back-icon {
+  min-width: 1px !important;
+  background-color: transparent;
+  width: 13px;
+  font-size: 22px !important;
+}
+
+.title-section {
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.info-section {
+  text-align: center;
+  padding-bottom: 9px;
+  margin-top: 67px;
+  background: linear-gradient(#239CEC, #15BAF8);
+}
+
+.img-section {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 148px;
+}
+
+.border-img {
+  width: 146px;
+}
+
+.circle-img {
+  position: absolute;
+  display: inline-flex;
+  width: 109px;
+  top: 19px;
+  left: calc(50% - 54.5px);
+  border-radius: 50%;
+}
+
+.name {
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  padding-top: 4px;
+}
+
+.licence-num-txt {
+  color: white;
+  font-size: 12px;
+  padding-top: 8px;
+  padding-bottom: 2px;
+  font-weight: lighter;
+}
+
+.licence-num {
+  color: white;
+  width: 100px;
+  border-radius: 50px 50px 50px 50px;
+  background: rgba(1, 70, 118, 0.21);
+  padding-top: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+  padding-bottom: 3px;
+  font-weight: 700;
+}
+
+.contact-me-section {
+  color: white;
+  padding-top: 10px;
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.contact-item {
+  --padding-start: 0px;
+  --border-style: none;
+  --padding-top: 14px;
+  --padding-bottom: 4px;
+  border-bottom: solid 2px #F4F7FA;
+}
+
+.title-item {
+  padding-left: 16px;
+  font-size: 12px;
+  color: #91A9C0;
+}
+
+.val-item {
+  font-size: 16px;
+  color: #364A5D;
+}
+
+.broker-icon-btn {
+  padding: 0px !important;
+  height: 47px !important;
+  width: 47px !important;
+  font-size: 14px !important;
+  color: #3498DB;
+  background: #EAF4FB;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+.message-icon {
+  padding: 3px !important;
+}
+
+@media only screen and (max-height: 667px) {
+  .title-section {
+    font-size: 15px;
+  }
+}
+
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+}

@@ -1,0 +1,442 @@
+.header-section {
+  top: 0px;
+  position: fixed;
+  height: 120px;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 10000;
+}
+
+.life-header {
+  background: linear-gradient(rgb(254, 173, 83), rgb(254, 149, 59));
+}
+
+.disability-header {
+  background: linear-gradient(#83DD24, #8BD522);
+}
+
+.longtermcare-header {
+  background: linear-gradient(#F7785C, #F56A62);
+}
+
+.critical-header {
+  background: linear-gradient(#3CDBB7, #3BC9C0);
+}
+
+.travel-header {
+  background: linear-gradient(#C678EA, #B871E3);
+}
+
+.header-item {
+  background: none;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 23px;
+  display: flex;
+  justify-content: baseline;
+}
+
+.left-section {
+  display: flex;
+  flex-basis: 15%;
+  margin-top: 12px;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.right-section {
+  flex-basis: 15%;
+}
+
+.insurance-img {
+  width: 36px;
+  height: 36px;
+}
+
+.arrow-back-icon {
+  min-width: 1px !important;
+  background-color: transparent;
+  width: 13px;
+  font-size: 22px !important;
+}
+
+.title-section {
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
+  padding-left: 17px;
+}
+
+.household-btn {
+  margin-top: 17px;
+  font-weight: 700;
+  height: 34px;
+  width: 250px;
+  font-size: 16px;
+  text-transform: initial;
+  --background-hover: rgba(255, 255, 255, 1);
+}
+
+.life-household-btn {
+  color: #FD884E;
+}
+
+.life-household-btn.activated {
+  --color-activated: #FD884E;
+}
+
+.disability-household-btn {
+  color: #58CC67;
+}
+
+.disability-household-btn.activated {
+  --color-activated: #58CC67;
+}
+
+.critical-household-btn {
+  color: #3BCCBE;
+}
+
+.critical-household-btn.activated {
+  --color-activated: #3BCCBE;
+}
+
+.longtermcare-household-btn {
+  color: #F66E62;
+}
+
+.longtermcare-household-btn.activated {
+  --color-activated: #F66E62;
+}
+
+.travel-household-btn {
+  color: #BA72E4;
+}
+
+.travel-household-btn.activated {
+  --color-activated: #BA72E4;
+}
+
+.diagram-section {
+  margin-top: 120px;
+  height: 235px;
+  padding: 0px 10px 0px 10px;
+}
+
+.life-diagram {
+  background: linear-gradient(rgb(254, 149, 59), rgb(254, 93, 6));
+}
+
+.disability-diagram {
+  background: linear-gradient(#8BD522, #9AC430);
+}
+
+.longtermcare-diagram {
+  background: linear-gradient(#F56A62, #F14E6D);
+}
+
+.critical-diagram {
+  background: linear-gradient(#3BC9C0, #36A6D3);
+}
+
+.travel-diagram {
+  background: linear-gradient(#B871E3, #9F63D3);
+}
+.bottom-blank-section {
+  background: white;
+}
+
+.card-header {
+  color: #768CA1;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  padding-left: 15px;
+  padding-top: 16px;
+}
+
+.card {
+  border-radius: 9px 9px 9px 9px;
+  background: white;
+  padding: 0px;
+}
+
+.card-area {
+  position: absolute;
+  margin-top: -48px;
+  width: 100%;
+  ion-card {
+    margin: 13px 12px;
+  }
+}
+
+.card-content {
+  padding: 0;
+}
+
+.card-item {
+  --border-style: none;
+  --padding-top: 10px;
+  --padding-bottom: 9px;
+  --inner-padding-end: 0px;
+  border-bottom: solid 1px #e8f0f5;
+}
+
+.name-txt {
+  color: #364A5D;
+  font-size: 14px;
+  font-weight: 700;
+  padding-bottom: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coverage-txt {
+  font-size: 14px;
+  color: #91A9C0;
+  margin-top: -1px;
+}
+
+.money-txt {
+  font-size: 14px;
+  color: #364A5D;
+}
+
+.dollar {
+  font-size: 18px;
+  font-weight: 700;
+  color: #364A5D;
+  text-align: right;
+}
+
+.month {
+  font-size: 10px;
+  color: #5685A5;
+  text-align: right;
+}
+
+.arrow-btn {
+  color: #CAD8E5;
+}
+
+.dollar-month-line {
+  line-height: 15px;
+}
+
+.life-bottom {
+  --background: #FD7127;
+}
+
+.disability-bottom {
+  --background: #97C62D;
+}
+
+.travel-bottom {
+  --background: #9F63D3;
+}
+
+.critical-bottom {
+  --background: #37AAD2;
+}
+
+.longtermcare-bottom {
+  --background: #F2546B;
+}
+
+.card-bottom-item {
+  --border-style: none;
+  --min-height: 60px;
+}
+
+.total {
+  font-size: 10px;
+  color: #FFFFFF;
+}
+
+.small-opacity {
+  opacity: 0.7;
+}
+
+.payment-month-line {
+  line-height: 15px;
+  // padding-left: 10px;
+}
+
+.flex-center-item {
+  display: flex;
+  align-items: center;
+  vertical-align: baseline;
+}
+
+.monthly-money {
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+}
+
+.payment-per-month-txt {
+  font-size: 10px;
+  color: white;
+  margin-top: 6px;
+}
+
+.coverage-amount {
+  color: #FFFFFF;
+  opacity: 0.7;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.small-padding {
+  padding-left: 17px;
+}
+
+.slash {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+}
+
+.household-btn.activated {
+  --background-activated: rgba(255, 255, 255, 1);
+}
+
+.empty-card {
+  min-height: calc(100vh - 235px - 120px + 48px - 12px);
+}
+
+ion-avatar {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.policy-info-area {
+  padding-left: 14px;
+}
+
+.nodata-div {
+  text-align: center;
+  padding-top: 23px;
+}
+
+.nodata-img {
+  width: 111px;
+  display: inline;
+}
+
+.nodata-title-div {
+  text-align: center;
+  padding: 12px 55px 0px 55px;
+  font-weight: bold;
+  color: #364A5D;
+  font-size: 17px;
+}
+
+.nodata-desc-div {
+  font-size: 14px;
+  color: #364A5D;
+  text-align: center;
+  padding: 15px 24px 0px 24px;
+}
+
+.broker-btn {
+  margin-top: 7px;
+  height: 34px;
+  font-weight: 700;
+  text-transform: initial;
+  font-size: 16px;
+  --background: #8ACA17;
+  --border-radius: 64px;
+}
+
+.broker-area-div {
+  text-align: center;
+  padding: 15px 0px;
+}
+
+.card-img {
+  width: 60px !important;
+  height: 60px !important;
+  max-width: none;
+}
+
+@media only screen and (max-height: 667px) {
+  .title-section {
+    font-size: 15px;
+  }
+}
+
+.md :host {
+  .total {
+    padding-left: 0px;
+  }
+  .coverage-amount {
+    font-size: 14px;
+  }
+}
+
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+  .header-item {
+    padding-top: env(safe-area-inset-top);
+  }
+  .header-section {
+    height: calc(97px + env(safe-area-inset-top));
+  }
+  .diagram-section {
+    margin-top: calc(97px + env(safe-area-inset-top));
+  }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) {
+      .header-item {
+        padding-top: env(safe-area-inset-top);
+      }
+      .header-section {
+        height: calc(97px + env(safe-area-inset-top));
+      }
+      .diagram-section {
+        margin-top: calc(97px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: env(safe-area-inset-top);
+      }
+      .header-section {
+        height: calc(97px + env(safe-area-inset-top));
+      }
+      .diagram-section {
+        margin-top: calc(97px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: env(safe-area-inset-top);
+      }
+      .header-section {
+        height: calc(97px + env(safe-area-inset-top));
+      }
+      .diagram-section {
+        margin-top: calc(97px + env(safe-area-inset-top));
+      }
+}

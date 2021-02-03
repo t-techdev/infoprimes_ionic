@@ -1,0 +1,228 @@
+.header-section {
+  background: white;
+  top: 0px;
+  position: fixed;
+  height: 68px;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 10000;
+}
+
+.header-item {
+  background: none;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 31px;
+  display: flex;
+  justify-content: baseline;
+}
+
+.left-section {
+  display: flex;
+  flex-basis: 10%;
+  margin-top: 1px;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.right-section {
+  flex-basis: 10%;
+}
+
+.close-icon {
+  min-width: 1px !important;
+  background-color: transparent;
+  width: 22px;
+  font-size: 22px !important;
+  transform: translatez(0);
+}
+
+.title-section {
+  color: #2D99E2;
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+  transform: translatez(0);
+}
+
+.main-content {
+  margin-top: 67px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.fields-section .item {
+  padding: 0px 0px 0px 0px;
+  color: rgba(54, 74, 92, 1);
+}
+
+.fields-section .item-inner {
+  border-bottom: 1.5px solid #F4F6F8 !important;
+}
+
+.fields-section ion-label {
+  color: #91A9C0 !important;
+  font-size: 12px !important;
+}
+
+.fields-section {
+  padding-top: 12px;
+}
+
+.fields-section .text-input {
+  margin-top: 5px;
+}
+
+.select-icon {
+  display: none;
+}
+
+.arrow-down-icon {
+  width: 0.5em;
+  color: #b6c4d2;
+  margin-top: 34px !important;
+  margin-bottom: 4px !important;
+}
+
+.btn-area {
+  padding: 1px 0px 2px 0px;
+}
+
+.action-btn {
+  --border-radius: 64px;
+  --background: #1F9CF1;
+  --background-hover: #3fb5f7;
+  width: 264px;
+  height: 38px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: initial;
+}
+
+.action-btn.activated {
+  --background-activated: #3fb5f7;
+}
+
+.name-section {
+  padding-top: 7px;
+  padding-bottom: 8px;
+  color: #0C96D3;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+ion-item {
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+
+.asterisk-ele {
+  color: red;
+  position: relative;
+  font-size: 7.6px;
+  top: -4px !important;
+  left: 3px;
+}
+
+.profession-form {
+  .item-inner {
+    padding-right: 0px !important;
+  }
+}
+
+.item.item[no-lines] .item-inner {
+  border: none !important;
+}
+
+.validation-error {
+  display: none;
+}
+
+.item-input.invalid-input-error.item-has-focus,
+.item-input.ng-invalid.item-has-focus.item-input-has-value {
+  border-bottom: solid 2px #19A4F6 !important;
+  .item-inner {
+    border-bottom: none !important;
+    box-shadow: none;
+  }
+}
+
+.invalid-input-error {
+  border-bottom: solid 2px #F93535 !important;
+  --border-style: none;
+  .item-inner {
+    border-bottom: none !important;
+  }
+}
+
+@media only screen and (max-height: 667px) {
+  .title-section {
+    font-size: 15px;
+  }
+}
+
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}

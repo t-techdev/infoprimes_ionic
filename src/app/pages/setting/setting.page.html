@@ -1,0 +1,86 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section" (click)="goBack()">
+        <ion-icon slot="icon-only" src="assets/svg/arrowLeft-new.svg" class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'SETTINGS.TITLE' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content class="main-content">
+  <ion-item class="profile-info-item">
+    <ion-avatar item-start>
+      <img class="avatar-img" [src]="appGlobal.getImgUri(myProfile?.image, 'user')" />
+    </ion-avatar>
+    <div class="name-div">
+      <div>{{myProfile?.firstname}}</div>
+      <div>{{myProfile?.lastname}}</div>
+    </div>
+    <ion-button slot="end" class="signout-btn" (click)="confirmLogout()">{{ 'GENERIC.SIGN_OUT' | translate }}</ion-button>
+  </ion-item>
+  <!--
+  <ion-item class="setting-item">
+    <ion-label>
+      Payment displayed
+    </ion-label>
+    <ion-note class="monthly" item-end>
+      Monthly
+    </ion-note>
+    <ion-icon class="arrow-icon" name="arrow-down" item-end></ion-icon>
+  </ion-item>
+  -->
+  <ion-item class="setting-item">
+    <ion-toggle checked="true" slot="end"></ion-toggle>
+    <ion-label>
+      {{ 'SETTINGS.POLICY_NOTIFICATIONS' | translate }}
+    </ion-label>
+  </ion-item>
+  <ion-item class="setting-item">
+    <ion-toggle checked="true" slot="end"></ion-toggle>
+    <ion-label>
+      {{ 'SETTINGS.INSURANCE_REV_NOTIFICATIONS' | translate }}
+    </ion-label>
+  </ion-item>
+  <ion-item class="setting-item">
+    <ion-label>
+      {{ 'SETTINGS.INSURANCE_REV_SET_DATE_MESSAGE' | translate }}
+    </ion-label>
+    <div class="selectbox-section">
+      <ion-item>
+        <ion-select [(ngModel)]="day" interface="action-sheet">
+          <ion-select-option value="0">{{ 'GENERIC.DD' | translate }}</ion-select-option>
+          <ion-select-option *ngFor="let d of days" value='{{d}}'>{{d}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-select [(ngModel)]="month" interface="action-sheet" (ionChange)="onChangeMonth()">
+          <ion-select-option value="0">{{ 'GENERIC.MM' | translate }}</ion-select-option>
+          <ion-select-option *ngFor="let m of months" value='{{m}}'>{{ 'GENERIC.' + m | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <!--
+    <div class="mmdd">{{ 'GENERIC.MM' | translate }}</div>
+    <ion-icon class="arrow-icon" name="arrow-down" item-end></ion-icon>
+    <div class="mmdd">{{ 'GENERIC.DD' | translate }}</div>
+    <ion-icon class="arrow-icon" name="arrow-down" item-end></ion-icon>
+    -->
+  </ion-item>
+  <ion-item class="language-item">
+    <ion-label>{{ 'SETTINGS.LANG' | translate }}</ion-label>
+    <ion-select [(ngModel)]="language" interface="action-sheet" class="select-box" (ionChange)="changeLang()">
+      <ion-select-option value="en">{{ 'SETTINGS.EN' | translate }}</ion-select-option>
+      <ion-select-option value="fr">{{ 'SETTINGS.FR' | translate }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="leadid-item">
+    <ion-label>{{ 'SETTINGS.LEADID' | translate }}</ion-label>
+    <ion-select [(ngModel)]="leadId" interface="action-sheet" class="select-box" (ionChange)="changeLeadId(leadId)">
+      <ion-select-option *ngFor="let leadId of userService.leadIds" [value]="leadId">{{leadId}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>

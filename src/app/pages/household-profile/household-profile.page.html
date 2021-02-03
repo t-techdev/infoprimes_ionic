@@ -1,0 +1,79 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section" (click)="goBack()">
+        <ion-icon slot="icon-only" src="assets/svg/arrowLeft-new.svg" class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'HOUSEHOLD_PROFILE.TITLE' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="info-section">
+    <div class="img-section" text-center>
+      <img class="circle-img" [src]="cameraImageUrl? cameraImageUrl : appGlobal.getImgUri(contact?.image, 'user')" (click)="presentActionSheet()" />
+      <img class="border-img" src="../assets/icon/imageBorder.png" />
+      <div>
+        <img class="camera-icon" src="../assets/icon/icCamera.png" (click)="presentActionSheet()">
+      </div>
+    </div>
+    <div class="info-name">{{contact?.firstname}} {{contact?.lastname}}</div>
+    <div class="policy-btn-section">
+      <ion-button class="view-policy-btn" (click)="goMyPolicies(contact)" slot="end" round>
+        {{ 'HOUSEHOLD_PROFILE.VIEW_ALL_POLICIES' | translate }} ({{policies?.length}})
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+  <ion-item *ngIf="contact?.role == 'main'" class="info-item">
+    <span class="info-item-title">{{ 'HOUSEHOLD_PROFILE.FIRST_NAME' | translate }}</span>
+    <span class="info-item-val">{{contact?.firstname}}</span>
+  </ion-item>
+  <ion-item *ngIf="contact?.role == 'main'" class="info-item">
+    <span class="info-item-title">{{ 'HOUSEHOLD_PROFILE.LAST_NAME' | translate }}</span>
+    <span class="info-item-val">{{contact?.lastname}}</span>
+  </ion-item>
+  <ion-item class="info-item">
+    <span class="info-item-title">{{ 'HOUSEHOLD_PROFILE.DOB' | translate }}</span>
+    <span class="info-item-val">{{appGlobal.dateFormatting(contact?.dob, 'DD MMM YYYY')}}</span>
+  </ion-item>
+  <ion-item *ngIf="contact?.role == 'main'" class="info-item">
+    <span class="info-item-title">{{ 'HOUSEHOLD_PROFILE.ADDRESS' | translate }}</span>
+    <span class="info-item-val address-line" [innerHTML]="specifyAddress(contact?.address, contact?.city, contact?.province, contact?.postalcode)"></span>
+  </ion-item>
+  <ion-item *ngIf="contact?.role == 'main'" class="info-item">
+    <span class="info-item-title">{{ 'HOUSEHOLD_PROFILE.EMAIL' | translate }}</span>
+    <span class="info-item-val">{{contact?.email}}</span>
+  </ion-item>
+  <ion-item *ngIf="contact?.role == 'main'" class="info-item">
+    <span class="info-item-title">{{ 'HOUSEHOLD_PROFILE.PHONE' | translate }}</span>
+    <span class="info-item-val">{{contact?.mainphone}}</span>
+  </ion-item>
+  <ion-item *ngIf="contact?.role == 'main'" class="info-item">
+    <span class="info-item-title">{{ 'HOUSEHOLD_PROFILE.SMOKER' | translate }}</span>
+    <span class="info-item-val" *ngIf="contact?.smoker">{{ 'GENERIC.YES' | translate }}</span>
+    <span class="info-item-val" *ngIf="!contact?.smoker">{{ 'GENERIC.NO' | translate }}</span>
+  </ion-item>
+  <ion-item *ngIf="contact?.role == 'other'" class="info-item">
+    <span class="info-item-title">{{ 'HOUSEHOLD_PROFILE.RELATIONSHIP' | translate }}</span>
+    <span class="info-item-val" *ngIf="contact?.sex == 'male'">{{ 'INSURANCE_REV.SON' | translate }}</span>
+    <span class="info-item-val" *ngIf="contact?.sex != 'male'">{{ 'INSURANCE_REV.DAUGHTER' | translate }}</span>
+  </ion-item>
+  <ion-item *ngIf="contact?.role == 'coapplicant'" class="info-item">
+    <span class="info-item-title">{{ 'HOUSEHOLD_PROFILE.RELATIONSHIP' | translate }}</span>
+    <span class="info-item-val" *ngIf="contact?.sex == 'male'">{{ 'INSURANCE_REV.HUSBAND' | translate }}</span>
+    <span class="info-item-val" *ngIf="contact?.sex != 'male'">{{ 'INSURANCE_REV.WIFE' | translate }}</span>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <div class="review-btn-area" text-center>
+    <div text-center class="info-changed-txt">{{ 'HOUSEHOLD_PROFILE.INSURANCE_REV_MESSAGE' | translate }}</div>
+    <ion-button class="review-btn" slot="end" round (click)="goProfileReview()">
+      {{ 'HOUSEHOLD_PROFILE.INSURANCE_REV_BUTTON' | translate }}
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+  </div>
+</ion-footer>

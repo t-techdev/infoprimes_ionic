@@ -1,0 +1,33 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section">
+        <ion-icon class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'TOUCHID.UNLOCK_APP' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="main-content">
+    <div class="desc-section" text-center>
+      <img src="assets/icon/touchscreentop.png" class="touchid-img" />
+      <div class="text-setion-1">
+        {{ 'TOUCHID.INFORMATION_SAFE' | translate }}
+      </div>
+      <div class="text-setion-2">
+        {{ 'TOUCHID.ACCESS_APP' | translate }}
+      </div>
+      <div class="ion-text-center">
+        <img *ngIf="appGlobalService.sensorType == 'face'" src="assets/icon/faceid.png" class="touchid-btn" (click)="openTouchID()" />
+        <img *ngIf="appGlobalService.sensorType != 'face'" src="assets/icon/touchidwithcolor.png" class="touchid-btn" (click)="openTouchID()" />
+      </div>
+    </div>
+    <div class="bottom-setion" text-center>
+      <span (click)="goPasscodePage()">{{ 'TOUCHID.PASSCODE_INSTEAD' | translate }}</span>
+    </div>
+  </div>
+</ion-content>

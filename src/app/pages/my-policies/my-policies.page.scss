@@ -1,0 +1,429 @@
+.header-section {
+  background: linear-gradient(rgba(31, 158, 242, 1), rgba(41, 155, 232, 1));
+  top: 0px;
+  position: fixed;
+  height: 68px;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 10000;
+}
+
+.header-item {
+  background: none;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 31px;
+  display: flex;
+  justify-content: baseline;
+}
+
+.left-section {
+  display: flex;
+  flex-basis: 15%;
+  margin-top: 1px;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.right-section {
+  flex-basis: 15%;
+}
+
+.life-insurance-header {
+  --padding-start: 18px !important;
+  --padding-top: 13px !important;
+  --padding-bottom: 7px;
+  --border-style: none;
+}
+
+.life-insurance-img {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.arrow-back-icon {
+  min-width: 1px !important;
+  background-color: transparent;
+  width: 13px;
+  font-size: 22px !important;
+}
+
+.title-section {
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
+  padding-left: 17px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.top-btn-section {
+  padding: 0px 28px 10px 28px;
+  font-size: 14px;
+  color: white;
+  margin-top: 67px;
+  height: 100px;
+  background: linear-gradient(rgba(41, 155, 232, 1), rgba(51, 153, 222, 1));
+}
+
+.bottom-blank-section {
+  background: white;
+}
+
+.household-btn {
+  text-transform: none;
+  font-size: 16px;
+  font-weight: 700;
+  width: 250px;
+  --background: rgba(10, 125, 201, 0.66);
+  --background-hover: #3fb5f7;
+  --border-radius: 64px;
+}
+
+.card-header {
+  color: #90A9C1;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.card-header.first-header {
+  padding-top: 6px;
+}
+
+.card {
+  border-radius: 8px 8px 8px 8px;
+  background: white;
+  padding: 0px;
+}
+
+.card-area {
+  position: absolute;
+  margin-top: -56px;
+  width: 100%;
+  ion-card {
+    margin: 24px 12px;
+  }
+}
+
+.card-content {
+  padding: 0;
+}
+
+.card-img {
+  width: 64px !important;
+  height: 64px !important;
+  max-width: none;
+}
+
+.card-item {
+  border-bottom: solid 1px #e8f0f5;
+  --padding-start: 16px;
+  --padding-top: 0px;
+  --padding-bottom: 10px;
+  --border-style: none;
+}
+
+.name-txt {
+  color: #364A5D;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.coverage-txt {
+  font-size: 14px;
+  color: #91A9C0;
+}
+
+.money-txt {
+  font-size: 14px;
+  color: #364A5D;
+}
+
+.dollar-month-line {
+  line-height: 14px;
+}
+
+.dollar {
+  font-size: 18px;
+  font-weight: 700;
+  color: #364A5D;
+}
+
+.month {
+  font-size: 10px;
+  color: #5685A5;
+  text-align: right;
+}
+
+.arrow-btn {
+  color: #afafaf;
+}
+
+.card-avatar {
+  --padding-start: 16px;
+}
+
+.life-insuarnce-card-bottom-item {
+  --background: #FE5D05;
+  --border-style: none;
+  display: flex;
+  height: 59px;
+  .input-wrapper {
+    text-align: right;
+    padding-right: 8px;
+  }
+}
+
+.longterm-insuarnce-card-bottom-item {
+  --background: #F14E6D;
+  height: 59px;
+  display: flex;
+  .input-wrapper {
+    text-align: right;
+    padding-right: 8px;
+  }
+}
+
+.disability-insuarnce-card-bottom-item {
+  --background: #97C62D;
+  display: flex;
+  height: 59px;
+  .input-wrapper {
+    text-align: right;
+    padding-right: 8px;
+  }
+}
+
+.critical-insuarnce-card-bottom-item {
+  --background: #37AAD2;
+  --border-style: none;
+  display: flex;
+  height: 59px;
+  .input-wrapper {
+    text-align: right;
+    padding-right: 8px;
+  }
+}
+
+.travel-insuarnce-card-bottom-item {
+  --background: #9F63D3;
+  --border-style: none;
+  height: 59px;
+  display: flex;
+  .input-wrapper {
+    text-align: right;
+    padding-right: 8px;
+  }
+}
+
+.total {
+  font-size: 10px;
+  color: white;
+}
+
+.small-padding {
+  padding-left: 17px;
+}
+
+.slash {
+  font-size: 24px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.coverage-amount {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  opacity: 0.7;
+  text-align: right;
+}
+
+.payment-month-line {
+  line-height: 15px;
+  padding-left: 10px;
+}
+
+.flex-center-item {
+  display: flex;
+  align-items: center;
+}
+
+.monthly-money {
+  font-size: 19px;
+  color: white;
+  font-weight: 800;
+}
+
+.payment-per-month-txt {
+  font-size: 10px;
+  color: white;
+  margin-top: 6px;
+}
+
+.life-insurance-txt {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FE5D05;
+  padding-left: 16px;
+}
+
+.longterm-insurance-txt {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 800;
+  color: #F14E6D;
+  padding-left: 16px;
+}
+
+.critical-insurance-txt {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 800;
+  color: #37AAD2;
+  padding-left: 16px;
+}
+
+.travel-insurance-txt {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 800;
+  color: #9F63D3;
+  padding-left: 16px;
+}
+
+.disability-insurance-txt {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 800;
+  color: #97C62D;
+  padding-left: 16px;
+}
+
+.small-opacity {
+  opacity: 0.7;
+}
+
+.household-btn.activated {
+  --background-activated: #3fb5f7;
+}
+
+ion-avatar {
+  width: 50px;
+  height: 50px;
+}
+
+.info-area {
+  padding-top: 15px;
+  margin-left: 30px;
+}
+
+@media only screen and (max-height: 667px) {
+  .title-section {
+    font-size: 15px;
+  }
+}
+
+.md :host {
+  .total {
+    padding-left: 0px;
+  }
+  .coverage-amount {
+    font-size: 14px;
+  }
+  .money-txt {
+    font-size: 12px;
+  }
+}
+
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        top: calc(42px + env(safe-area-inset-top));
+      }
+      .top-btn-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        top: calc(42px + env(safe-area-inset-top));
+      }
+      .top-btn-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        top: calc(42px + env(safe-area-inset-top));
+      }
+      .top-btn-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        top: calc(42px + env(safe-area-inset-top));
+      }
+      .top-btn-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}

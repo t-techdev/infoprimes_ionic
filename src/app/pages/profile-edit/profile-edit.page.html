@@ -1,0 +1,114 @@
+<ion-header>
+    <div class="header-section">
+      <div class="header-item">
+        <div class="left-section">&nbsp;</div>
+        <div class="middle-section">
+          <div class="title-section">{{title}}</div>
+        </div>
+        <div class="right-section">
+          <ion-icon (click)="close()" slot="icon-only" src="assets/svg/Close.svg" class="close-icon">&nbsp;</ion-icon>
+        </div>
+      </div>
+    </div>
+  </ion-header>
+  <ion-content>
+    <div class="main-content">
+      <div class="profile-img-section">
+        <img class="profile-img" [src]="cameraImageUrl? cameraImageUrl : appGlobal.getImgUri(data?.image, 'user')" (click)="presentActionSheet()">
+        <img class="camera-icon" src="../assets/icon/icCamera.png" (click)="presentActionSheet()">
+      </div>
+      <div class="fields-section">
+        <form novalidate [formGroup]="formGroup" class="profile-form">
+          <ion-item [ngClass]="{'invalid-input-error': ( formGroup.get('firstname').hasError('required') && actionBtnAttempt)}">
+            <ion-label position="stacked" *ngIf="type == 'household'">{{ 'INSURANCE_REV.FIRST_NAME' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+            <ion-label position="stacked" *ngIf="type == 'general'">{{ 'INSURANCE_REV.NAME' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+            <ion-input type="text" [(ngModel)]="data.firstname" formControlName="firstname" (ngModelChange)="disAllowNum($event, 'firstname')"></ion-input>
+          </ion-item>
+          <ion-item class="validation-error" no-lines *ngIf="(formGroup.get('firstname').hasError('required')) && actionBtnAttempt">
+            {{ 'GENERIC.REQUIRED' | translate }}
+          </ion-item>
+          <ion-item [ngClass]="{'invalid-input-error': ( formGroup.get('lastname').hasError('required') && actionBtnAttempt)}">
+            <ion-label position="stacked">{{ 'INSURANCE_REV.LAST_NAME' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+            <ion-input type="text" [(ngModel)]="data.lastname" formControlName="lastname" (ngModelChange)="disAllowNum($event, 'lastname')"></ion-input>
+          </ion-item>
+          <ion-item class="validation-error" no-lines *ngIf="(formGroup.get('lastname').hasError('required')) && actionBtnAttempt">
+            {{ 'GENERIC.REQUIRED' | translate }}
+          </ion-item>
+          <ion-item *ngIf="type == 'general'">
+            <ion-label position="stacked">{{ 'INSURANCE_REV.ADDRESS' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="data.address" formControlName="address"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="(type == 'general') || (type == 'household' && data.role != 'other' && action == 'edit') || (type == 'household' && relationship == 'spouse' && action == 'new')" [ngClass]="{'invalid-input-error': ( (formGroup.get('email').hasError('required') || formGroup.get('email').hasError('email')) && actionBtnAttempt)}">
+            <ion-label position="stacked">{{ 'INSURANCE_REV.EMAIL' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+            <ion-input type="email" [(ngModel)]="data.email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item class="validation-error" no-lines *ngIf="type == 'general' && (formGroup.get('email').hasError('required')) && actionBtnAttempt">
+            {{ 'GENERIC.REQUIRED' | translate }}
+          </ion-item>
+          <ion-item class="validation-error" no-lines *ngIf="type == 'general' && (formGroup.get('email').hasError('email') && !formGroup.get('email').hasError('required')) && actionBtnAttempt">
+            {{ 'GENERIC.CHECK_EMAIL_VALID' | translate }}
+          </ion-item>
+          <ion-item *ngIf="type == 'general'" [ngClass]="{'invalid-input-error': ( formGroup.get('mainphone').hasError('required') && actionBtnAttempt)}">
+            <ion-label position="stacked">{{ 'INSURANCE_REV.PHONE' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+            <ion-input type="tel" [(ngModel)]="data.mainphone" formControlName="mainphone" (ngModelChange)="disAllowChar($event, 'mainphone')"></ion-input>
+          </ion-item>
+          <ion-item class="validation-error" no-lines *ngIf="type == 'general' && (formGroup.get('mainphone').hasError('required')) && actionBtnAttempt">
+            {{ 'GENERIC.REQUIRED' | translate }}
+          </ion-item>
+          <ion-item class="validation-error" no-lines *ngIf="type == 'general' && (formGroup.get('mainphone').hasError('validPhoneNumber') && !formGroup.get('mainphone').hasError('required')) && actionBtnAttempt">
+            {{ 'GENERIC.CHECK_PHONE_NUMBER_VALID' | translate }}
+          </ion-item>
+          <ion-item *ngIf="type == 'general'">
+            <ion-label position="stacked">{{ 'INSURANCE_REV.SMOKER' | translate }}</ion-label>
+            <ion-select #smokerSelect class="select-box" formControlName="smoker" [(ngModel)]="smoker" interface="action-sheet">
+              <ion-select-option value="true">{{ 'GENERIC.YES' | translate }}</ion-select-option>
+              <ion-select-option value="false">{{ 'GENERIC.NO' | translate }}</ion-select-option>
+            </ion-select>
+            <!--<ion-icon (click)="openSmokerSelect()" src="assets/svg/ArrowDown.svg" class="arrow-down-icon" slot="end">&nbsp;</ion-icon>-->
+          </ion-item>
+          <ion-item *ngIf="type == 'household'" [ngClass]="{'invalid-input-error': ( formGroup.get('relationship').hasError('required') && actionBtnAttempt)}">
+            <ion-label position="stacked">{{ 'INSURANCE_REV.RELATIONSHIP_HEAD' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+            <ion-select #householdSelect formControlName="relationship" [(ngModel)]="relationship" interface="action-sheet" disabled="{{action != 'new' ? true : false}}">
+              <ion-select-option value="son">{{ 'INSURANCE_REV.SON' | translate }}</ion-select-option>
+              <ion-select-option value="daughter">{{ 'INSURANCE_REV.DAUGHTER' | translate }}</ion-select-option>
+              <ion-select-option value="spouse">{{ 'INSURANCE_REV.SPOUSE' | translate }}</ion-select-option>
+            </ion-select>
+            <!--<ion-icon (click)="openHouseholdSelect()" src="assets/svg/ArrowDown.svg" class="arrow-down-icon" slot="end">&nbsp;</ion-icon>-->
+          </ion-item>
+          <ion-label *ngIf="type == 'household'" position="stacked">{{ 'INSURANCE_REV.DOB' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+          <div class="selectbox-section" *ngIf="type == 'household'">
+            <ion-item [ngClass]="{'invalid-input-error': (formGroup.get('year').hasError('required') || formGroup.get('month').hasError('required') || formGroup.get('day').hasError('required')) && actionBtnAttempt}">
+              <ion-select #daySelect formControlName="day" [(ngModel)]="day" interface="action-sheet">
+                <ion-select-option *ngFor="let d of days" value='{{d}}'>{{d}}</ion-select-option>
+              </ion-select>
+              <!--<ion-icon (click)="openDaySelect()" src="assets/svg/ArrowDown.svg" class="dob-arrow-down-icon" slot="end">&nbsp;</ion-icon>-->
+            </ion-item>
+            <ion-item [ngClass]="{'invalid-input-error': (formGroup.get('year').hasError('required') || formGroup.get('month').hasError('required') || formGroup.get('day').hasError('required')) && actionBtnAttempt}">
+              <ion-select #monthSelect formControlName="month" [(ngModel)]="month" interface="action-sheet" (ionChange)="onChangeMonth()">
+                <ion-select-option *ngFor="let m of months" value='{{m}}'>{{ 'GENERIC.' + m | translate}}</ion-select-option>
+              </ion-select>
+              <!--<ion-icon (click)="openMonthSelect()" src="assets/svg/ArrowDown.svg" class="dob-arrow-down-icon" slot="end">&nbsp;</ion-icon>-->
+            </ion-item>
+            <ion-item [ngClass]="{'invalid-input-error': (formGroup.get('year').hasError('required') || formGroup.get('month').hasError('required') || formGroup.get('day').hasError('required')) && actionBtnAttempt}">
+              <ion-select #yearSelect formControlName="year" [(ngModel)]="year" interface="action-sheet">
+                <ion-select-option *ngFor="let y of years" value='{{y}}'>{{y}}</ion-select-option>
+              </ion-select>
+              <!--<ion-icon (click)="openYearSelect()" src="assets/svg/ArrowDown.svg" class="dob-arrow-down-icon" slot="end">&nbsp;</ion-icon>-->
+            </ion-item>
+          </div>
+          <ion-item class="validation-error" no-lines *ngIf="type == 'household' && (formGroup.get('year').hasError('required') || formGroup.get('month').hasError('required') || formGroup.get('day').hasError('required')) && actionBtnAttempt">
+            {{ 'GENERIC.REQUIRED' | translate }}
+          </ion-item>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <div class="btn-area" text-center>
+        <ion-button class="action-btn" slot="end" round (click)="clickSave()">
+          {{ 'INSURANCE_REV.SAVE_INFO' | translate }}
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>

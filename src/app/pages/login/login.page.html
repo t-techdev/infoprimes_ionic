@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="logo-content" text-center>
+    <img class="logo-img" src="assets/icon/InfoPrimesLogoLogin.png" />
+  </div>
+  <div class="welcome-txt">{{ 'LOGIN.WELCOME_MESSAGE_1' | translate }}<br>{{ 'LOGIN.WELCOME_MESSAGE_2' | translate }}</div>
+  <div class="login-form">
+    <form novalidate [formGroup]="user" class="register-form">
+      <ion-item [ngClass]="{'invalid-input-error': ((user.get('email').hasError('required') || user.get('email').hasError('email')) && user.get('email').touched) || ((user.get('email').hasError('required') || user.get('email').hasError('email')) && submitAttempt)}">
+        <ion-label class="placeholder" position="stacked">{{ 'LOGIN.USERNAME' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="email" formControlName="email" (input)="changeAuthStatus($event.target.value)"></ion-input>
+      </ion-item>
+      <ion-item class="validation-error" no-lines *ngIf="((user.get('email').hasError('required') || user.get('email').hasError('email')) && user.get('email').touched) || ((user.get('email').hasError('required') || user.get('email').hasError('email')) && submitAttempt)">
+        {{ 'GENERIC.INPUT_VALID_EMAIL' | translate }}
+      </ion-item>
+      <ion-item [ngClass]="{'invalid-input-error': ((user.get('password').hasError('required') || user.get('password').hasError('minlength')) && user.get('password').touched) || ((user.get('password').hasError('required') || user.get('password').hasError('minlength')) && submitAttempt)}">
+        <ion-label position="stacked">{{ 'LOGIN.PASSWORD' | translate }}</ion-label>
+        <ion-input class="password-input" type="password" clearOnEdit="false" [(ngModel)]="password" formControlName="password" (input)="changeAuthStatus($event.target.value)"></ion-input>
+      </ion-item>
+      <ion-item class="validation-error" no-lines *ngIf="((user.get('password').hasError('required') || user.get('password').hasError('minlength')) && user.get('password').touched) || ((user.get('password').hasError('required') || user.get('password').hasError('minlength')) && submitAttempt)">
+        {{ 'LOGIN.INPUT_VALID_PASSWORD' | translate }}
+      </ion-item>
+      <ion-item class="validation-error" no-lines *ngIf="unauthorized">
+        {{ 'LOGIN.USERNAME_PASSWORD_DO_NOT_MATCH' | translate }}
+      </ion-item>
+      <div class="ion-text-center">
+        <ion-button (click)="login()" class="signin-btn" slot="end" round>
+          {{ 'GENERIC.SIGN_IN' | translate }}
+        </ion-button>
+      </div>
+    </form>
+  </div>
+  <div class="bottom-section">
+    <div class="forgot-password"><span (click)="resetPassword()">{{ 'LOGIN.FORGOT_PASS' | translate }}</span></div>
+    <div class="getstarted-section">
+      <span class="no-account">{{ 'LOGIN.NO_ACCT' | translate }}</span>
+      <span class="getstarted" (click)="goRegister()">{{ 'LOGIN.GET_STARTED' | translate }}</span>
+    </div>
+  </div>
+</ion-content>

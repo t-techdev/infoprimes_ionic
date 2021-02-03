@@ -1,0 +1,476 @@
+.header-item {
+  background: none;
+  padding-left: 9px;
+  padding-top: 23px;
+  display: flex;
+  justify-content: baseline;
+}
+
+.left-section {
+  display: flex;
+  flex-basis: 20px;
+  margin-top: 1px;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.right-section {
+  width: 20px;
+}
+
+.arrow-back-icon {
+  min-width: 1px !important;
+  background-color: transparent;
+  width: 13px;
+}
+
+.title-section {
+  color: white;
+  font-weight: 600;
+  font-size: 19px;
+  padding-left: 17px;
+  text-transform: uppercase;
+}
+
+ion-app {
+  background: linear-gradient(rgba(51, 153, 219, 1), rgba(26, 158, 245, 1), rgba(18, 217, 250, 1)) !important;
+}
+
+.header-content {
+  padding-top: 23px;
+}
+
+.header-content:after {
+  height: 0px;
+}
+
+.logo-img {
+  height: 42px;
+}
+
+.main-content {
+  --background: transparent;
+}
+
+.segment-section {
+  padding: 24px 16px 18px 16px;
+}
+
+ion-segment-button {
+  border: none !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  max-height: 18px !important;
+  line-height: 1.8rem !important;
+  opacity: 1 !important;
+  width: 50%;
+  .button-native {
+    margin-top: -10px !important;
+  }
+}
+
+ion-segment-button.ion-activatable {
+  background: transparent !important;
+}
+
+ion-segment-button:first-of-type {
+  border-right: solid 1px white !important;
+}
+
+ion-segment-button {
+  ion-label {
+    line-height: 18px;
+  }
+}
+
+.household-btn {
+  --border-radius: 30px;
+  --background: rgba(10, 125, 201, 0.66);
+  --background-hover: #3fb5f7;
+  font-weight: 700;
+  height: 34px;
+  font-size: 16px;
+  text-transform: initial;
+  letter-spacing: 0em;
+  width: 265px;
+}
+
+.household-btn.activated {
+  --background-activated: #3fb5f7;
+}
+
+.cur-pol-card {
+  border-radius: 9px 9px 9px 9px;
+  width: 100%;
+}
+
+.cur-pol-card-content {
+  padding: 0px;
+}
+
+.cur-pol-card-top {
+  background: rgba(240, 247, 252, 1);
+}
+
+.cur-pol-card-bottom {
+  background: rgb(255, 255, 255);
+  ion-item {
+    --border-style: none;
+  }
+}
+
+.cur-pol-card-top-content {
+  padding: 18px 22px 29px 22px;
+  text-align: center !important;
+  img {
+    display: inline-block;
+  }
+}
+
+.cur-pol-card-bottom-content {
+  padding: 23px 0px 27px 0px;
+}
+
+.cur-life-insurance-txt {
+  font-size: 15px;
+  font-weight: 700;
+  color: #005189;
+  padding-bottom: 1.5px;
+  height: 30px;
+}
+
+.flex-section {
+  background: transparent;
+}
+
+.warning-btn {
+  background: rgba(254, 184, 6, 0.24);
+  color: #e0886e;
+  font-size: 9px;
+  height: 24px;
+  text-transform: inherit;
+  --backgrond-hover: rgba(254, 184, 6, 0.8);
+}
+
+.household-policies-txt {
+  color: rgba(87, 133, 166, 1);
+  font-size: 13px;
+  padding-top: 1.5px;
+  white-space: pre-line;
+}
+
+.dollar {
+  color: #00518A;
+  font-weight: 800;
+  font-size: 16px;
+  text-align: right;
+}
+
+.month {
+  color: #5685A5;
+  font-size: 10px;
+  text-align: right;
+}
+
+.policies-btn {
+  --background: #DFF2FF;
+  --border-radius: 64px;
+  color: #00518A;
+  font-weight: bold;
+  height: 34px;
+  width: 220px;
+  font-size: 12px;
+  margin-top: 18px;
+  --background-hover: #93d3ff;
+}
+
+.pen-pol-card {
+  border-radius: 9px 9px 9px 9px;
+  background: white;
+  padding-top: 3px;
+  padding-left: 0px;
+}
+
+.pen-life-insurance-txt {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FE5D05;
+  padding-left: 15px;
+}
+
+.pen-disability-insurance-txt {
+  font-size: 16px;
+  font-weight: 800;
+  color: #97C62D;
+  padding-left: 15px;
+}
+
+.pen-long-term-insurance-txt {
+  font-size: 16px;
+  font-weight: 800;
+  color: #F2546B;
+  padding-left: 15px;
+}
+
+.pen-critical-insurance-txt {
+  font-size: 16px;
+  font-weight: 800;
+  color: #37AAD2;
+  padding-left: 15px;
+}
+
+.pen-travel-insurance-txt {
+  font-size: 16px;
+  font-weight: 800;
+  color: #A05FD6;
+  padding-left: 15px;
+}
+
+.pen-item-line {
+  display: inline-flex;
+}
+
+.pen-coverage {
+  padding-right: 12px;
+}
+
+.pen-policy-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #364A5D;
+}
+
+.pen-coverage-txt {
+  font-size: 14px;
+  color: #91A9C0;
+}
+
+.pen-coverage-dollar {
+  font-size: 14px;
+  color: #364A5D;
+}
+
+.pen-payment-txt {
+  font-size: 14px;
+  color: #91A9C0;
+}
+
+.pen-payment-month {
+  font-size: 14px;
+  display: flex;
+}
+
+.pen-dollar-txt {
+  font-weight: 800;
+  color: #364A5D;
+}
+
+.pen-month-txt {
+  color: #364A5D;
+}
+
+.zurich-img {
+  width: 60px !important;
+  height: 60px !important;
+  max-width: none;
+}
+.pen-arrow-btn {
+  color: #afafaf;
+  --background: transparent;
+}
+
+.pen-divider {
+  background: rgba(232, 240, 245, 0.53);
+  padding-left: 18px;
+  display: inline-flex;
+  // height: 37px;
+  // align-items: center;
+  width: 100%;
+}
+
+.insurance-item {
+  --border-style: none;
+  --padding-start: 19px;
+  --padding-top: 7px;
+}
+
+.pen-zurich-img-item {
+  --border-style: none;
+  --padding-top: 13px;
+  --padding-start: 13px;
+  --padding-end: 0px;
+  --inner-padding-end: 0px;
+  --padding-bottom: 13px;
+}
+
+.pen-divider-date {
+  color: #25B1E4;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.pen-divider-desc {
+  color: #364A5D;
+  padding-left: 14px;
+  font-size: 10px;
+}
+
+.insurance-img {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.dollar-month {
+  line-height: 14px;
+}
+
+.cur-policies-list {
+  margin: 0px !important;
+}
+
+.scroll-content::-webkit-scrollbar {
+  display: none;
+}
+
+.policies-btn.activated {
+  --background-activated: #93d3ff;
+}
+
+.warning-btn.activated {
+  --background-activated: rgba(254, 184, 6, 0.8);
+}
+
+.svg-content {
+  height: 179px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart-card {
+  margin: 12px 7px;
+}
+
+ion-avatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.ins-policy-txt-div {
+  padding-left: 16px;
+}
+
+.status-card-list {
+  margin-top: -9px !important;
+  --ion-background-color: transparent;
+}
+
+.info-area {
+  padding-left: 25px;
+}
+
+.arrow-down-icon {
+  font-size: 14px;
+}
+
+.nopending-txt-section {
+  color: white;
+  font-size: 17px;
+  padding-top: 34px;
+  padding-bottom: 19px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.askquestion-txt-section {
+  color: white;
+  font-size: 14px;
+  padding-top: 40px;
+  font-weight: 400;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 14px;
+}
+
+.contact-btn {
+  --background: white;
+  --border-radius: 64px;
+  --background-hover: rgba(10, 125, 201, 1);
+  color: #18B6f8;
+  font-size: 16px;
+  font-weight: 700;
+  height: 47px;
+  width: 266px;
+  text-transform: initial;
+}
+.contact-btn.activated {
+  --background-activated: rgba(10, 125, 201, 1);
+}
+
+@media only screen and (max-height: 667px) {
+  .title-section {
+    font-size: 15px;
+  }
+  .cur-life-insurance-txt {
+    font-size: 12px;
+  }
+  .household-policies-txt {
+    font-size: 11px;
+  }
+  .ins-policy-txt-div {
+    padding-left: 5px;
+  }
+  .cur-life-insurance-txt {
+    height: initial !important;
+  }
+  .household-policies-txt {
+    height: initial !important;
+  }
+  .dollar {
+    font-size: 12px;
+  }
+}
+
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+  .header-content {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) {
+      .header-content {
+        padding-top: env(safe-area-inset-top);
+      }
+}
+
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-content {
+        padding-top: env(safe-area-inset-top);
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-content {
+        padding-top: env(safe-area-inset-top);
+      }
+}

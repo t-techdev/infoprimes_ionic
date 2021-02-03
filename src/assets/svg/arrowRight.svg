@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="15px" viewBox="0 0 10 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>0arrowViewMore</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-532.000000, -248.000000)">
+        <g id="arrowViewMore" transform="translate(525.000000, 243.000000)" fill="#CAD8E5" fill-rule="nonzero">
+            <polygon transform="translate(12.046578, 12.304423) rotate(-270.000000) translate(-12.046578, -12.304423) " points="6.09315538 16.4444042 5 15.4172667 11.9693224 8 19.0931554 15.5817083 18 16.6088457 11.9693224 10.190554"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,59 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section" (click)="goBack()">
+        <ion-icon slot="icon-only" src="assets/svg/arrowLeft-new.svg" class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'ALL_HOUSEHOLD_PROFILES.TITLE' | translate }}</div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header>
+<ion-content class="main-content">
+  <ion-item class="profile-item" (click)="goHouseholdProfile(myProfile)">
+    <ion-avatar slot="start">
+      <img class="avatar-img" [src]="appGlobal.getImgUri(myProfile?.image, 'user')" />
+    </ion-avatar>
+    <div class="info-area">
+      <div class="profile-name">{{ 'ALL_HOUSEHOLD_PROFILES.MY_PROFILE' | translate }}</div>
+      <div class="policies-count" *ngIf="appGlobal.getPoliciesByContactID(myProfile?.id) > 1 || appGlobal.getPoliciesByContactID(myProfile?.id) == 0">{{appGlobal.getPoliciesByContactID(myProfile?.id)}} {{ 'ALL_HOUSEHOLD_PROFILES.POLICIES' | translate }}</div>
+      <div class="policies-count" *ngIf="appGlobal.getPoliciesByContactID(myProfile?.id) == 1">{{appGlobal.getPoliciesByContactID(myProfile?.id)}} {{ 'POLICY_STATUS.POLICY' | translate }}</div>
+    </div>
+    <ion-icon class="arrow-icon" name="arrow-forward" slot="end"></ion-icon>
+  </ion-item>
+  <ion-list-header class="list-header" *ngIf="spouseProfile">{{ 'ALL_HOUSEHOLD_PROFILES.SPOUSE' | translate }}</ion-list-header>
+  <ion-item class="profile-item" *ngIf="spouseProfile" (click)="goHouseholdProfile(spouseProfile)">
+    <ion-avatar slot="start">
+      <img class="avatar-img" [src]="appGlobal.getImgUri(spouseProfile?.image, 'user')" />
+    </ion-avatar>
+    <div class="info-area">
+      <div class="profile-name">{{spouseProfile?.firstname}} {{spouseProfile?.lastname}}</div>
+      <div class="policies-count" *ngIf="appGlobal.getPoliciesByContactID(spouseProfile?.id) > 1 || appGlobal.getPoliciesByContactID(spouseProfile?.id) == 0">{{appGlobal.getPoliciesByContactID(spouseProfile?.id)}} {{ 'ALL_HOUSEHOLD_PROFILES.POLICIES' | translate }}</div>
+      <div class="policies-count" *ngIf="appGlobal.getPoliciesByContactID(spouseProfile?.id) == 1">{{appGlobal.getPoliciesByContactID(spouseProfile?.id)}} {{ 'POLICY_STATUS.POLICY' | translate }}</div>
+    </div>
+    <ion-icon class="arrow-icon" name="arrow-forward" slot="end"></ion-icon>
+  </ion-item>
+  <ion-list-header class="list-header" *ngIf="childs?.length">{{ 'ALL_HOUSEHOLD_PROFILES.CHILDREN' | translate }}</ion-list-header>
+  <ion-item class="profile-item" *ngFor="let child of childs " (click)="goHouseholdProfile(child)">
+    <ion-avatar slot="start">
+      <img class="avatar-img" [src]="appGlobal.getImgUri(child?.image, 'user')" />
+    </ion-avatar>
+    <div class="info-area">
+      <div class="profile-name">{{child?.firstname}} {{child?.lastname}}</div>
+      <div class="policies-count" *ngIf="appGlobal.getPoliciesByContactID(child?.id) > 1 || appGlobal.getPoliciesByContactID(child?.id) == 0">{{appGlobal.getPoliciesByContactID(child?.id)}} {{ 'ALL_HOUSEHOLD_PROFILES.POLICIES' | translate }}</div>
+      <div class="policies-count" *ngIf="appGlobal.getPoliciesByContactID(child?.id) == 1">{{appGlobal.getPoliciesByContactID(child?.id)}} {{ 'POLICY_STATUS.POLICY' | translate }}</div>
+    </div>
+    <ion-icon class="arrow-icon" name="arrow-forward" slot="end"></ion-icon>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <div class="review-btn-area" text-center>
+    <div text-center class="add-remove-txt">{{ 'ALL_HOUSEHOLD_PROFILES.INSURANCE_REV_MESSAGE' | translate }}</div>
+    <ion-button class="review-btn" slot="end" round (click)="goProfileReview()">
+      {{ 'ALL_HOUSEHOLD_PROFILES.INSURANCE_REV_BUTTON' | translate }}
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+  </div>
+</ion-footer>

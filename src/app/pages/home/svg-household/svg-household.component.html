@@ -1,0 +1,61 @@
+<ng-container *ngIf="mockData">
+  <svg id="chart" width="304" height="179" viewBox="125.8 105.0 52.02048 30.63048" class="">
+
+    <defs>
+      <!--this is the mask for rounded linecaps-->
+      <clipPath id="{{clipPathId}}">
+        <rect x="125.8" y="104.04" width="45" height="28.61" fill="rgb(255,0,0,.5)"></rect>
+      </clipPath>
+    </defs>
+
+    <circle class="needs-ring" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="#fff" stroke-width="1.5"></circle>
+
+    <!--start coverage segments-->
+    <!--
+    <circle class="household-segment-other-4" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="transparent" stroke-width="1.75" clip-path="url(#rect-clip-bottom)"></circle>
+
+    <circle class="household-segment-other-3" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="transparent" stroke-width="1.75" clip-path="url(#rect-clip-bottom)"></circle>
+
+    <circle class="household-segment-other-2" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="transparent" stroke-width="1.75" clip-path="url(#rect-clip-bottom)"></circle>
+
+    <circle class="household-segment-other-1" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="transparent" stroke-width="1.75" clip-path="url(#rect-clip-bottom)"></circle>
+    -->
+    <circle class="household-segment-coapplicant" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="transparent" stroke-width="1.75" [attr.clip-path]="clipPathIdCircle" [ngStyle]="{'-webkit-clip-path': clipPathIdCircle}"></circle>
+
+    <circle class="household-segment-main" cx="152" cy="124.5" r="15.91549430918954" fill="transparent" stroke="transparent" stroke-width="1.75" [attr.clip-path]="clipPathIdCircle" [ngStyle]="{'-webkit-clip-path': clipPathIdCircle}"></circle>
+    <!--end coverage segments-->
+
+    <text class="graphic-titles needs-text" text-anchor="middle" x="151.8" y="116.193" fill="transparent">{{ 'HOME.NEEDS' | translate }}</text>
+
+    <text class="graphic-dollars home-graphic needs-text" text-anchor="middle" x="152" y="119.34" id="needs-amount" fill="transparent">
+      0 $
+    </text>
+
+    <line class="graphic-line" x1="142.45" y1="121.5" x2="161.1" y2="121.5" stroke="transparent" stroke-width="0.15399" />
+
+    <text class="graphic-titles coverage-text" text-anchor="middle" x="152" y="124.94" fill="transparent">
+        {{ 'GENERIC.COVERAGE' | translate }}
+    </text>
+    <text class="graphic-dollars coverage-text" text-anchor="middle" x="152" y="128.06" id="coverage-amount" fill="#fff">
+      0 $
+    </text>
+
+    <circle class="graphic-knobs" cx="138.5" cy="133.12" r="0.92604166" fill="transparent" stroke="transparent" stroke-width="0.89px"></circle>
+
+    <circle class="graphic-knobs" cx="165.5" cy="133.12" r="0.92604166" fill="transparent" stroke="transparent" stroke-width="0.89px"></circle>
+
+    <circle class="percentage-circle" id="{{'percentage-circle-' + insuranceType}}" cx="152" cy="132" r="1.8" fill="white" stroke="rgb(254, 93, 5, 0)" stroke-width=".6"></circle>
+
+    <!--you've got to add a bit to the y so that it centers in the circle (about .4)-->
+    <text class="percent-circle-text" id="{{'percent-circle-text-' + insuranceType}}" text-anchor="middle" x="167.04" y="119.89" fill="transparent">98%</text>
+
+    <text class="graphic-label-user-main" text-anchor="center" x="136.4369" y="133.3199" fill="red">placeholder m</text>
+    <text class="graphic-label-user-coapplicant" text-anchor="end" x="134.9668" y="129.9348" fill="red">placeholder c</text>
+    <!--
+    <text class="graphic-label-user-other-1" text-anchor="end" x="134.2222" y="126.2715" fill="red">placeholder 1</text>
+    <text class="graphic-label-user-other-2" text-anchor="end" x="134.2222" y="126.2715" fill="red">placeholder 2</text>
+    <text class="graphic-label-user-other-3" text-anchor="end" x="134.2222" y="126.2715" fill="red">placeholder 3</text>
+    <text class="graphic-label-user-other-4" text-anchor="end" x="134.2222" y="126.2715" fill="red">placeholder 4</text>
+    -->
+  </svg>
+</ng-container>

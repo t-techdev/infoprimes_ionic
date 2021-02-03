@@ -1,0 +1,64 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section">&nbsp;</div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'INSURANCE_REV.EDIT_PROFESSION' | translate }}</div>
+      </div>
+      <div class="right-section">
+        <ion-icon (click)="close()" slot="icon-only" src="assets/svg/Close.svg" class="close-icon">&nbsp;</ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="main-content">
+    <div class="fields-section">
+      <form novalidate [formGroup]="formGroup" class="profession-form">
+        <div class="name-section">
+          {{data?.firstname}} {{data?.lastname}}
+        </div>
+        <!-- <ion-item>
+          <ion-label position="stacked">{{ 'INSURANCE_REV.EMPLOYMENT_STATUS' | translate }}</ion-label>
+          <ion-select #employmentSelect [(ngModel)]="type" interface="action-sheet">
+            <ion-option value="employee">{{ 'INSURANCE_REV.EMPLOYED' | translate }}</ion-option>
+            <ion-option value="self-employed">{{ 'INSURANCE_REV.SELF_EMPLOYED' | translate }}</ion-option>
+            <ion-option value="unemployed">{{ 'INSURANCE_REV.UNEMPLOYED' | translate }}</ion-option>
+          </ion-select>
+          <ion-icon (click)="openEmployeeSelect()" name="infoprimes-arrow-down" class="arrow-down-icon" item-end>&nbsp;</ion-icon>
+        </ion-item> -->
+        <ion-item>
+          <ion-label position="stacked">{{ 'INSURANCE_REV.COMPANY' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="company" formControlName="company"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">{{ 'INSURANCE_REV.JOB_TITLE' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="jobTitle" formControlName="jobTitle"></ion-input>
+        </ion-item>
+        <ion-item [ngClass]="{'invalid-input-error': ( formGroup.get('salary').hasError('required') && actionBtnAttempt)}">
+          <ion-label position="stacked">{{ 'INSURANCE_REV.ANNUAL_SALARY' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="salary" formControlName="salary"></ion-input>
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="formGroup.get('salary').hasError('required') && actionBtnAttempt">
+          {{ 'GENERIC.REQUIRED' | translate }}
+        </ion-item>
+        <ion-item [ngClass]="{'invalid-input-error': ( formGroup.get('income').hasError('required') && actionBtnAttempt)}">
+          <ion-label position="stacked">{{ 'INSURANCE_REV.OTHER_REVENUE' | translate }}<span class="asterisk-ele">&#42;</span></ion-label>
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="income" formControlName="income"></ion-input>
+        </ion-item>
+        <ion-item class="validation-error" no-lines *ngIf="formGroup.get('income').hasError('required') && actionBtnAttempt">
+          {{ 'GENERIC.REQUIRED' | translate }}
+        </ion-item>
+      </form>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="btn-area" text-center>
+      <ion-button class="action-btn" slot="end" round (click)="saveClick()">
+        {{ 'INSURANCE_REV.SAVE_INFO' | translate }}
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

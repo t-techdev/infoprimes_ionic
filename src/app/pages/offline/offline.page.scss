@@ -1,0 +1,107 @@
+.header-section {
+    background: white;
+    top: 0px;
+    position: fixed;
+    height: 68px;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 10000;
+  }
+  
+  .header-item {
+    background: none;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 31px;
+    display: flex;
+    justify-content: baseline;
+  }
+  
+  .left-section {
+    display: flex;
+    flex-basis: 10%;
+    margin-top: 1px;
+  }
+  
+  .middle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .right-section {
+    flex-basis: 10%;
+  }
+  
+  .arrow-back-icon {
+    min-width: 1px !important;
+    background-color: transparent;
+    width: 13px;
+    font-size: 22px !important;
+  }
+  
+  .title-section {
+    color: #2F9AE1;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  
+  .main-content {
+    margin-top: 67px;
+  }
+  
+  .desc-section {
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+    position: fixed;
+    top: calc((100% - 286px) / 2);
+  }
+  
+  .wifi-broken-img {
+    width: 89px;
+    height: 89px;
+  }
+  
+  .text-setion-1 {
+    text-align: left;
+    color: #2F9AE1;
+    font-size: 20px;
+    padding-top: 33px;
+  }
+  
+  .text-setion-2 {
+    text-align: left;
+    font-size: 15px;
+    color: #364A5D;
+    padding-top: 10px;
+    padding-bottom: 50px;
+  }
+  
+  .bottom-setion {
+    width: 100%;
+    position: fixed;
+    bottom: 16px;
+    color: #2F9AE1;
+    font-size: 14px;
+  }
+
+  .try-again-btn {
+    width: 223px;
+    margin-top: 27px;
+    --background: #19A4F6;
+    --background-hover: #3fb5f7;
+    --border-radius: 64px;
+    height: 50px;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  
+  @media only screen and (max-height: 667px) {
+    .title-section {
+      font-size: 15px;
+    }
+  }

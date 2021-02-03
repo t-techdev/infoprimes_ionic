@@ -1,0 +1,213 @@
+.header-section {
+  background: white;
+  top: 0px;
+  position: fixed;
+  height: 68px;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 10000;
+}
+
+.header-item {
+  background: none;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 31px;
+  display: flex;
+  justify-content: baseline;
+}
+
+.left-section {
+  display: flex;
+  flex-basis: 10%;
+  margin-top: 1px;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.right-section {
+  flex-basis: 10%;
+}
+
+.arrow-back-icon {
+  min-width: 1px !important;
+  background-color: transparent;
+  width: 13px;
+  font-size: 22px !important;
+}
+
+.title-section {
+  color: #2F9AE1;
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.main-content {
+  margin-top: 33px;
+}
+
+.desc-section {
+  height: 60px;
+  font-size: 16px;
+  color: #364A5D;
+}
+
+.touch-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc((100vh - 33px - 60px - 20px - 32px) / 5);
+}
+
+.progress-round {
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-filled {
+  background-color: #2F9AE1;
+}
+
+.progress-filled-invalid {
+  background-color: #FA5050;
+}
+
+.progress-not-filled {
+  border: solid 2px #DCE3E9;
+  background-color: white;
+}
+
+.touch-round-out {
+  width: 33%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.touch-round {
+  z-index: 999999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 30px;
+  color: #2F9AE1;
+  background-color: #EEF8FF;
+  outline: none;
+}
+
+.touch-round-activated {
+  color: #FFFFFF;
+  background-color: #2E99E1;
+}
+
+.touch-round-deactivated {
+  color: #2F9AE1;
+  background-color: #EEF8FF;
+}
+
+/*
+.touch-round.activated {
+  color: #FFFFFF;
+  --background-activated: #2E99E1;
+}
+.touch-round:active {
+  color: #FFFFFF;
+  background-color: #2E99E1;
+}
+*/
+
+/*
+.symbol-round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EEF8FF;
+}
+
+.symbol-round:active {
+  color: #FFFFFF;
+  background-color: #2E99E1;
+}
+*/
+
+.symbol-img {
+  width: 25px;
+  height: 29px;
+}
+
+.arrow-img {
+  width: 30px;
+  height: 32px;
+}
+
+.touchid-img {
+  width: 40px;
+  height: 42px;
+}
+
+.touch-round:before {
+  content: '';
+  padding: 50% 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.passcode-intro-txt {
+  text-align: center;
+  font-size: 16.5px;
+  color: #2F9AE1;
+  font-weight: 600;
+  height: 20px;
+}
+
+.shake-action {
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@media only screen and (max-height: 667px) {
+  .title-section {
+    font-size: 15px;
+  }
+}

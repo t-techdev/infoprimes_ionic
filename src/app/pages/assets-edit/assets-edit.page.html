@@ -1,0 +1,191 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section">&nbsp;</div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'INSURANCE_REV.EDIT_ASSETS' | translate }}</div>
+      </div>
+      <div class="right-section">
+        <ion-icon (click)="close()" slot="icon-only" src="assets/svg/Close.svg" class="close-icon">&nbsp;</ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="main-content">
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.MONEY_IN_DA_BANK' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.base"></ion-input>
+        </div>
+      </div>
+    </div>
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.FIXED_TERM_DEPOSIT' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.term_deposit"></ion-input>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.NON_REGISTERED_INVESTMENTS' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.unregistered"></ion-input>
+        </div>
+      </div>
+    </div>
+    -->
+    <!--
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.TFSA' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.celi"></ion-input>
+        </div>
+      </div>
+    </div>
+    -->
+    <!--
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.RRSP' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.reer"></ion-input>
+        </div>
+      </div>
+    </div>
+    -->
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.RRSP_LIRA' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.reer_cri"></ion-input>
+        </div>
+      </div>
+    </div>
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.RRIF_LIF' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.ferr"></ion-input>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.RESP' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.reee"></ion-input>
+        </div>
+      </div>
+    </div>
+    -->
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.PENSION_FUND' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.pension"></ion-input>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.OUTSIDE_INDIVIDUAL_LIFE' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.individual_life_other"></ion-input>
+        </div>
+      </div>
+    </div>
+    -->
+    <!--
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.OUTSIDE_GROUP_LIFE' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.collective_life_other"></ion-input>
+        </div>
+      </div>
+    </div>
+    -->
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.SECOND_VEHICLE' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.vehicle"></ion-input>
+        </div>
+      </div>
+    </div>
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.TOOLS_COLLECTIONS' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.tools"></ion-input>
+        </div>
+      </div>
+    </div>
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.LAND' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.land"></ion-input>
+        </div>
+      </div>
+    </div>
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.CABINS' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.cottage"></ion-input>
+        </div>
+      </div>
+    </div>
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.BUILDINGS' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.real_state"></ion-input>
+        </div>
+      </div>
+    </div>
+    <div class="assets-item">
+      <div class="detail-name">{{ 'INSURANCE_REV.OTHER' | translate }}</div>
+      <div class="detail-val">
+        <div>$</div>
+        <div class="amount-wrapper">
+          <ion-input type="number" pattern="[0-9]*" [(ngModel)]="data.others"></ion-input>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="btn-area" text-center>
+      <ion-button class="action-btn" slot="end" round (click)="saveClick()">
+        {{ 'INSURANCE_REV.SAVE_INFO' | translate }}
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

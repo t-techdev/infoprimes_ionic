@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24"
+   height="24"
+   viewBox="0 0 6.3499996 6.3500002"
+   version="1.1"
+   id="svg6734"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="whiteCheck(24x24).svg">
+  <defs
+     id="defs6728" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="16"
+     inkscape:cx="8.4951352"
+     inkscape:cy="3.9478554"
+     inkscape:document-units="px"
+     inkscape:current-layer="icPoliciesAppMenuActive"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata6731">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(69.579794,-212.33521)">
+    <g
+       id="Symbols"
+       transform="matrix(0.26458333,0,0,0.26458333,-62.196647,216.49206)"
+       style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
+      <g
+         id="icPoliciesAppMenuActive"
+         style="fill:#3498db">
+        <path
+           inkscape:connector-curvature="0"
+           d="m -24.779536,-6.8090493 -3.125272,3.1252748 9.023445,9.0234449 14.9765551,-14.975294 -3.1259042,-3.1259054 -11.8506509,11.85065223 z"
+           id="path4488"
+           sodipodi:nodetypes="ccccccc"
+           style="fill:#ffffff;stroke-width:1" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,207 @@
+.header-section {
+  background: linear-gradient(#3399db, rgba(51,153,219,.5));
+  top: 0px;
+  position: fixed;
+  height: 68px;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 10000;
+}
+
+.header-item {
+  background: none;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 31px;
+  display: flex;
+  justify-content: baseline;
+}
+
+.left-section {
+  display: flex;
+  flex-basis: 10%;
+  margin-top: 1px;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.right-section {
+  flex-basis: 10%;
+}
+
+.arrow-back-icon {
+  min-width: 1px !important;
+  background-color: transparent;
+  width: 13px;
+  font-size: 22px !important;
+}
+
+.title-section {
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.main-content {
+  --background: linear-gradient(rgba(51, 153, 219, 1), rgba(25, 158, 245, 1), rgba(18, 217, 250, 1));
+}
+
+.thx-txt-section {
+  color: white;
+  font-size: 35px;
+  font-weight: 300;
+  padding-top: 90px;
+}
+
+.great-txt-section {
+  color: white;
+  font-size: 17px;
+  padding-top: 17px;
+  padding-bottom: 19px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.desc-txt-section {
+  color: white;
+  font-size: 14px;
+  padding-top: 40px;
+  font-weight: 400;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.see-btn {
+  --background: white;
+  --background-hover: rgba(10, 125, 201, 1);
+  --border-radius: 64px;
+  color: #18B6f8;
+  font-size: 16px;
+  font-weight: 700;
+  height: 47px;
+  width: 266px;
+  text-transform: initial;
+}
+
+.see-btn.activated {
+  --background-activated: rgba(10, 125, 201, 1);
+}
+
+.see-btn-section {
+  padding-top: 42px;
+  padding-bottom: 8px;
+}
+
+.contact-btn {
+  --background: white;
+  --background-hover: rgba(10, 125, 201, 1);
+  --border-radius: 64px;
+  color: #18B6f8;
+  font-size: 16px;
+  font-weight: 700;
+  height: 47px;
+  width: 266px;
+  text-transform: initial;
+}
+
+.contact-btn.activated {
+  --background-activated: rgba(10, 125, 201, 1);
+}
+
+@media only screen and (max-height: 667px) {
+  .title-section {
+    font-size: 15px;
+  }
+}
+
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .top-btn-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .top-btn-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .top-btn-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .header-item {
+        padding-top: calc(10px + env(safe-area-inset-top));
+      }
+      .info-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .header-section {
+        height: calc(42px + env(safe-area-inset-top));
+      }
+      .main-content {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+      .top-btn-section {
+        margin-top: calc(42px + env(safe-area-inset-top));
+      }
+}

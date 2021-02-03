@@ -1,0 +1,46 @@
+ion-tab-bar {
+  height: 55px;
+  ion-icon svg {
+    fill: red !important;
+  }
+}
+
+.policy-tab-icon {
+  width: 30px;
+  background: url(../../../assets/svg/PoliciesFalse.svg) no-repeat center;
+}
+
+.tab-selected .policy-tab-icon {
+  width: 30px;
+  background: url(../../../assets/svg/PoliciesTrue.svg) no-repeat center;
+}
+
+.broker-tab-icon {
+  width: 22px;
+  background: url(../../../assets/svg/MyBrokerFalse.svg) no-repeat center;
+}
+
+.tab-selected .broker-tab-icon {
+  width: 22px;
+  background: url(../../../assets/svg/MyBrokerTrue.svg) no-repeat center;
+}
+
+.my-profile-tab-icon {
+  width: 23px;
+  background: url(../../../assets/svg/MyProfileFalse.svg) no-repeat center;
+}
+
+.tab-selected .my-profile-tab-icon {
+  width: 23px;
+  background: url(../../../assets/svg/MyProfileTrue.svg) no-repeat center;
+}
+
+.reclamation-tab-icon {
+  width: 26px;
+  background: url(../../../assets/svg/ReclamationFalse.svg) no-repeat center;
+}
+
+.tab-selected .reclamation-tab-icon {
+  width: 26px;
+  background: url(../../../assets/svg/ReclamationTrue.svg) no-repeat center;
+}

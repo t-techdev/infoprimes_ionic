@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.InfoPrimes.InfoPrimes",
+      "sha256_cert_fingerprints": [
+        "2C:63:50:88:69:83:56:8A:EA:50:26:BA:65:28:9A:7C:15:75:E3:E7:74:1A:87:7A:87:D5:3C:46:F2:43:9E:A1"
+      ]
+    }
+  }
+]

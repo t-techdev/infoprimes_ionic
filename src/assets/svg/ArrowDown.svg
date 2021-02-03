@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="10px" viewBox="0 0 15 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>0arrowViewMoreDown</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="arrowViewMoreDown" transform="translate(-4.000000, -7.000000)" fill="#CAD8E5" fill-rule="nonzero">
+            <g transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) " id="arrowViewMore">
+                <polygon transform="translate(12.046578, 12.304423) rotate(-270.000000) translate(-12.046578, -12.304423) " points="6.09315538 16.4444042 5 15.4172667 11.9693224 8 19.0931554 15.5817083 18 16.6088457 11.9693224 10.190554"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
